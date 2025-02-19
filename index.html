@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- iOS & Mobile Web App Compatibility Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
   <title>Decarb Energy Partners | Renewable Bio-Fuels</title>
   <style>
     /* Basic Reset */
@@ -24,14 +29,19 @@
       background-color: #41A776; /* Brand Green */
       color: #fff;
       padding: 10px 20px;
+      display: -webkit-flex;
       display: flex;
+      -webkit-align-items: center;
       align-items: center;
+      -webkit-justify-content: space-between;
       justify-content: space-between;
     }
 
     /* Left side: Logo + Title */
     .header-left {
+      display: -webkit-flex;
       display: flex;
+      -webkit-align-items: center;
       align-items: center;
       gap: 15px;
     }
@@ -50,6 +60,7 @@
     /* Navigation on the right side */
     nav ul {
       list-style: none;
+      display: -webkit-flex;
       display: flex;
       gap: 20px;
       margin: 0;
@@ -82,6 +93,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      -webkit-object-fit: cover;
       z-index: 1;
     }
 
@@ -89,8 +101,11 @@
       position: relative;
       z-index: 2;
       color: #fff;
+      display: -webkit-flex;
       display: flex;
+      -webkit-align-items: center;
       align-items: center;
+      -webkit-justify-content: center;
       justify-content: center;
       height: 100%;
       text-align: center;
@@ -127,6 +142,7 @@
     
     /* Two-Column Layout (for Environmental Impact only) */
     .two-column {
+      display: -webkit-flex;
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
@@ -146,6 +162,7 @@
       height: auto;
       border-radius: 5px;
       object-fit: cover;
+      -webkit-object-fit: cover;
     }
     
     /* CTA Button */
@@ -200,7 +217,7 @@
       position: absolute;
       left: 0;
       top: 0;
-
+    }
   </style>
 </head>
 <body>
@@ -237,15 +254,14 @@
     <section id="about">
       <h2>About Us</h2>
       <p>
-      Decarb Energy Partners is strengthening American industry, decarbonization, and energy independence by transforming harmful landfill emissions into clean, sustainable renewable bio-fuels. 
+        Decarb Energy Partners is strengthening American industry, decarbonization, and energy independence by transforming harmful landfill emissions into clean, sustainable renewable bio-fuels.
       </p>
       <p>
-      Our platform deploys efficient and innovative new technology that decarbonizes landfills and transforms stranded biogas into clean renewable fuels. By capturing and utilizing landfill biogas, we reduce greenhouse gas emissions and other harmful pollutants while supporting the transition to cleaner energy sources with clean locally-produced renewable fuels.
+        Our platform deploys efficient and innovative new technology that decarbonizes landfills and transforms stranded biogas into clean renewable fuels. By capturing and utilizing landfill biogas, we reduce greenhouse gas emissions and other harmful pollutants while supporting the transition to cleaner energy sources with clean locally-produced renewable fuels.
       </p>
       <p>
-      We are currently operating in stealth mode as we finalize key projects and processes, which is a common practice in the project development space. We look forward to sharing more information on our exciting projects, pipeline, and innovative technology soon. 
+        We are currently operating in stealth mode as we finalize key projects and processes, which is a common practice in the project development space. We look forward to sharing more information on our exciting projects, pipeline, and innovative technology soon.
       </p>
-
     </section>
     
     <!-- Our Technology Section (Single Column) -->
@@ -264,19 +280,12 @@
           By capturing landfill emissions and other greenhouse gases, Decarb Energy’s platform plays a critical role in mitigating climate change, improving local air quality, and producing cleaner fuels. Our renewable bio-fuels:
         </p>
         <ul class="green-checklist">
-        <li>
-        Burn cleaner than fossil alternatives
-        </li>
-        <li>
-        Locally produced
-        </li>
-        <li>
-        Decrease dependency on foreign energy
-        </li>
+          <li>Burn cleaner than fossil alternatives</li>
+          <li>Locally produced</li>
+          <li>Decrease dependency on foreign energy</li>
         </ul>
-        <p></p>
         <p>
-        Together with our partners, we are paving the way for a cleaner, sustainable and secure energy future.
+          Together with our partners, we are paving the way for a cleaner, sustainable and secure energy future.
         </p>
         <a href="mailto:info@decarbenergypartners.com" class="cta-button">Get Involved</a>
       </div>
