@@ -248,6 +248,29 @@
         padding: 20px 10px;
       }
     }
+
+/* Contact Us Section – stack on mobile, two-column on desktop */
+@media only screen and (max-width: 768px) {
+  /* Target the Contact Us section when it has the two-column class */
+  #contact.two-column {
+    /* keep using flex but switch to a vertical stack */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Make both child panes full-width */
+  #contact.two-column .text-content,
+  #contact.two-column .video-content {
+    flex: none;
+    width: 100%;
+  }
+
+  /* Add some breathing room above the iframe */
+  #contact.two-column .video-content {
+    margin-top: 20px;
+  }
+}
+
   </style>
 
   <link rel="icon" href="DecarbEnergyPartnersGreen.png" type="image/png">
