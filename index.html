@@ -249,6 +249,27 @@
       }
     }
 
+/* === stack Environmental Impact on mobile === */
+@media only screen and (max-width: 768px) {
+  /* turn the two-column flow into a vertical stack */
+  #impact.two-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* make both panes full-width */
+  #impact.two-column .text-content,
+  #impact.two-column .video-content {
+    flex: none;
+    width: 100%;
+  }
+
+  /* give some breathing room above the image/video */
+  #impact.two-column .video-content {
+    margin-top: 20px;
+  }
+}
+    
 /* Contact Us Section – stack on mobile, two-column on desktop */
 @media only screen and (max-width: 768px) {
   /* Target the Contact Us section when it has the two-column class */
