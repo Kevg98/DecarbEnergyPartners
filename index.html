@@ -86,7 +86,7 @@
       .two-grid { grid-template-columns: 1fr; }
       .video-content video { max-height: 250px; }
       /* Hero poster fallback */
-      .hero-video { display: none; }
+      /* .hero-video { display: none; } */
       .hero { background: url('hero-poster.jpg') center/cover no-repeat; }
     }
   </style>
@@ -114,17 +114,25 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <video autoplay muted loop playsinline poster="hero-poster.jpg" class="hero-video">
-      <source src="Video2_Field.mp4" type="video/mp4">
-      Your browser does not support this video tag.
-    </video>
-    <div class="container hero-content">
-      <h1>Transforming Biogas Pollution into Clean &amp; Sustainable Biofuels</h1>
-      <a href="mailto:info@decarbenergypartners.com" class="btn-primary">Get Involved</a>
-    </div>
-  </section>
+<!-- Hero -->
+<section class="hero">
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    poster="hero-poster.jpg"
+  >
+    <source src="Video2_Field.mp4" type="video/mp4">
+    Your browser does not support this video tag.
+  </video>
+  <div class="container hero-content">
+    <h1>Transforming Biogas Pollution into Clean &amp; Sustainable Biofuels</h1>
+    <a href="mailto:info@decarbenergypartners.com" class="btn-primary">Get Involved</a>
+  </div>
+</section>
 
   <!-- About Us -->
   <section id="about">
