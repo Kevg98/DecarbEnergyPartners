@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- iOS & Mobile Web App Compatibility Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <title>Fleets | Decarb Energy Partners</title>
+  <link rel="icon" href="DecarbEnergyPartnersGreen.png" type="image/png">
+  <style>
+    /* Variables */
+    :root {
+      --primary-color: #00648A;
+      --accent-color: #41A776;
+      --text-color: #333;
+      --bg-color: #f9f9f9;
+      --container-width: 1200px;
+      --gap: 2rem;
+      --video-max-height: 350px;
+    }
+    /* Reset */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; color: var(--text-color); background: var(--bg-color); line-height: 1.6; }
+    a { color: var(--accent-color); text-decoration: none; }
+    img, video { max-width: 100%; display: block; }
+    .container { max-width: var(--container-width); margin: 0 auto; padding: var(--gap) 1rem; }
+
+    /* Header */
+    header { background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo img { height: 40px; }
+    nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    nav a { font-weight: bold; color: var(--text-color); transition: color 0.3s; }
+    nav a:hover { color: var(--accent-color); }
+
+/* Hero */
+    .hero { position: relative; height: 500px; display: flex; align-items: center; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
+    .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+    .hero-content { position: relative; z-index: 2; color: #fff; text-align: center; width: 100%; }
+    .hero-content h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+    .btn-primary { background: var(--accent-color); color: #fff; padding: 0.75rem 1.5rem; border-radius: 4px; font-size: 1rem; display: inline-block; transition: background 0.3s; }
+    .btn-primary:hover { background: #379166; }
+
+    /* Sections */
+    section { padding: var(--gap) 0; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2rem); color: var(--primary-color); margin-bottom: 1rem; }
+    p { margin-bottom: 1rem; }
+
+    /* Two-column grid */
+    .two-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--gap); align-items: center; }
+    .section--alt { background: #fff; }
+
+    /* Centered image container */
+    .image-container { display: flex; justify-content: center; }
+
+    /* Benefits list */
+    .benefits-list { list-style: none; padding-left: 0; display: grid; gap: 0.75rem; margin-bottom: 1rem; }
+    .benefits-list li::before { content: '✔'; color: var(--accent-color); margin-right: 0.5rem; }
+
+    /* Footer */
+    footer { background: #333; color: #fff; padding: var(--gap) 1rem; }
+    .footer-container { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: nowrap; }
+    footer .logo img { height: 30px; margin: 0; }
+    footer p { margin: 0; }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      .hero { height: 300px; }
+      nav ul { display: none; }
+      .two-grid { grid-template-columns: 1fr; }
+      .hero-video { object-position: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo"><img src="DecarbEnergyPartnersGreen.png" alt="Decarb Energy Partners Logo"></a>
+      <nav>
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#for-biogas">Biogas</a></li>
+          <li><a href="index.html#for-fleets">Fleets</a></li>
+          <li><a href="index.html#benefits">Benefits</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<!-- Hero -->
+  <section class="hero">
+    <video autoplay muted loop playsinline poster="hero-poster.jpg" class="hero-video">
+      <source src="Video2_Field.mp4" type="video/mp4">
+      Your browser does not support this video tag.
+    </video>
+    <div class="container hero-content">
+      <h1>Fleet Operators</h1>
+<h1>Drive Instant Decarbonization</h1>
+      <a href="mailto:info@decarbenergypartners.com" class="btn-primary">Reach Out Now</a>
+    </div>
+  </section>
+
+  <!-- Decarbonize Your Fleet -->
+  <section id="for-fleets">
+    <div class="container">
+      <h2>Decarbonize Your Fleet</h2>
+      <p>Preparing your fleet's operations to reach net zero can be as simple as switching to a sustainable fuel source. Decarb Energy's proprietary biofuels are drop-in ready, burn cleaner, and are carbon-negative--meaning more carbon and pollution is absorbed and destroyed creating the fuels than is produced when used.</p>
+      <ul class="benefits-list">
+        <li>Drop-in Ready - No Retrofits</li>
+        <li>Carbon Negative</li>
+        <li>No New Infrastructure Required</li>
+        <li>Cleaner Burning - No PMx & SOx</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Decarb ZeroMax -->
+  <section id="zeromax" class="section--alt">
+    <div class="container two-grid">
+      <div>
+        <h2>Decarb ZeroMax</h2>
+        <p>For heavy-duty applications, Decarb ZeroMax is a non-compromise, high-cetane diesel replacement that delivers exceptional performance without sacrificing sustainability.</p>
+        <ul class="benefits-list">
+          <li>Drop-in Ready - No Retrofits</li>
+          <li>Carbon Negative</li>
+          <li>No New Infrastructure Required</li>
+          <li>Cleaner Burning - No PMx & SOx</li>
+        </ul>
+      </div>
+      <div class="image-container">
+        <img src="DecarbZeroMaxTM.png" alt="Decarb ZeroMax Fuel">
+      </div>
+    </div>
+  </section>
+
+  <!-- Decarb Zero102 -->
+  <section id="zero102">
+    <div class="container two-grid">
+      <div class="image-container">
+        <img src="DecarbZero102TM.png" alt="Decarb Zero102 Fuel">
+      </div>
+      <div>
+        <h2>Decarb Zero102</h2>
+        <p>Formulated as a high-octane (102), high-performance gasoline replacement, Decarb Zero102 offers a seamless transition to sustainable fueling with no loss in power.</p>
+        <ul class="benefits-list">
+          <li>Drop-in Ready - No Retrofits</li>
+          <li>Carbon Negative</li>
+          <li>No New Infrastructure Required</li>
+          <li>Cleaner Burning - No PMx & SOx</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ready to Partner -->
+  <section id="contact" class="section--alt">
+    <div class="container two-grid">
+      <div>
+        <h2>Ready to Partner?</h2>
+        <p>Learn how your fleet can start reducing emissions and improving air quality today with Decarb Energy's carbon-negative biofuels.</p>
+        <p>Email: <a href="mailto:info@decarbenergypartners.com">info@decarbenergypartners.com</a></p>
+      </div>
+      <div>
+        <iframe
+          src="https://sibforms.com/serve/MUIFAAz7dchtJPeiHEoylQAsxoyCECw9fDAY4tUeMbKSZRf3kroIuIB3yUMKjKEqMHhFa3brWXs_NZF3d-geHmcLvzbrs-P6167NLLLaOkHjOJymSvRlFlJPl4hFIMC-hdIiDP1rcHDeFhSxVcLbgzZW9Cyt0ddj2mlirvOn7iWkRMLW2xaYh2KzQP6ZvXeygV_F7FWqh-_itEbq"
+          frameborder="0" scrolling="auto" allowfullscreen
+          style="width:100%; height:350px; border:none;">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <div class="logo"><img src="DecarbEnergyPartnersGreen.png" alt="Decarb Energy Partners Logo"></div>
+      <p>&copy; 2025 Decarb Energy Partners LLC. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
