@@ -9,414 +9,232 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="format-detection" content="telephone=no">
   <title>Decarb Energy Partners | Renewable Biofuels</title>
+  <link rel="icon" href="DecarbEnergyPartnersGreen.png" type="image/png">
   <style>
-    /* Basic Reset */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    /* Variables */
+    :root {
+      --primary-color: #00648A;
+      --accent-color: #41A776;
+      --text-color: #333;
+      --bg-color: #f9f9f9;
+      --container-width: 1200px;
+      --gap: 2rem;
+      --video-max-height: 350px;
     }
-    
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f9f9f9;
-    }
+    /* Reset */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; color: var(--text-color); background: var(--bg-color); line-height: 1.6; font-size: 1rem; }
+    a { color: var(--accent-color); text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--container-width); margin: 0 auto; padding: var(--gap) 1rem; }
 
     /* Header */
-    header {
-      background-color: #41A776; /* Brand Green */
-      color: #fff;
-      padding: 10px 20px;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: space-between;
-      justify-content: space-between;
-    }
+    header { background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo img { height: 40px; }
+    nav ul.desktop-nav { display: flex; gap: 1.5rem; list-style: none; }
+    nav a { font-weight: bold; color: var(--text-color); transition: color 0.3s; }
+    nav a:hover { color: var(--accent-color); }
+    details.mobile-nav { display: none; position: relative; }
+    details.mobile-nav summary { list-style: none; font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
+    details.mobile-nav ul { list-style: none; background: #fff; position: absolute; top: 100%; left: 0; width: 100%; padding: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    details.mobile-nav ul li { margin-bottom: 1rem; }
 
-    /* Left side: Logo + Title */
-    .header-left {
-      display: -webkit-flex;
-      display: flex;
-      -webkit-align-items: center;
-      align-items: center;
-      gap: 15px;
-    }
+    /* Hero */
+    .hero { position: relative; height: 500px; display: flex; align-items: center; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
+    .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+    .hero-content { position: relative; z-index: 2; color: #fff; text-align: center; width: 100%; }
+    .hero-content h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+    .btn-primary { background: var(--accent-color); color: #fff; padding: 0.75rem 1.5rem; border-radius: 4px; font-size: 1rem; display: inline-block; transition: background 0.3s; }
+    .btn-primary:hover { background: #379166; }
 
-    .logo {
-      width: 50px; /* Adjust size as needed */
-      height: auto;
-    }
+    /* Sections */
+    section { padding: var(--gap) 0; }
+    h2 { font-size: clamp(1.5rem, 3vw, 2rem); color: var(--primary-color); margin-bottom: 1rem; }
+    p { margin-bottom: 1rem; }
 
-    .header-left h1 {
-      font-size: 1.8em;
-      font-family: "Palatino Linotype", serif;
-      margin: 0;
-    }
+    /* Two-column grid */
+    .two-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--gap); align-items: center; }
+    .section--alt { background: #fff; }
 
-    /* Navigation on the right side */
-    nav ul {
-      list-style: none;
-      display: -webkit-flex;
-      display: flex;
-      gap: 20px;
-      margin: 0;
-      padding: 0;
-    }
-    
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-    
-    nav ul li a:hover {
-      color: #d2f4ea; /* Lighter tint on hover */
-    }
-    
-    /* Hero Section with Video Banner */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 400px; /* Adjust as desired */
-      overflow: hidden;
-    }
+    /* Video sizing */
+    .video-content video { width: 100%; height: auto; max-height: var(--video-max-height); display: block; margin: 0 auto; }
 
-    .hero-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      -webkit-object-fit: cover;
-      z-index: 1;
-    }
+    /* Centered image container */
+    .image-container { display: flex; justify-content: center; }
 
-    .hero-text {
-      position: relative;
-      z-index: 2;
-      color: #fff;
-      display: -webkit-flex;
-      display: flex;
-      flex-direction: column;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      height: 100%;
-      text-align: center;
-    }
+    /* Button container for centering */
+    .btn-container { text-align: center; margin-top: 1rem; }
 
-    .hero-text h1 {
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      border-radius: 5px;
-      font-size: 2em;
-    }
+    /* Benefits list */
+    .benefits-list { list-style: none; padding-left: 0; display: grid; gap: 0.75rem; margin-bottom: 1rem; }
+    .benefits-list li::before { content: '✔'; color: var(--accent-color); margin-right: 0.5rem; }
 
-    .hero-text h2 {
-      padding: 20px;
-      text-align: center;
-      border-radius: 5px;
-      font-size: 1.2em;
-    }
-    
-    /* Main Content */
-    .content {
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .content section {
-      margin-bottom: 40px;
-    }
-    
-    .content section h2 {
-      margin-bottom: 20px;
-      color: #41A776;
-      font-size: 1.8em;
-    }
-    
-    .content section p {
-      margin-bottom: 15px;
-      font-size: 1.1em;
-    }
-    
-    /* Two-Column Layout (for Environmental Impact only) */
-    .two-column {
-      display: -webkit-flex;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .two-column .text-content {
-      flex: 1 1 55%;
-    }
-
-    .two-column .video-content {
-      flex: 0 0 40%;
-    }
-
-    .two-column .video-content video {
-      width: 100%;
-      height: auto;
-      border-radius: 5px;
-      object-fit: cover;
-      -webkit-object-fit: cover;
-    }
-    
-    /* CTA Button */
-    .cta-button {
-      background-color: #41A776;
-      color: #fff;
-      border: none;
-      padding: 15px 30px;
-      text-decoration: none;
-      font-size: 1.5em;
-      border-radius: 5px;
-      display: inline-block;
-      margin-top: 20px;
-      transition: background-color 0.3s ease;
-    }
-    
-    .cta-button:hover {
-      background-color: #379166; /* Slightly darker shade */
-    }
-    
     /* Footer */
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
+    footer { background: #333; color: #fff; padding: var(--gap) 1rem; }
+    .footer-container { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: nowrap; }
+    footer .logo img { height: 30px; margin: 0; }
+    footer p { margin: 0; }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      body { font-size: 0.9rem; }
+      .hero { height: 300px; }
+      nav ul.desktop-nav { display: none; }
+      details.mobile-nav { display: block; }
+      .two-grid { grid-template-columns: 1fr; }
+      .video-content video { max-height: 250px; }
+      /* Hero poster fallback */
+      .hero-video { display: none; }
+      .hero { background: url('hero-poster.jpg') center/cover no-repeat; }
     }
-    
-    footer a {
-      color: #d2f4ea;
-      text-decoration: none;
-    }
-
-    /* Remove default bullets */
-    ul.green-checklist {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    /* Position list items and add left padding for the checkmark */
-    ul.green-checklist li {
-      position: relative;
-      padding-left: 25px;
-      margin-bottom: 10px;
-    }
-
-    /* Insert green checkmark before each list item */
-    ul.green-checklist li::before {
-      content: "\2714"; /* Unicode for checkmark */
-      color: #41A776;   /* Green color */
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
-    
-    /* Mobile Optimization */
-    @media only screen and (max-width: 768px) {
-      /* Hide header text on mobile devices */
-      .header-left h1 {
-        display: none;
-      }
-        nav {
-          display: none;
-        }
-      /* Adjust font size of hero text if needed */
-      .hero-text h1 {
-        font-size: 1.5em;
-      }
-      .hero-text h2 {
-        font-size: 1em;
-      }
-      /* Adjust content padding for mobile devices */
-      .content {
-        padding: 20px 10px;
-      }
-    }
-
-/* === stack Environmental Impact on mobile === */
-@media only screen and (max-width: 768px) {
-  /* turn the two-column flow into a vertical stack */
-  #impact.two-column {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* make both panes full-width */
-  #impact.two-column .text-content,
-  #impact.two-column .video-content {
-    flex: none;
-    width: 100%;
-  }
-
-  /* give some breathing room above the image/video */
-  #impact.two-column .video-content {
-    margin-top: 20px;
-  }
-}
-    
-/* Contact Us Section – stack on mobile, two-column on desktop */
-@media only screen and (max-width: 768px) {
-  /* Target the Contact Us section when it has the two-column class */
-  #contact.two-column {
-    /* keep using flex but switch to a vertical stack */
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Make both child panes full-width */
-  #contact.two-column .text-content,
-  #contact.two-column .video-content {
-    flex: none;
-    width: 100%;
-  }
-
-  /* Add some breathing room above the iframe */
-  #contact.two-column .video-content {
-    margin-top: 20px;
-  }
-}
-
   </style>
-
-  <link rel="icon" href="DecarbEnergyPartnersGreen.png" type="image/png">
-  
 </head>
 <body>
-  <!-- Header Section -->
+  <!-- Header -->
   <header>
-    <div class="header-left">
-      <img src="logo.png" alt="Decarb Energy Partners Logo" class="logo" />
-      <h1>Decarb Energy Partners</h1>
+    <div class="container header-inner">
+      <a href="/" class="logo"><img src="DecarbEnergyPartnersGreen.png" alt="Decarb Energy Partners Logo"></a>
+      <nav>
+        <ul class="desktop-nav">
+          <li><a href="#about">About</a></li>
+          <li><a href="#for-biogas">For Biogas Producers</a></li>
+          <li><a href="#for-fleets">For Vehicle Fleets</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <details class="mobile-nav">
+          <summary aria-label="Toggle menu">☰</summary>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#for-biogas">For Biogas Producers</a></li>
+            <li><a href="#for-fleets">For Vehicle Fleets</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </details>
+      </nav>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#technology">Our Technology</a></li>
-        <li><a href="#impact">Environmental Impact</a></li>
-        <li><a href="#benefits">Project Benefits</a></li>
-        <li><a href="#contact">Contact Us</a></li>
-      </ul>
-    </nav>
   </header>
-  
-  <!-- Hero Section with Video Banner -->
+
+  <!-- Hero -->
   <section class="hero">
-    <video autoplay muted loop playsinline class="hero-video">
+    <video autoplay muted loop playsinline poster="hero-poster.jpg" class="hero-video">
       <source src="Video2_Field.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+      Your browser does not support this video tag.
     </video>
-    <div class="hero-text">
-      <h1>Transforming Biogas Pollution into Clean & Sustainable Biofuels</h1>
-      <br>
-      <a href="mailto:info@decarbenergypartners.com" class="cta-button">Get Involved</a>
+    <div class="container hero-content">
+      <h1>Transforming Biogas Pollution into Clean &amp; Sustainable Biofuels</h1>
+      <a href="mailto:info@decarbenergypartners.com" class="btn-primary">Get Involved</a>
     </div>
   </section>
-  
-  <!-- Main Content Section -->
-  <div class="content">
-    <!-- About Us Section -->
-    <section id="about">
-      <h2><u>About Us</u>:</h2>
-      <p>
-        Decarb Energy Partners is driving American industry and energy security forward by transforming biogas from landfills, anaerobic digesters, and wasewater treatment facilities into <strong>clean, sustainable, and economic biofuels.</strong> As an independent project developer, we partner directly with farmers, landfills, municipalities, and our stakeholders to decarbonize their operations, efficiently produce renewable biofuel, and transform biogas liabilities into stable revenue streams that drive local investment and economic vitality. 
-      </p>
-      <p>
-        The Decarb Energy platform deploys our <strong>proprietary technology and innovative biogas conversion system</strong>, which efficiently transforms stranded biogas into clean fuels. By capturing and utilizing biogas, <strong>we reduce greenhouse gas emissions, virtually eliminate many other harmful pollutants, and support the transition to cleaner energy sources.</strong>
-      </p>
-      <p>
-        As part of the commitment we make to our partners, Decarb Energy prioritizes local biofuel distribution when possible so that communities benefit the most from the cleaner-burning fuel that they help produce. While most energy developments ship their fuels across the globe, Decarb Energy aims to <strong>keep project benefits as close to home as possible.</strong> These benefits include <strong>improved local air quality</strong>, <strong>the creation of high-paying jobs and new industries</strong>, and <strong>putting local energy security and affordability first.</strong>
-      </p>
-      <p>
-        We are currently operating in stealth mode while we finalize key projects and processes. We look forward to sharing more soon.
-      </p>
-    </section>
-    
-    <!-- Our Technology Section (Single Column) -->
-    <section id="technology">
-      <h2><u>Our Technology</u>:</h2>
-      <p>
-        Decarb Energy has developed <strong>proprietary technology</strong> to capture geographically distributed stranded biogas emissions and efficiently <strong>convert the waste gases into high-quality sustainable biofuels</strong>.
-      </p>
-      <p>
-        Across the United States today, farms, anaerobic digesters, and landfills of all sizes produce biogas, which is a natural byproduct as waste decomposes in an oxygen-deficient environment. This gas stream is a mixture of methane (the main component of natural gas), biogenic carbon dioxide, and small volumes of other trace gases. Biogas that escapes into the atmosphere is detrimental to local air quality and materially contributes to climate change—Over a 20-year period, methane traps 84 times more heat than carbon dioxide, making it a potent driver of global warming.
-      </p>
-      <p>
-        Although often dismissed as waste and an environmental liability, <strong>biogas can be a valuable energy resource when harnessed in partnership with the right developer</strong>. Projects that capture biogas and transform it into renewable biofuels ensure that the methane and carbon dioxide do not escape into the atmosphere. This not only improves local air quality and mitigates anthropogenic climate change, but it also creates another source of valuable fuel that we can use to power our everyday lives.
-      </p>
-    </section>
-    
-    <!-- Environmental Impact Section (Two-Column with Video) -->
-    <section id="impact" class="two-column">
-      <div class="text-content">
-        <h2><u>Environmental Impact</u>:</h2>
-        <p>
-          Affordable, abundant, and reliable energy is the lifeblood for all modern economies. Decarb Energy is <strong>dedicated to reducing both the cost and carbon footprint of next-generation biofuels</strong>.
-        </p>
-        <p>
-          By capturing biogas and other greenhouse gases before they escape into the atmosphere, Decarb Energy’s platform plays a critical role in mitigating climate change, improving local air quality, and producing economic clean biofuels.
-        </p>
-      </div>
-      <div class="video-content">
-        <video autoplay muted loop playsinline>
-          <source src="SustainabilityVideo.mp4" type="video/mp4">
-          Your browser does not support this video format.
-        </video>
-      </div>
-    </section>
-    
-    <!-- Development Benefits Section (Single Column) -->
-    <section id="benefits">
-      <h2><u>Project Benefits</u>:</h2>
-       <p>
-          Our projects and the renewable biofuels we produce are designed to drive a meaningful positive environmental impact, catalyze energy security & affordability, and maximize the overall benefits that we create for our project partners, stakeholders, and local communities. These benefits include:
-        </p>
-        <ul class="green-checklist">
-          <li><strong><u>Reduced Emissions & Pollution</u>:</strong> We reduce greenhouse gas (GHG) emissions and local pollution through our two core operational activities. First, we capture biogas before it escapes into the atmosphere or is 'flared,' which is a process that involves burning the bio-methane to produce a less harmful gas stream that's mostly CO<sub>2</sub>. Second, the renewable biofuels we produce <strong>burn cleaner</strong> than gasoline and diesel. Our end-to-end decarbonization solution ensures that potential biogas pollution is captured, converted, and utilized—turning waste into fuel. Decarb Energy's <strong>proprietary technology</strong> and <strong>unique business model</strong> also empower our partners to <strong>eliminate most scope 1 & 2 emissions</strong>.</li>
-          <li><strong><u>Energy Security & American Dynamism</u>:</strong> Our production volumes and costs are <strong>independent of volatile petrochemical markets</strong>, meaning that our locally-produced fuels are <strong>insulated from price shocks</strong> and <strong>not reliant on complex supply chains</strong> to function. This <strong>strengthens regional energy resiliency</strong> with cost-effective and diverse fuel sources, which <strong>protect consumers</strong>, <strong>help stabilize energy costs to combat inflation <i>before</i> it happens</strong>, and <strong>reduce our dependence on foreign energy.</strong></li>
-          <li><strong><u>Improved Local Air Quality</u>:</strong> Our projects <strong>virtually eliminate the release of a number of harmful pollutants</strong>, including sulfur oxides (SO<sub>X</sub>), nitrogen oxides (NO<sub>X</sub>), ozone- and smog-forming compounds (VOCs), and soot (particulates, or PM<sub>X</sub>). Less pollution in the air we breathe has a direct positive impact on community health.</li>
-         <li><strong><u>Economic Development & Job Creation</u>:</strong> Decarb Energy fosters economic growth by: (1) <strong>Creating high-paying, next-generation energy jobs</strong>, concentrated in rural communities; (2) <strong>Building meaningful partnerships</strong> with farms, landfills, wastewater treatment facilities, local governments, industry, and stakeholders; and (3) <strong>Delivering long-term value to our partners and the communities we serve</strong>.</li>
-        </ul>
-        <p>
-          Together with our partners, we are paving the way for a <strong>cleaner, more sustainable, and energy-abundant</strong> future.
-        </p>
-    </section>
-    
 
-    <!-- Contact Us Section (Double Column) -->
-    <section id="contact" class="two-column">
-      <div class="text-content">
-        <h2><u>Contact Us</u>:</h2>
-        <p>
-        Join the Decarb Energy team in our mission to transform waste into clean, affordable energy. Whether you are an operator looking to decarbonize and generate additional revenue from your biogas, seeking a reliable supply of renewable biofuels, or simply want to learn more about our mission and technology, please contact us today via email.
-        </p>
+  <!-- About Us -->
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>Decarb Energy Partners is driving American industry and energy security by <strong>transforming biogas into clean, sustainable, and economic biofuels as an alternative to diesel and gasoline.</strong></p>
+      <p>As an independent project developer, we partner directly with farmers, landfills, municipalities, and stakeholders to decarbonize their operations, produce renewable biofuel, and transform biogas liabilities into stable revenue streams that drive local investment and economic vitality.</p>
+    </div>
+  </section>
+
+  <!-- For Biogas Producers -->
+  <section id="for-biogas" class="section--alt">
+    <div class="container">
+      <h2>For Biogas Producers</h2>
+      <div class="two-grid">
+        <div>
+          <p><strong>Turn your biogas liability into cashflow in months, not years.</strong></p>
+          <p>Flaring biogas burns potential profits. Our proprietary technology captures and converts distributed biogas pollution into sustainable liquid biofuels. We partner directly with landfills, dairy farms, wastewater treatment facilities, and biogas point-sources of all sizes to turn environmental liabilities into perpetual renewable natural gas wells.</p>
+          <ul class="benefits-list">
+            <li>Unlock Long-Term Biogas Cashflow</li>
+            <li>Zero Capital Investment</li>
+            <li>Reduce Environmental Liability</li>
+            <li>Eliminate Community Biogas Odors</li>
+          </ul>
+          <div class="btn-container">
+            <a href="biogas-producers.html" class="btn-primary">Biogas | Learn More</a>
+          </div>
+        </div>
+        <div class="video-content">
+          <video autoplay muted loop playsinline>
+            <source src="SustainabilityVideo.mp4" type="video/mp4">
+            Your browser does not support this video format.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- For Vehicle Fleets -->
+  <section id="for-fleets">
+    <div class="container">
+      <h2>For Vehicle Fleets</h2>
+      <div class="two-grid">
+        <div class="image-container">
+          <img src="DecarbZeroSeriesLogos.png" alt="For Vehicle Fleets">
+        </div>
+        <div>
+          <p><strong>Drive instant decarbonization fleets and slash air pollution with carbon-negative biofuels.</strong></p>
+          <p>Preparing your fleet's operations to reach net zero can be as simple as switching to a sustainable fuel source.</p>
+          <p>Decarb Zero102 is formulated as a high-octane (102), high-performance gasoline replacement. For heavy-duty applications, Decarb ZeroMax is a non-compromise, high-cetane diesel replacement. These fuels are:</p>
+          <ul class="benefits-list">
+            <li>Drop in Ready - No Retrofits</li>
+            <li>Carbon Negative</li>
+            <li>No New Infrastructure Required</li>
+            <li>Cleaner Burning - No PMx & SOx</li>
+          </ul>
+          <div class="btn-container">
+            <a href="fleets.html" class="btn-primary">Fleets | Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Benefits -->
+  <section id="benefits" class="section--alt">
+    <div class="container">
+      <h2>Project Benefits</h2>
+      <div class="two-grid">
+        <div>
+          <p>Our biogas projects and renewable fuels drive positive economic, environmental, and energy impacts:</p>
+          <ul class="benefits-list">
+            <li>Energy Security &amp; American Dynamism</li>
+            <li>Reduced Emissions &amp; Pollution</li>
+            <li>Improved Local Air Quality</li>
+            <li>Economic Development &amp; Next-Gen Job Creation</li>
+            <li>Carbon-Negative Biofuels</li>
+          </ul>
+        </div>
+        <div class="image-container"><img src="benefits-image.jpg" alt="Project Benefits"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us -->
+  <section id="contact">
+    <div class="container two-grid">
+      <div>
+        <h2>Contact Us</h2>
+        <p>Join the Decarb Energy team in our mission to transform waste into clean, affordable energy. Whether you are an operator looking to decarbonize and generate additional revenue from your biogas, seeking a reliable supply of renewable biofuels, or simply want to learn more about our mission and technology, please contact us today via email.</p>
+        <br>
         <p>Email: <a href="mailto:info@decarbenergypartners.com">info@decarbenergypartners.com</a></p>
       </div>
-      <div class="video-content">
-        <iframe width="540" height="305" src="https://sibforms.com/serve/MUIFAAz7dchtJPeiHEoylQAsxoyCECw9fDAY4tUeMbKSZRf3kroIuIB3yUMKjKEqMHhFa3brWXs_NZF3d-geHmcLvzbrs-P6167NLLLaOkHjOJymSvRlFlJPl4hFIMC-hdIiDP1rcHDeFhSxVcLbgzZW9Cyt0ddj2mlirvOn7iWkRMLW2xaYh2KzQP6ZvXeygV_F7FWqh-_itEbq" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
+      <div>
+        <!-- Newsletter iframe preserved -->
+        <iframe src="https://sibforms.com/serve/MUIFAAz7dchtJPeiHEoylQAsxoyCECw9fDAY4tUeMbKSZRf3kroIuIB3yUMKjKEqMHhFa3brWXs_NZF3d-geHmcLvzbrs-P6167NLLLaOkHjOJymSvRlFlJPl4hFIMC-hdIiDP1rcHDeFhSxVcLbgzZW9Cyt0ddj2mlirvOn7iWkRMLW2xaYh2KzQP6ZvXeygV_F7FWqh-_itEbq" frameborder="0" scrolling="auto" allowfullscreen style="width:100%; height:350px; border:none;"></iframe>
       </div>
-    </section>
-  </div>
-  
-  <!-- Footer Section -->
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-     <img src="logo.png" alt="Decarb Energy Partners Logo" class="logo" />
-    <p>&copy; 2025 Decarb Energy Partners LLC. All rights reserved.</p>
+    <div class="container footer-container">
+      <div class="logo"><img src="DecarbEnergyPartnersGreen.png" alt="Decarb Energy Partners Logo"></div>
+      <p>&copy; 2025 Decarb Energy Partners LLC. All rights reserved.</p>
+    </div>
   </footer>
 </body>
 </html>
