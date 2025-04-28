@@ -81,7 +81,7 @@
       .two-grid { grid-template-columns: 1fr; }
       .video-content video { max-height: 250px; }
       /* Hero poster fallback */
-      .hero-video { display: none; }
+      /* .hero-video { display: none; } */
       .hero { background: url('hero-poster.jpg') center/cover no-repeat; }
     }
   </style>
@@ -112,10 +112,18 @@
 
   <!-- Hero -->
   <section class="hero">
-    <video autoplay muted loop playsinline poster="hero-poster.jpg" class="hero-video">
-      <source src="Video2_Field.mp4" type="video/mp4">
-      Your browser does not support this video tag.
-    </video>
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    poster="hero-poster.jpg"
+  >
+    <source src="Video2_Field.mp4" type="video/mp4">
+    Your browser does not support this video tag.
+  </video>
     <div class="container hero-content">
       <h1>Fleet Operators</h1>
       <h1>Drive Instant Decarbonization</h1>
