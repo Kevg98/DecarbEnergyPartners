@@ -21,20 +21,25 @@
       --gap: 2rem;
       --video-max-height: 350px;
     }
-    /* Reset */
+       /* Reset */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; color: var(--text-color); background: var(--bg-color); line-height: 1.6; }
+    body { font-family: Arial, sans-serif; color: var(--text-color); background: var(--bg-color); line-height: 1.6; font-size: 1rem; }
     a { color: var(--accent-color); text-decoration: none; }
-    img, video { max-width: 100%; display: block; }
+    img { max-width: 100%; display: block; }
     .container { max-width: var(--container-width); margin: 0 auto; padding: var(--gap) 1rem; }
 
     /* Header */
     header { background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
     .header-inner { display: flex; align-items: center; justify-content: space-between; }
     .logo img { height: 40px; }
-    nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    nav ul.desktop-nav { display: flex; gap: 1.5rem; list-style: none; }
     nav a { font-weight: bold; color: var(--text-color); transition: color 0.3s; }
     nav a:hover { color: var(--accent-color); }
+    details.mobile-nav { display: none; position: relative; }
+    details.mobile-nav summary { list-style: none; font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
+    details.mobile-nav ul { list-style: none; background: #fff; position: absolute; top: 100%; left: 0; width: 100%; padding: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    details.mobile-nav ul li { margin-bottom: 1rem; }
+
 
     /* Hero */
     .hero { position: relative; height: 500px; display: flex; align-items: center; overflow: hidden; }
@@ -80,13 +85,18 @@
     footer .logo img { height: 30px; margin: 0; }
     footer p { margin: 0; }
 
+
     /* Responsive tweaks */
     @media (max-width: 768px) {
+      body { font-size: 0.9rem; }
       .hero { height: 300px; }
-      nav ul { display: none; }
+      nav ul.desktop-nav { display: none; }
+      details.mobile-nav { display: block; }
       .two-grid { grid-template-columns: 1fr; }
       .video-content video { max-height: 250px; }
-    }
+      /* Hero poster fallback */
+      .hero-video { display: none; }
+      .hero { background: url('hero-poster.jpg') center/cover no-repeat; }
   </style>
 </head>
 <body>
@@ -96,11 +106,19 @@
     <div class="container header-inner">
       <a href="index.html" class="logo"><img src="DecarbEnergyPartnersGreen.png" alt="Decarb Energy Partners Logo"></a>
       <nav>
-        <ul>
+        <ul class="desktop-nav">
           <li><a href="index.html">Home</a></li>
-          <li><a href="biogas.producers.html">For Biogas Producers</a></li>
+          <li><a href="biogas-producers.html">For Biogas Producers</a></li>
           <li><a href="fleets.html">For Fleets</a></li>
         </ul>
+        <details class="mobile-nav">
+          <summary aria-label="Toggle menu">☰</summary>
+          <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="biogas-producers.html">For Biogas Producers</a></li>
+          <li><a href="fleets.html">For Fleets</a></li>
+          </ul>
+        </details>
       </nav>
     </div>
   </header>
