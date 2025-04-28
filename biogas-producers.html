@@ -86,7 +86,7 @@
     footer p { margin: 0; }
 
 
-    /* Responsive tweaks */
+/* Responsive tweaks */
     @media (max-width: 768px) {
       body { font-size: 0.9rem; }
       .hero { height: 300px; }
@@ -97,6 +97,20 @@
       /* Hero poster fallback */
       .hero-video { display: none; }
       .hero { background: url('hero-poster.jpg') center/cover no-repeat; }
+
+      /* --- NEW: force Biogas section into a column flex so image comes below text --- */
+      #for-biogas .two-grid {
+        display: flex;
+        flex-direction: column;
+      }
+      #for-biogas .two-grid > div:first-child {
+        order: 1; /* text block */
+      }
+      #for-biogas .two-grid .image-container {
+        order: 2; /* image block */
+        margin-top: var(--gap);
+      }
+    }
   </style>
 </head>
 <body>
@@ -137,7 +151,7 @@
   </section>
 
   <!-- Main Biogas Producers Section -->
-  <section id="for-biogas" class="section--alt">
+ <section id="for-biogas" class="section--alt">
     <div class="container">
       <h2>How We Transform Your Biogas into Revenue</h2>
       <div class="two-grid">
