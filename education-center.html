@@ -61,34 +61,81 @@
     /* Centered image container */
     .image-container { display: flex; justify-content: center; }
 
-/* Benefits list */
-.benefits-list {
-  list-style: none;
-  padding-left: 0;
-  display: grid;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-/* make each LI a 2-col grid: ✓ + text */
-.benefits-list li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 0.5rem;
-  align-items: start;
-}
-/* keep your checkmark but drop its right margin */
-.benefits-list li::before {
-  content: '✔';
-  color: var(--accent-color);
-  margin: 0;
-}
+    /* Benefits list */
+    .benefits-list {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .benefits-list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      column-gap: 0.5rem;
+      align-items: start;
+    }
+    .benefits-list li::before {
+      content: '✔';
+      color: var(--accent-color);
+      margin: 0;
+    }
+
+    /* Article Cards Grid */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--gap);
+    }
+    .article-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .article-card-content {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card-content h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+      color: var(--primary-color);
+    }
+    .article-card-content p {
+      margin-bottom: auto;
+      font-size: 0.9rem;
+      color: var(--text-color);
+    }
+    .btn-secondary {
+      margin-top: 1rem;
+      align-self: flex-start;
+      background: var(--primary-color);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn-secondary:hover {
+      background: #00506e;
+    }
 
     /* Footer */
     footer { background: #333; color: #fff; padding: var(--gap) 1rem; }
     .footer-container { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: nowrap; }
     footer .logo img { height: 30px; margin: 0; }
     footer p { margin: 0; }
-
 
     /* Responsive tweaks */
     @media (max-width: 768px) {
@@ -99,53 +146,15 @@
       .two-grid { grid-template-columns: 1fr; }
       .video-content video { max-height: 250px; }
       /* Hero poster fallback */
-      /* .hero-video { display: none; } */
       .hero { background: url('hero-poster.jpg') center/cover no-repeat; }
 
-/* ── MOBILE NAV FIX ── */
-  /* ensure the toggle button spans the full container */
-  details.mobile-nav {
-    width: 100%;
-    position: relative;
-  }
-  details.mobile-nav summary {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    background: #fff;
-  }
-  /* force the dropdown to span full viewport width */
-  details.mobile-nav ul {
-    list-style: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: calc(100% + 2rem);
-    margin-left: -1rem;
-    padding: 1rem;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  details.mobile-nav ul li {
-    margin-bottom: 1rem;
-  }
-  details.mobile-nav ul li:last-child {
-    margin-bottom: 0;
-  }
-  /* wrap long text, don’t let links overflow */
-  details.mobile-nav ul li a {
-    display: block;
-    white-space: normal;
-    word-break: break-word;
-  }
-
-  /* shrink mobile dropdown text by 50% */
-  details.mobile-nav ul li a {
-    font-size: 0.5em;
-  }
-
-      
+      /* Mobile nav fix */
+      details.mobile-nav { width: 100%; position: relative; }
+      details.mobile-nav summary { width: 100%; box-sizing: border-box; padding: 0.75rem 1rem; cursor: pointer; background: #fff; }
+      details.mobile-nav ul { list-style: none; position: absolute; top: 100%; left: 0; width: calc(100% + 2rem); margin-left: -1rem; padding: 1rem; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+      details.mobile-nav ul li { margin-bottom: 1rem; }
+      details.mobile-nav ul li:last-child { margin-bottom: 0; }
+      details.mobile-nav ul li a { display: block; white-space: normal; word-break: break-word; font-size: 0.5em; }
     }
   </style>
 </head>
@@ -165,10 +174,10 @@
         <details class="mobile-nav">
           <summary aria-label="Toggle menu">☰</summary>
           <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="biogas-producers.html">For Biogas Producers</a></li>
-          <li><a href="fleets.html">For Fleets</a></li>
-          <li><a href="education-center.html">Education Center</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="biogas-producers.html">For Biogas Producers</a></li>
+            <li><a href="fleets.html">For Fleets</a></li>
+            <li><a href="education-center.html">Education Center</a></li>
           </ul>
         </details>
       </nav>
@@ -177,22 +186,14 @@
 
   <!-- Hero -->
   <section class="hero">
-  <video
-    class="hero-video"
-    autoplay
-    muted
-    loop
-    playsinline
-    webkit-playsinline
-    poster="hero-poster.jpg"
-  >
-    <source src="Video2_Field.mp4" type="video/mp4">
-    Your browser does not support this video tag.
-  </video>
+    <video class="hero-video" autoplay muted loop playsinline webkit-playsinline poster="hero-poster.jpg">
+      <source src="Video2_Field.mp4" type="video/mp4">
+      Your browser does not support this video tag.
+    </video>
     <div class="container hero-content">
       <h1>Education Center</h1>
-      <h1>Coming Soon</h1>
-      <a href="mailto:info@decarbenergypartners.com" class="btn-primary">Reach Out Now</a>
+      <h1>Thought Leadership, Insights, & Resources</h1>
+
     </div>
   </section>
 
@@ -201,16 +202,49 @@
     <div class="container two-grid">
       <div>
         <h2>Education Center</h2>
-        <p>Decarb Energy is launching an education blog post series on biofuels, biogas, energy security, and everything in-between.</p>
-<p>To stay up-to-date, subscribe to the Decarb Energy Newsletter. If you have any special requests, send us an email.</p>
+        <p>Decarb Energy's Education Center houses past educational Newsletters on biofuels, biogas, energy security, and everything in-between.</p>
+        <p>To stay up-to-date, subscribe to the Decarb Energy Newsletter. If you have any special requests, send us an email.</p>
         <p>Email: <a href="mailto:info@decarbenergypartners.com">info@decarbenergypartners.com</a></p>
       </div>
       <div>
-        <iframe
-          src="https://sibforms.com/serve/MUIFAAz7dchtJPeiHEoylQAsxoyCECw9fDAY4tUeMbKSZRf3kroIuIB3yUMKjKEqMHhFa3brWXs_NZF3d-geHmcLvzbrs-P6167NLLLaOkHjOJymSvRlFlJPl4hFIMC-hdIiDP1rcHDeFhSxVcLbgzZW9Cyt0ddj2mlirvOn7iWkRMLW2xaYh2KzQP6ZvXeygV_F7FWqh-_itEbq"
-          frameborder="0" scrolling="auto" allowfullscreen
-          style="width:100%; height:350px; border:none;">
-        </iframe>
+        <iframe src="https://sibforms.com/serve/MUIFAAz7dchtJPeiHEoylQAsxoyCECw9fDAY4tUeMbKSZRf3kroIuIB3yUMKjKEqMHhFa3brWXs_NZF3d-geHmcLvzbrs-P6167NLLLaOkHjOJymSvRlFlJPl4hFIMC-hdIiDP1rcHDeFhSxVcLbgzZW9Cyt0ddj2mlirvOn7iWkRMLW2xaYh2KzQP6ZvXeygV_F7FWqh-_itEbq" frameborder="0" scrolling="auto" allowfullscreen style="width:100%; height:350px; border:none;"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Grid -->
+  <section id="articles">
+    <div class="container">
+      <h2>Featured Articles</h2>
+      <div class="articles-grid">
+        <!-- Article Card 1 -->
+        <article class="article-card">
+          <img src="ThumbnailBiogasAsGreenRNGWells.png" alt="Biogas Acts as Renewable Natural Gas Wells">
+          <div class="article-card-content">
+            <h3>Biogas: Tapping into Green Renewable Natural Gas Wells</h3>
+            <p>Biogas is an abundant, green, and secure energy source. So why aren't we already harnessing it to drive sustainable energy?</p>
+            <a href="#" class="btn-secondary">Coming Soon</a>
+          </div>
+        </article>
+        <!-- Article Card 2 -->
+        <article class="article-card">
+          <img src="ThumbnailCircularEconomy.png" alt="Article 2 Thumbnail">
+          <div class="article-card-content">
+            <h3>Circular Economies: Your Own Biogas Can Fuel Your Fleet</h3>
+            <p>Your site's own waste and biogas can fuel your operations, improve the air quality in your community, and decarbonize your fleet.</p>
+            <a href="#" class="btn-secondary">Coming Soon</a>
+          </div>
+        </article>
+        <!-- Article Card 3 -->
+        <article class="article-card">
+          <img src="ThumbnailCarbonNegative.png" alt="Article 3 Thumbnail">
+          <div class="article-card-content">
+            <h3>So, What's Carbon-Negative Anyway?</h3>
+            <p>Fuels are carbon negative when more greenhouse gases are destroyed during production than when its used, but what does that entail?</p>
+            <a href="#" class="btn-secondary">Coming Soon</a>
+          </div>
+        </article>
+        <!-- Add more article cards as needed -->
       </div>
     </div>
   </section>
