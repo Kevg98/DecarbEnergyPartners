@@ -88,6 +88,51 @@
       /* Hero poster fallback */
       /* .hero-video { display: none; } */
       .hero { background: url('hero-poster.jpg') center/cover no-repeat; }
+
+      /* ── MOBILE NAV FIX ── */
+  /* ensure the toggle button spans the full container */
+  details.mobile-nav {
+    width: 100%;
+    position: relative;
+  }
+  details.mobile-nav summary {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    background: #fff;
+  }
+  /* force the dropdown to span full viewport width */
+  details.mobile-nav ul {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+    padding: 1rem;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  details.mobile-nav ul li {
+    margin-bottom: 1rem;
+  }
+  details.mobile-nav ul li:last-child {
+    margin-bottom: 0;
+  }
+  /* wrap long text, don’t let links overflow */
+  details.mobile-nav ul li a {
+    display: block;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* shrink mobile dropdown text by 50% */
+  details.mobile-nav ul li a {
+    font-size: 0.5em;
+  }
+
+      
     }
   </style>
 </head>
