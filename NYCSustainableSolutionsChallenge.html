@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- iOS & Mobile Web App Compatibility Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="refresh" content="1; url=https://example.com">
+  <title>Redirecting... | Decarb Energy Partners</title>
+  
+ <!-- JavaScript fallback -->
+  <script>
+    window.location.href = "https://example.com";
+  </script>
+
+
+  <link rel="icon" href="DecarbEnergyPartnersGreen.png" type="image/png">
+  <style>
+    /* Variables */
+    :root {
+      --primary-color: #00648A;
+      --accent-color: #41A776;
+      --text-color: #333;
+      --bg-color: #f9f9f9;
+      --container-width: 1200px;
+      --gap: 2rem;
+      --video-max-height: 350px;
+    }
+    /* Reset */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; color: var(--text-color); background: var(--bg-color); line-height: 1.6; font-size: 1rem; }
+    a { color: var(--accent-color); text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--container-width); margin: 0 auto; padding: var(--gap) 1rem; }
+
+    /* Header */
+    header { background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo img { height: 40px; }
+    nav ul.desktop-nav { display: flex; gap: 1.5rem; list-style: none; }
+    nav a { font-weight: bold; color: var(--text-color); transition: color 0.3s; }
+    nav a:hover { color: var(--accent-color); }
+    details.mobile-nav { display: none; position: relative; }
+    details.mobile-nav summary { list-style: none; font-size: 1.5rem; cursor: pointer; padding: 0.5rem; }
+    details.mobile-nav ul { list-style: none; background: #fff; position: absolute; top: 100%; left: 0; width: 100%; padding: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    details.mobile-nav ul li { margin-bottom: 1rem; }
+
+    /* Hero */
+    .hero { position: relative; height: 500px; display: flex; align-items: center; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
+    .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+    .hero-content { position: relative; z-index: 2; color: #fff; text-align: center; width: 100%; }
+    .hero-content h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+    .btn-primary { background: var(--accent-color); color: #fff; padding: 0.75rem 1.5rem; border-radius: 4px; font-size: 1rem; display: inline-block; transition: background 0.3s; }
+    .btn-primary:hover { background: #379166; }
+
+    /* Sections */
+    section { padding: var(--gap) 0; }
+    h2 { font-size: clamp(1.5rem, 3vw, 2rem); color: var(--primary-color); margin-bottom: 1rem; }
+    p { margin-bottom: 1rem; }
+
+    /* Two-column grid */
+    .two-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--gap); align-items: center; }
+    .section--alt { background: #fff; }
+
+    /* Video sizing */
+    .video-content video { width: 100%; height: auto; max-height: var(--video-max-height); display: block; margin: 0 auto; }
+
+    /* Centered image container */
+    .image-container { display: flex; justify-content: center; }
+
+    /* Button container for centering */
+    .btn-container { text-align: center; margin-top: 1rem; }
+
+    /* Benefits list */
+    .benefits-list { list-style: none; padding-left: 0; display: grid; gap: 0.75rem; margin-bottom: 1rem; }
+    .benefits-list li::before { content: '✔'; color: var(--accent-color); margin-right: 0.5rem; }
+
+    /* Footer */
+    footer { background: #333; color: #fff; padding: var(--gap) 1rem; }
+    .footer-container { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: nowrap; }
+    footer .logo img { height: 30px; margin: 0; }
+    footer p { margin: 0; }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      body { font-size: 0.9rem; }
+      .hero { height: 300px; }
+      nav ul.desktop-nav { display: none; }
+      details.mobile-nav { display: block; }
+      .two-grid { grid-template-columns: 1fr; }
+      .video-content video { max-height: 250px; }
+      /* Hero poster fallback */
+      /* .hero-video { display: none; } */
+      .hero { background: url('hero-poster.jpg') center/cover no-repeat; }
+
+      /* ── MOBILE NAV FIX ── */
+  /* ensure the toggle button spans the full container */
+  details.mobile-nav {
+    width: 100%;
+    position: relative;
+  }
+  details.mobile-nav summary {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    background: #fff;
+  }
+  /* force the dropdown to span full viewport width */
+  details.mobile-nav ul {
+    list-style: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+    padding: 1rem;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  details.mobile-nav ul li {
+    margin-bottom: 1rem;
+  }
+  details.mobile-nav ul li:last-child {
+    margin-bottom: 0;
+  }
+  /* wrap long text, don’t let links overflow */
+  details.mobile-nav ul li a {
+    display: block;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* shrink mobile dropdown text by 50% */
+  details.mobile-nav ul li a {
+    font-size: 0.5em;
+  }
+
+      
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a href="/" class="logo"><img src="DecarbEnergyPartnersGreen.png" alt="Decarb Energy Partners Logo"></a>
+      <nav>
+        <ul class="desktop-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="biogas-producers.html">For Biogas Producers</a></li>
+          <li><a href="fleets.html">For Fleets</a></li>
+          <li><a href="education-center.html">Education Center</a></li>
+        </ul>
+        <details class="mobile-nav">
+          <summary aria-label="Toggle menu">☰</summary>
+          <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="biogas-producers.html">For Biogas Producers</a></li>
+          <li><a href="fleets.html">For Fleets</a></li>
+          <li><a href="education-center.html">Education Center</a></li>
+          </ul>
+        </details>
+      </nav>
+    </div>
+  </header>
+
+<!-- Hero -->
+<section class="hero">
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    poster="hero-poster.jpg"
+  >
+    <source src="Video2_Field.mp4" type="video/mp4">
+    Your browser does not support this video tag.
+  </video>
+  <div class="container hero-content">
+    <h1>If you’re not redirected automatically, <a href="https://example.com">click here</a>.</h1>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <div class="logo"><img src="DecarbEnergyPartnersGreen.png" alt="Decarb Energy Partners Logo"></div>
+      <p>&copy; 2025 Decarb Energy Partners LLC. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
