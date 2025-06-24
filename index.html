@@ -46,7 +46,13 @@
     .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
     .hero-content { position: relative; z-index: 2; color: #fff; text-align: center; width: 100%; }
     .hero-content h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem; }
-    .hero-content h1 .hero-logo { height: 1.2em; width: auto; vertical-align: middle; margin-right: 0.5rem; } /* Scale logo to match the h1 font-size */
+    .hero-content h1 .hero-logo { /* Scale & format hero logo to match h1 formatting & font-size */
+      display: inline-block;    /* Note: Overrides default img {display:block;} */
+      height: 1.2em;            /* scale to h1 font-size */
+      width: auto;              /* Keeps aspect ratio */
+      vertical-align: middle;   /* Centers on text baseline */
+      margin-right: 0.5rem;     /* Margin before text */
+    } 
     .btn-primary { background: var(--accent-color); color: #fff; padding: 0.75rem 1.5rem; border-radius: 4px; font-size: 1rem; display: inline-block; transition: background 0.3s; }
     .btn-primary:hover { background: #379166; }
 
@@ -177,7 +183,12 @@
     Your browser does not support this video tag.
   </video>
   <div class="container hero-content">
-    <h1><img src="DecarbEnergyPartnersGreen.png" alt="Decarb Energy Partners Logo" class="hero-logo">Decarb Energy Partners</h1>
+    <h1>
+      <img src="DecarbEnergyPartnersWhite.png" 
+        alt="Decarb Energy Partners Logo" 
+        class="hero-logo">
+      Decarb Energy Partners
+    </h1>
     <h1>Transforming Waste into Clean Biofuels</h1>
     <a href="mailto:info@decarbenergypartners.com" class="btn-primary">Get Involved</a>
   </div>
@@ -225,7 +236,7 @@
   <!-- For Vehicle Fleets -->
   <section id="for-fleets">
     <div class="container">
-      <h2>Fleet Operators | Drop-In, Carbon-Negative Biofuels</h2>
+      <h2>Vehicle Fleets | Drop-In, Carbon-Negative Biofuels</h2>
       <div class="two-grid">
         <div class="image-container">
           <img src="DecarbZeroSeriesLogos.png" alt="For Vehicle Fleets">
