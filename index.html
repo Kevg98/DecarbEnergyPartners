@@ -45,7 +45,13 @@
     .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
     .hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
     .hero-content { position: relative; z-index: 2; color: #fff; text-align: center; width: 100%; }
-    .hero-content h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+    .hero-content h1 { 
+      display: inline-flex; /* Horizontal flex box */
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(1.8rem, 4vw, 2.5rem); 
+      margin-bottom: 1rem; 
+    }
     .hero-content h1 .hero-logo { /* Scale & format hero logo to match h1 formatting & font-size */
       display: inline-block;    /* Note: Overrides default img {display:block;} */
       height: 1.2em;            /* scale to h1 font-size */
