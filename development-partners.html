@@ -67,11 +67,11 @@
     .two-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--gap); align-items: center; }
     .section--alt { background: #fff; }
 
-    #for-biogas .two-grid {
+    #organic-waste .two-grid {
       grid-template-columns: 1fr 1.5fr;
     }
 
-#for-biogas .image-container img {
+#organic-waste .image-container img {
       width: 100%;
       height: auto;
       max-width: none;
@@ -107,14 +107,14 @@
       .hero { background: url('hero-poster.jpg') center/cover no-repeat; }
 
       /* --- NEW: force Biogas section into a column flex so image comes below text --- */
-      #for-biogas .two-grid {
+      #organic-waste .two-grid {
         display: flex;
         flex-direction: column;
       }
-      #for-biogas .two-grid > div:first-child {
+      #organic-waste .two-grid > div:first-child {
         order: 1; /* text block */
       }
-      #for-biogas .two-grid .image-container {
+      #organic-waste .two-grid .image-container {
         order: 2; /* image block */
         margin-top: var(--gap);
       }
@@ -214,7 +214,7 @@
   </section>
 
   <!-- Main Development Partners Section -->
- <section id="for-biogas" class="section--alt">
+ <section id="organic-waste" class="section--alt">
     <div class="container">
       <h2>Transform Waste into Cash Flow</h2>
       <div>
@@ -245,7 +245,7 @@
           <p>Plug in our turnkey Decarb L-15™ Unit to immediately convert sludge into biofuels and destroy PFAS 'forever chemicals' on site. Our equipment is remotely-operated and self-contained, handling even the most stubborn waste streams.</p>
           <p>No construction, no capital cost—just push-button disposal savings.</p>
           <ul class="benefits-list">
-            <li><strong>Forever Chemicals, Gone:</strong> 99.99%+ PFAS destroyed</li>
+            <li><strong><s>Forever</s> Chemicals:</strong> 99.99%+ PFAS destroyed</li>
             <li><strong>Modular:</strong> Mobile equipment deployment in weeks</li>           
             <li><strong>Future-Proof:</strong> Lower PFAS & environmental risk</li>
             <li><strong>Streamlined:</strong> No partner capital or on-site build</li>
@@ -256,10 +256,10 @@
     </div>
   </section>
 
-  <!-- Dairy Farm Digesters (now single column, image removed) -->
+  <!-- Dairy Farm Digesters (two column, image added) -->
   <section id="dairy-farms" class="section--alt">
     <div class="container">
-      <h2>Your Dairy Farm's Potential as a 'Renewable Natural Gas Well'</h2>
+      <h2>Dairy Farms as 'Renewable Natural Gas Wells'</h2>
       <div class="two-grid">
         <div>
         <p><strong>Turn your farm into a renewable natural gas well.</strong> Our skid-mounted, self-contained equipment integrates seamlessly to optimize cash flow and nutrient management.</p>
@@ -280,7 +280,7 @@
   <!-- Biogas -->
   <section id="biogas-recovery">
     <div class="container">
-      <h2>Organic Waste & Biogas Recovery</h2>
+      <h2>Organic Waste Recovery</h2>
       <div class="two-grid">
         <div class="video-content">
           <video autoplay muted loop playsinline poster="hero-banner.jpg">
