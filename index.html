@@ -1709,6 +1709,124 @@
 
       .impact-item { flex-basis: 76px; width: 76px; }
     }
+
+
+/* =========================
+   iOS / Mobile Zoom-Out Fixes
+   (paste at end of <style>)
+   ========================= */
+
+/* Page backdrop used by iOS when the user zooms/pans and reveals "outside" canvas */
+:root{
+  --page-backdrop: var(--bg-color);
+  --page-backdrop-hero: linear-gradient(180deg, rgba(0,100,138,0.55), var(--bg-color));
+  --page-backdrop-dark:
+    radial-gradient(900px 520px at 12% 20%, rgba(0,100,138,0.26), transparent 60%),
+    radial-gradient(900px 520px at 88% 0%, rgba(var(--accent-rgb),0.18), transparent 58%),
+    linear-gradient(180deg, #070b12, #0b2f3f);
+}
+
+html{
+  background: var(--page-backdrop);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Header + progress are no longer fixed, so remove the body top padding */
+body{
+  padding-top: 0 !important;
+  width: 100%;
+  overflow-x: clip;
+}
+@supports not (overflow: clip){
+  body{ overflow-x: hidden; }
+}
+
+/* 1) Fix iOS zoom-out desync: make top UI sticky so it scales with the page */
+.site-header{
+  position: sticky !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden !important; /* avoid Safari overflow:clip corner glitches */
+}
+
+.scroll-progress{
+  position: sticky !important;
+  top: calc(var(--header-height) + env(safe-area-inset-top));
+  left: 0;
+  right: 0;
+}
+
+/* 2) Biofuel cards: keep icons vertically centered even when page zoom changes layout */
+.cw-card{
+  display: flex !important;
+  flex-direction: column;
+}
+
+.cw-card > img,
+.cw-card-icon{
+  margin-inline: auto;
+  margin-block: auto;
+}
+
+/* 3) Border/corner stability: help Safari keep rounded shapes clean while scaled */
+.btn,
+.btn-tech,
+.adv-detail,
+.tech3d-info,
+.decarb-trailer3d,
+.decarb-trailer3d__stage,
+.media-card,
+.cw-card,
+.news-card,
+.impact-item,
+.cta-form{
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+}
+
+/* Remove overflow: clip where it can cause “cut” corners in Safari */
+.decarb-trailer3d,
+.decarb-trailer3d__stage{
+  overflow: hidden !important;
+}
+
+/* Ensure decorative layers follow the same rounded corners */
+.adv-detail::before,
+.cta-band::before,
+.decarb-trailer3d__stage::before,
+.decarb-trailer3d__stage::after{
+  border-radius: inherit;
+}
+
+/* iOS-specific: encourage consistent rounded clipping and border rendering when scaled */
+@supports (-webkit-touch-callout: none){
+  .adv-detail,
+  .tech3d-info,
+  .decarb-trailer3d,
+  .decarb-trailer3d__stage,
+  .media-card,
+  .cw-card,
+  .news-card,
+  .impact-item,
+  .cta-form,
+  .btn-tech{
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+
+
+
+
+
+
+
+
   </style>
 
   <!-- Structured data -->
@@ -3338,6 +3456,60 @@
       });
     })();;
   </script>
+
+
+<script>
+  // iOS page-zoom / pan can reveal the root (html) background.
+  // This sets a section-matching backdrop so zoom-out doesn't show white gutters.
+  (function iosZoomBackdrop(){
+    const root = document.documentElement;
+    const hero = document.getElementById("top");
+    const tech = document.getElementById("technology");
+    const contact = document.getElementById("contact");
+
+    function midInView(el){
+      if (!el) return false;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      const mid = vh * 0.5;
+      return r.top <= mid && r.bottom >= mid;
+    }
+
+    function update(){
+      // Default for light sections
+      let backdrop = "var(--bg-color)";
+
+      // Dark sections shown in your screenshots (Technology + Contact band)
+      if (midInView(tech) || midInView(contact)) {
+        backdrop = "var(--page-backdrop-dark)";
+      } else if (midInView(hero)) {
+        backdrop = "var(--page-backdrop-hero)";
+      }
+
+      root.style.setProperty("--page-backdrop", backdrop);
+    }
+
+    let raf = null;
+    function schedule(){
+      if (raf) return;
+      raf = requestAnimationFrame(function(){
+        update();
+        raf = null;
+      });
+    }
+
+    update();
+
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+
+    // iOS: visualViewport fires during zoom + pan, even when window scroll doesn't.
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("scroll", schedule, { passive: true });
+      window.visualViewport.addEventListener("resize", schedule);
+    }
+  })();
+</script>
 
 </body>
 </html>
