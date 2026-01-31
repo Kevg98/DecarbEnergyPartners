@@ -1,0 +1,27 @@
+# robots.txt for https://www.decarbenergypartners.com/
+# Purpose: allow public crawling (including AI crawlers) and provide a sitemap hint.
+
+User-agent: *
+Allow: /
+
+# Explicit allowances for common AI/search crawlers (redundant with *; kept for clarity)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Sitemap
+Sitemap: https://www.decarbenergypartners.com/sitemap.xml
