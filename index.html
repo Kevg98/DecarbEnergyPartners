@@ -16,7 +16,7 @@
   <title>Decarb Energy Partners | Turn Wastewater Biosolids into Biofuel + On-Site PFAS Destruction</title>
   <meta
     name="description"
-    content="Decarb Energy Partners’ Biosolids+™ Trailer is factory-built, trailer-mounted equipment designed to bolt onto wastewater dewatering lines to destroy PFAS “forever chemicals” at the source and turn biosolids into sustainable biofuel—on-site, delivered as a service with zero partner capex, and using modular equipment."
+    content="Decarb Energy Partners’ Biosolids+™ Trailer is factory-built, trailer mounted equipment designed to bolt onto wastewater dewatering lines to destroy PFAS “forever chemicals” at the source and turn biosolids into sustainable biofuel—on-site, delivered as a service with zero partner capex, and using modular equipment."
   />
 
   <!-- AI + Search indexing -->
@@ -1820,6 +1820,65 @@ body{
 }
 
 
+/* ========================= iOS Safari overflow fix ========================= */
+
+/* 1) Allow Tech grid children to actually shrink (Safari grid/flex min-width:auto quirk) */
+.tech3d-grid > * ,
+.tech3d-info,
+.tech3d-specs,
+.tech3d-spec,
+.decarb-trailer3d,
+.decarb-trailer3d__stage,
+.decarb-trailer3d__asset,
+.decarb-trailer3d__img {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* On the 1-col layout, make the grid track min-size = 0 (prevents “page gets wider than viewport”) */
+@media (max-width: 980px) {
+  .tech3d-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* 2) Your ULs are display:grid with no explicit columns.
+      On iOS Safari this can size to max-content and create horizontal overflow. */
+.tech-bullets,
+.lead-bullets {
+  grid-template-columns: minmax(0, 1fr);
+}
+.tech-bullets li,
+.lead-bullets li {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* 3) Ensure the 3D stage never “demands” extra width on iOS */
+.decarb-trailer3d__stage { width: 100%; }
+
+/* 4) Make kicker text shrink/wrap inside its flex row (prevents overflow widening) */
+.decarb-trailer3d__kicker,
+.tech3d-kicker { max-width: 100%; }
+
+.decarb-trailer3d__kicker span:last-child,
+.tech3d-kicker span:last-child {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* 5) Let the Tech CTA button wrap instead of forcing a wider layout on iOS */
+.tech3d-actions .btn {
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+}
+.tech3d-actions .btn span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 
 
 
@@ -3513,4 +3572,3 @@ body{
 
 </body>
 </html>
-
