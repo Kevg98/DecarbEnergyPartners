@@ -16,13 +16,13 @@
   <title>Decarb Energy Partners | Turn Wastewater Biosolids into Biofuel + On-Site PFAS Destruction</title>
   <meta
     name="description"
-    content="Decarb Energy Partners’ Biosolids+™ Trailer is factory-built, trailer mounted equipment designed to bolt onto wastewater dewatering lines to destroy PFAS “forever chemicals” at the source and turn biosolids into sustainable biofuel—on-site, delivered as a service with zero partner capex, and using modular equipment."
+    content="Decarb Energy Partners’ Biosolids+™ Trailer is factory-built, trailer-mounted equipment designed to bolt onto wastewater dewatering lines to destroy PFAS “forever chemicals” at the source and turn biosolids into sustainable biofuel—on-site, delivered as a service with zero partner capex, and using modular equipment."
   />
 
   <!-- AI + Search indexing -->
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 
-  <!-- Canonical (update if needed) -->
+  <!-- Canonical (update as needed) -->
 
   <link rel="canonical" href="https://www.decarbenergypartners.com/" />
 
@@ -617,7 +617,7 @@
       /* Light wash + aligned outline image */
       background-image:
         linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.94)),
-        url("Decarb%20Energy%20Partners%20Biosolids+%20Trailer%20--%20Hero%20Image%20Outline.png");
+        url("Decarb Energy Partners Biosolids+ Trailer -- Hero Image Outline.png");
       background-repeat: no-repeat, no-repeat;
       background-size: 100% 100%, var(--hero-bg-size);
       background-position: 0 0, var(--hero-bg-pos);
@@ -806,8 +806,10 @@
       box-shadow: 0 12px 30px rgba(0,0,0,0.06);
 
       padding: 22px 22px 20px;
-      display: flex;
-      flex-direction: column;
+
+      /* UPDATED: use grid so icons can center vertically in the card */
+      display: grid;
+      grid-template-rows: auto 1fr auto;
 
       scroll-snap-align: start;
       transition: transform 0.14s ease, box-shadow 0.14s ease;
@@ -848,26 +850,29 @@
       line-height: 1.1;
     }
 
-    /* NEW: Make the Biofuel icon images behave like the old centered icon block */
+    /* UPDATED: Larger icons + centered in the middle row of the card */
     .cw-card > img {
-      width: 94px;
-      height: 94px;
+      width: 120px;
+      height: 120px;
       object-fit: contain;
-      margin: 18px auto 14px;
-      flex: 0 0 auto;
+      margin: 0;
+      justify-self: center;
+      align-self: center;
     }
 
     .cw-card-icon {
-      width: 94px;
-      height: 94px;
-      margin: auto;
+      width: 120px;
+      height: 120px;
+      margin: 0;
       display: grid;
       place-items: center;
       color: rgba(22,33,43,0.88);
+      justify-self: center;
+      align-self: center;
     }
     .cw-card-icon svg {
-      width: 94px;
-      height: 94px;
+      width: 120px;
+      height: 120px;
       display: block;
     }
 
@@ -878,9 +883,6 @@
       font-weight: 650;
       font-size: 0.95rem;
       line-height: 1.45;
-
-      /* NEW: pin the description to the bottom of the card */
-      margin-top: auto;
     }
 
     .cw-carousel-footer {
@@ -1399,7 +1401,7 @@
       border-radius: 14px;
       padding: 14px;
       box-shadow: 0 10px 26px rgba(0,0,0,0.06);
-      min-height: 210px;
+      min-height: 260px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -1419,19 +1421,38 @@
       color: rgba(22,33,43,0.76);
       background: rgba(22,33,43,0.06);
       width: fit-content;
+      text-transform: uppercase;
     }
+    /* Hide label pill if the label is intentionally blank */
+    .news-tag:empty { display: none; }
+
+    /* Entity */
     .news-source {
-      font-size: 0.92rem;
-      color: rgba(22,33,43,0.68);
+      font-size: 1.02rem;
+      color: rgba(22,33,43,0.94);
       margin: 0;
+      font-weight: 850;
+      letter-spacing: -0.15px;
+      line-height: 1.25;
     }
+
+    /* Description */
     .news-title {
       margin: 0;
-      font-size: 1.12rem;
-      letter-spacing: -0.2px;
-      line-height: 1.2;
-      color: rgba(22,33,43,0.94);
+      font-size: 0.95rem;
+      line-height: 1.45;
+      color: rgba(22,33,43,0.78);
+      font-weight: 650;
     }
+
+    /* Read More button */
+    .news-readmore {
+      align-self: flex-start;
+      padding: 10px 14px;
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+
     .news-date {
       margin-top: auto;
       font-size: 0.88rem;
@@ -1509,7 +1530,7 @@
       flex-wrap: wrap;
     }
 
-    /* =========================       NEW Section: Impact (SDG Carousel)       ========================= */
+    /* =========================       Section: Impact (SDG Carousel)       ========================= */
 
     .impact {
       background: #ffffff;
@@ -1680,17 +1701,17 @@
 
       .cw-card { min-height: 400px; }
 
-      /* NEW: scale down the PNG icons on mobile */
-      .cw-card > img { width: 86px; height: 86px; }
+      /* UPDATED: scale down the (now larger) Biofuel icons on mobile */
+      .cw-card > img { width: 96px; height: 96px; }
 
-      .cw-card-icon { width: 86px; height: 86px; }
-      .cw-card-icon svg { width: 86px; height: 86px; }
+      .cw-card-icon { width: 96px; height: 96px; }
+      .cw-card-icon svg { width: 96px; height: 96px; }
 
       .impact-item { flex-basis: 76px; width: 76px; }
     }
   </style>
 
-  <!-- Structured data (update URLs/logo when deploying) -->
+  <!-- Structured data -->
 
   <script type="application/ld+json">
   {
@@ -1864,7 +1885,7 @@
           <div class="scroll-underline" data-scroll-underline aria-hidden="true"></div>
 
           <p class="section-lead section-lead--full">
-            Decarb Energy turns PFAS-contaminated wastewater sludge into American-made, sustainable biofuel while destroying the PFAS “forever chemicals” in the waste—all on-site, with zero partner capex, using modular trailers. Our Biosolids+™ Trailer System is built for wastewater operators who need budget certainty, compliance confidence, and minimal site disruption.
+            Decarb Energy turns PFAS-contaminated wastewater sludge into American-made, sustainable biofuel while destroying the PFAS “forever chemicals” in the waste—on-site, with zero partner capex, using modular equipment.
           </p>
         </div>
 
@@ -1967,12 +1988,12 @@
             <div class="adv-detail-panel" role="tabpanel" id="adv-panel-capex" aria-labelledby="adv-tab-capex" data-adv-panel="capex">
               <h3>Zero Partner Capex</h3>
               <p>
-                Infrastructure-as-a-Service means Decarb finances, owns, and operates the Biosolids+™ Trailers—so you get on-site PFAS destruction and sludge-to-biofuel capability without a capital project. You run a water utility—not a PFAS destruction specialist or biofuels developer—so we don’t ask you to become one so you can focus on keeping your community's water clean
+                Infrastructure-as-a-Service means Decarb finances, owns, and operates the Biosolids+™ Trailers—so you get on-site PFAS destruction and sludge-to-biofuel capability without a capital project.
               </p>
               <ul>
-                <li>No partner debt, procurement maze, or EPC risk.</li>
-                <li>Simple per-ton service pricing under a long-term agreement.</li>
-                <li>We share a portion of biofuel and credits cash flow with our host facilities—aligning incentives from day one. With the right developer, sludge is a feedstock, not a waste.
+                <li>No partner debt, procurement maze, or EPC risk</li>
+                <li>Simple per-ton service pricing under a long-term agreement</li>
+                <li>Profit share of biofuel and credits cash flow with host facilities—aligning incentives from day one</li>
               </ul>
             </div>
 
@@ -2011,14 +2032,14 @@
                 <li>Permit-light posture with minimal siteworks</li>
                 <li>Standard interfaces for faster tie-in and commissioning</li>
                 <li>Repeatable modules built and tested off-site</li>
-                <li>ower schedule risk and more reliable delivery</li>
+                <li>Streamlined permitting and equipment siting</li>
               </ul>
             </div>
 
             <div class="adv-detail-panel" role="tabpanel" id="adv-panel-turnkey" aria-labelledby="adv-tab-turnkey" data-adv-panel="turnkey" hidden>
               <h3>Turnkey & Scalable</h3>
               <p>
-                Decarb Energy fabricates, finances, owns, operates, services, and maintains the equipment. You provide site access, a parking area, and data—residual solids can remain under existing disposal contracts.
+                You run a water utility—not a PFAS destruction specialist or biofuels developer—so we don’t ask you to become one. Decarb Energy fabricates, finances, owns, operates, services, and maintains the equipment. You provide site access, a parking area, and data. Residual solids remain under existing disposal contracts.
               </p>
               <ul>
                 <li>Operator-light deployment with remote monitoring</li>
@@ -2047,6 +2068,7 @@
               <ul>
                 <li>Proven components with familiar interfaces for your operations team</li>
                 <li>Engineered for wastewater uptime and maintainability</li>
+                <li>Built for wastewater operators who need budget certainty, compliance confidence, and minimal site disruption</li>
               </ul>
             </div>
 
@@ -2060,7 +2082,7 @@
     <section class="section tech3d" id="technology" aria-label="Technology">
       <div class="container">
         <div class="section-head">
-          <h2 class="cw-proof-title"><strong>Meet the Biosolids+ Trailer</strong></h2>
+          <h2 class="cw-proof-title"><strong>Meet the Biosolids+™ Trailer</strong></h2>
           <div class="scroll-underline" data-scroll-underline aria-hidden="true"></div>
 
           <p class="section-lead section-lead--full"><strong>Why can’t clean energy development be as simple as setting up a rental power generator?</strong> No smokestacks, grid connects, permanent infrastructure, or science experiments. Just a system of simple, permit-light trailers that roll up, sit on site, and bolt on to existing infrastructure.</p>
@@ -2208,10 +2230,10 @@
         <div class="cw-proof-top">
           <h2 class="cw-proof-title"><strong>Decarb lives &amp; breathes local biofuel.</strong></h2>
           <p class="cw-proof-side">
-            Reaching your fleet&#39;s sustainability goals can be as simple as using drop-in biodiesel, starting with a single email. Contact our team today to learn about Decarb Energy’s “Designer Biodiesel” offerings.
+            Reach your fleet&#39;s sustainability goals simply by integrating drop-in biodiesel.
           </p>
         </div>
-
+          <div class="scroll-underline" data-scroll-underline aria-hidden="true"></div>
         <div class="cw-carousel" data-cw-carousel role="list" aria-label="Biofuel highlights" tabindex="0">
           <article class="cw-card cw-card--top" role="listitem">
             <h3 class="cw-card-title">Drop-In Ready</h3>
@@ -2351,34 +2373,77 @@
         </div>
 
         <div class="news-carousel" data-news-carousel role="list" aria-label="News and resources" tabindex="0">
+          <!-- Card 1 -->
           <article class="news-card" role="listitem">
-            <span class="news-tag">NEWS</span>
-            <p class="news-source">Decarb Energy</p>
-            <p class="news-title">Pilot site onboarding: fit checks and early site walks underway</p>
+            <span class="news-tag">News</span>
+            <p class="news-source">NEWEA &amp; Decarb Energy</p>
+            <p class="news-title">Decarb Energy Partners was selected to speak at NEWEA’s 2026 Annual Conference &amp; Exhibit as part of the Innovation Pavilion. Join us in Boston to learn more about how we’re fighting PFAS with sustainable biofuel and modular equipment.</p>
+            <a class="btn btn-dark news-readmore" href="https://www.newea.org/wp-content/uploads/2026/01/Website_PROGRAM-2026_FinalWCover.pdf" target="_blank" rel="noopener noreferrer">Read More</a>
             <div class="news-date">January 2026</div>
           </article>
 
+          <!-- Card 2 -->
           <article class="news-card" role="listitem">
-            <span class="news-tag">VIDEO</span>
-            <p class="news-source">Decarb Energy</p>
-            <p class="news-title">Inside the Mobile Biosolids+™ Trailer: operator first design overview</p>
-            <div class="news-date">December 2025</div>
-          </article>
-
-          <article class="news-card" role="listitem">
-            <span class="news-tag">NEWS</span>
-            <p class="news-source">Decarb Energy</p>
-            <p class="news-title">Manufacturing partners shortlisted for repeatable, modular builds</p>
+            <span class="news-tag">News</span>
+            <p class="news-source">Yale &amp; Decarb Energy</p>
+            <p class="news-title">Join us in New Haven, where Decarb Energy will pitch at the Yale Clean Energy Conference.</p>
+            <a class="btn btn-dark news-readmore" href="https://whova.com/web/XWqjCCBGXy2C1gRCcHMP@YRiM1s@44qHZ9tZUukl9DE%3D/" target="_blank" rel="noopener noreferrer">Read More</a>
             <div class="news-date">November 2025</div>
           </article>
 
+          <!-- Card 3 -->
           <article class="news-card" role="listitem">
-            <span class="news-tag">NEWS</span>
-            <p class="news-source">Decarb Energy</p>
-            <p class="news-title">New resources: site requirements checklist for wastewater operators</p>
+            <span class="news-tag">News</span>
+            <p class="news-source">FORGE &amp; Decarb Energy</p>
+            <p class="news-title">Thank you to FORGE for hosting Decarb Energy at the FORGE 2025 Fall Startup Showcase in Boston, MA.</p>
+            <a class="btn btn-dark news-readmore" href="https://forgeimpact.org/forge-2025-fall-startup-showcase-event-recap/" target="_blank" rel="noopener noreferrer">Read More</a>
+            <div class="news-date">November 2025</div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="news-card" role="listitem">
+            <span class="news-tag">News</span>
+            <p class="news-source">FORGE, CBIA, &amp; Decarb Energy</p>
+            <p class="news-title">Decarb Energy showcased our mass production and standardization plans as part of the Made in CT Manufacturing Summit with FORGE and CBIA</p>
+            <a class="btn btn-dark news-readmore" href="https://www.cbia.com/events/made-in-connecticut-2025-manufacturing-summit/" target="_blank" rel="noopener noreferrer">Read More</a>
             <div class="news-date">October 2025</div>
           </article>
 
+          <!-- Card 5 -->
+          <article class="news-card" role="listitem">
+            <span class="news-tag">In the News</span>
+            <p class="news-source">Yale Daily News</p>
+            <p class="news-title">Article: Climate tech entrepreneurs remain energized despite federal cutbacks</p>
+            <a class="btn btn-dark news-readmore" href="https://yaledailynews.com/articles/climate-tech-entrepreneurs-remain-energized-despite-federal-cutbacks" target="_blank" rel="noopener noreferrer">Read More</a>
+            <div class="news-date">October 2025</div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="news-card" role="listitem">
+            <span class="news-tag">News</span>
+            <p class="news-source">NSF, UConn, &amp; Decarb Energy</p>
+            <p class="news-title">Decarb Energy has successfully completed the Accelerate UConn SBIR Propelus program and secured non-dilutive catalytic funding from the National Science Foundation.</p>
+            <a class="btn btn-dark news-readmore" href="https://ccei.uconn.edu/2025/10/28/accelerate-uconn-september-2025/" target="_blank" rel="noopener noreferrer">Read More</a>
+            <div class="news-date">September 2025</div>
+          </article>
+
+          <!-- Card 7 -->
+          <article class="news-card" role="listitem">
+            <span class="news-tag">News</span>
+            <p class="news-source">ClimateHaven &amp; Decarb Energy</p>
+            <p class="news-title">Decarb Energy is proud to announce that we are joining the ClimateHaven innovation ecosystem as part of the Incubator program.</p>
+            <a class="btn btn-dark news-readmore" href="https://www.climatehaven.tech/members/decarb-energy-partners" target="_blank" rel="noopener noreferrer">Read More</a>
+            <div class="news-date">July 2025</div>
+          </article>
+
+          <!-- Card 8 -->
+          <article class="news-card" role="listitem">
+            <span class="news-tag">News</span>
+            <p class="news-source">Yale &amp; Decarb Energy</p>
+            <p class="news-title">Come meet Decarb Energy at the Yale Innovation Summit, where our team has been invited to compete in the ePoster competition.</p>
+            <a class="btn btn-dark news-readmore" href="https://yaleventures.thumbraise.com/v/0mrxhML_LXKe6ETW55vcE/sm/v/2hw_2Ybnamew3tpuMqEVM" target="_blank" rel="noopener noreferrer">Read More</a>
+            <div class="news-date">May 2025</div>
+          </article>
         </div>
 
         <div class="cw-carousel-footer" aria-label="News carousel navigation">
@@ -2451,7 +2516,7 @@
     <section class="impact" id="impact" aria-label="Impact">
       <div class="container">
         <div class="impact-carousel" data-impact-carousel role="list" aria-label="UN Sustainable Development Goals" tabindex="0">
-          <!-- SDG tiles are injected via JS (no external image hosting required) -->
+
         </div>
 
         <div class="cw-carousel-footer" aria-label="Impact carousel navigation">
