@@ -23,11 +23,9 @@
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 
   <!-- Canonical -->
-
   <link rel="canonical" href="https://www.decarbenergypartners.com/" />
 
   <!-- Open Graph / Twitter -->
-
   <meta property="og:title" content="Decarb Energy | Mobile Biosolids+™ Trailer System" />
   <meta property="og:description" content="On-site PFAS destruction + sludge to biofuel—delivered as Infrastructure as a Service with zero partner capex." />
   <meta property="og:type" content="website" />
@@ -214,7 +212,7 @@
       border-color: rgba(var(--accent-rgb), 0.80);
     }
 
-    /* =========================       Section 1: Header + Dynamic “liquid glass” on scroll       ========================= */
+    /* =========================       Section: Header + Dynamic “liquid glass” on scroll       ========================= */
 
     .site-header {
       position: fixed;
@@ -271,9 +269,7 @@
     }
     .site-header.is-scrolled::before { opacity: 1; }
 
-    /* =========================
-       Scroll UI: progress bar + section underline bars
-       ========================= */
+    /* =========================       Scroll UI: progress bar + section underline bars       ========================= */
 
     .scroll-progress {
       position: fixed;
@@ -460,7 +456,7 @@
     .mobile-cta { margin-top: 6px; border-radius: 14px; }
     .mobile-note { margin-top: auto; font-size: 0.9rem; color: rgba(22,33,43,0.62); }
 
-    /* =========================       Section 1: Hero       ========================= */
+    /* =========================       Section: Hero       ========================= */
     .hero {
       position: relative;
       min-height: clamp(560px, 74vh, 760px);
@@ -594,9 +590,9 @@
     }
     .tech-bullets li { margin: 0; }
 
-    /* =========================       Section 2: Highlights       ========================= */
+    /* =========================       Section: Highlights       ========================= */
 
-    /* NEW: Highlights background (outline image) aligned to Hero image */
+    /* Highlights background (outline image) aligned to Hero image */
     #highlights.section-alt {
       position: relative;
       overflow: hidden;
@@ -632,8 +628,7 @@
       grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 14px;
       margin-top: 18px;
-
-      /* NEW: allow each box to hug its own text height (no stretched height/whitespace) */
+      /* Allow each box to hug its own text height (no stretched height/whitespace) */
       align-items: start;
     }
 
@@ -647,7 +642,7 @@
       border-radius: 14px;
       box-shadow: 0 8px 22px rgba(0,0,0,0.05);
 
-      /* NEW: tighter padding + remove forced minimum height */
+      /* Tighter padding + remove forced minimum height */
       padding: 10px 14px 12px;
       min-height: 0;
 
@@ -733,8 +728,6 @@
       color: rgba(255,255,255,0.90);
       font-size: 1.02rem;
       line-height: 1.65;
-
-      /* NEW: allow paragraph text to span the full width of the box */
       max-width: none;
     }
     .adv-detail ul {
@@ -773,7 +766,6 @@
     .cw-proof-side {
       margin: 0;
       max-width: 48ch;
-
       color: rgba(22,33,43,0.82);
       font-size: 0.98rem;
       line-height: 1.55;
@@ -784,15 +776,11 @@
       margin-top: clamp(28px, 4.6vw, 58px);
       display: flex;
       gap: clamp(16px, 2.4vw, 28px);
-
       overflow-x: auto;
       padding: 4px 2px 10px;
-
       scroll-snap-type: x proximity;
       scroll-padding-left: 2px;
       -webkit-overflow-scrolling: touch;
-
-      /* Hide scrollbars */
       scrollbar-width: none;
     }
     .cw-carousel::-webkit-scrollbar { height: 0; }
@@ -800,17 +788,12 @@
     .cw-card {
       flex: 0 0 clamp(240px, 25vw, 280px);
       min-height: 420px;
-
       border-radius: 18px;
       border: 1px solid rgba(22,33,43,0.10);
       box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-
       padding: 22px 22px 20px;
-
-      /* UPDATED: use grid so icons can center vertically in the card */
       display: grid;
       grid-template-rows: auto 1fr auto;
-
       scroll-snap-align: start;
       transition: transform 0.14s ease, box-shadow 0.14s ease;
       background: #ffffff;
@@ -850,7 +833,6 @@
       line-height: 1.1;
     }
 
-    /* UPDATED: Larger icons + centered in the middle row of the card */
     .cw-card > img {
       width: 120px;
       height: 120px;
@@ -945,10 +927,10 @@
     .cw-proof-cta {
       margin-top: 22px;
       display: flex;
-      justify-content: flex-start; /* left-align per request */
+      justify-content: flex-start; 
     }
 
-    /* =========================       Section 3: Technology (3D Trailer + Description)       ========================= */
+    /* =========================       Section: Technology (3D Trailer + Description)       ========================= */
 
     .tech3d {
       background:
@@ -1123,13 +1105,10 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-
-      perspective: 1400px; /* slightly flatter = less dramatic distortion */
+      perspective: 1400px; 
       transform-style: preserve-3d;
-
       aspect-ratio: 16 / 9;
       min-height: 280px;
-
       overflow: hidden;
       isolation: isolate;
     }
@@ -1301,13 +1280,13 @@
         aspect-ratio: 4 / 3;
         min-height: 320px;
       }
-      /* a bit narrower on small screens to guarantee fit */
+
       .decarb-trailer3d__asset { width: min(86%, 520px); }
     }
 
     /* ====== END: Decarb Biosolids+ Trailer (CSS-only 3D) ====== */
 
-    /* =========================       Section 4: Legacy Biofuel with Two-Column Layout Style       ========================= */
+    /* =========================       Section: Legacy Biofuel with Two-Column Layout Style       ========================= */
 
     .split {
       display: grid;
@@ -1375,7 +1354,7 @@
       background: rgba(22,33,43,0.02);
     }
 
-    /* =========================       Section 5: News & Resources (Carousel)       ========================= */
+    /* =========================       Section: News & Resources (Carousel)       ========================= */
 
     .news-carousel {
       margin-top: 18px;
@@ -1423,8 +1402,8 @@
       width: fit-content;
       text-transform: uppercase;
     }
-    /* Hide label pill if the label is intentionally blank */
-    .news-tag:empty { display: none; }
+    
+    .news-tag:empty { display: none; } /* Hide label pill if the label is intentionally blank */
 
     /* Entity */
     .news-source {
@@ -1459,7 +1438,7 @@
       color: rgba(22,33,43,0.58);
     }
 
-    /* =========================       Section 6: Contact        ========================= */
+    /* =========================       Section: Contact        ========================= */
 
     .cta { padding: 0; }
     .cta-band {
@@ -1612,7 +1591,7 @@
     }
     .impact-close:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.32); }
 
-    /* =========================       Section 7: Footer        ========================= */
+    /* =========================       Section: Footer        ========================= */
 
     .site-footer {
       background: #efefef;
@@ -1680,10 +1659,7 @@
       .header-cta .btn-primary { display: none; }
       .nav-toggle { display: inline-flex; }
       .cta-inner { grid-template-columns: 1fr; }
-
-      /* On single-column layouts, use a fixed form height */
       .cta-form iframe { height: 360px; }
-
       .cw-proof-top { grid-template-columns: 1fr; }
       .cw-proof-side { max-width: 70ch; }
     }
@@ -1698,25 +1674,16 @@
       .brand img { height: 40px; max-width: 70vw; }
       .hero-actions .btn { width: 100%; justify-content: center; min-width: 0; }
       .tech3d-specs { grid-template-columns: 1fr; }
-
       .cw-card { min-height: 400px; }
-
-      /* UPDATED: scale down the (now larger) Biofuel icons on mobile */
       .cw-card > img { width: 96px; height: 96px; }
-
       .cw-card-icon { width: 96px; height: 96px; }
       .cw-card-icon svg { width: 96px; height: 96px; }
-
       .impact-item { flex-basis: 76px; width: 76px; }
     }
 
 
-/* =========================
-   iOS / Mobile Zoom-Out Fixes
-   (paste at end of <style>)
-   ========================= */
+/* =========================   iOS / Mobile Zoom-Out ========================= */
 
-/* Page backdrop used by iOS when the user zooms/pans and reveals "outside" canvas */
 :root{
   --page-backdrop: var(--bg-color);
   --page-backdrop-hero: linear-gradient(180deg, rgba(0,100,138,0.55), var(--bg-color));
@@ -1732,7 +1699,6 @@ html{
   overflow-x: hidden;
 }
 
-/* Header + progress are no longer fixed, so remove the body top padding */
 body{
   padding-top: 0 !important;
   width: 100%;
@@ -1742,7 +1708,6 @@ body{
   body{ overflow-x: hidden; }
 }
 
-/* 1) Fix iOS zoom-out desync: make top UI sticky so it scales with the page */
 .site-header{
   position: sticky !important;
   top: 0;
@@ -1758,7 +1723,6 @@ body{
   right: 0;
 }
 
-/* 2) Biofuel cards: keep icons vertically centered even when page zoom changes layout */
 .cw-card{
   display: flex !important;
   flex-direction: column;
@@ -1770,7 +1734,6 @@ body{
   margin-block: auto;
 }
 
-/* 3) Border/corner stability: help Safari keep rounded shapes clean while scaled */
 .btn,
 .btn-tech,
 .adv-detail,
@@ -1786,13 +1749,11 @@ body{
   -webkit-background-clip: padding-box;
 }
 
-/* Remove overflow: clip where it can cause “cut” corners in Safari */
 .decarb-trailer3d,
 .decarb-trailer3d__stage{
   overflow: hidden !important;
 }
 
-/* Ensure decorative layers follow the same rounded corners */
 .adv-detail::before,
 .cta-band::before,
 .decarb-trailer3d__stage::before,
@@ -1800,7 +1761,6 @@ body{
   border-radius: inherit;
 }
 
-/* iOS-specific: encourage consistent rounded clipping and border rendering when scaled */
 @supports (-webkit-touch-callout: none){
   .adv-detail,
   .tech3d-info,
@@ -1820,9 +1780,8 @@ body{
 }
 
 
-/* ========================= iOS Safari overflow fix ========================= */
+/* ========================= iOS Safari Overflow ========================= */
 
-/* 1) Allow Tech grid children to actually shrink (Safari grid/flex min-width:auto quirk) */
 .tech3d-grid > * ,
 .tech3d-info,
 .tech3d-specs,
@@ -1835,13 +1794,10 @@ body{
   max-width: 100%;
 }
 
-/* On the 1-col layout, make the grid track min-size = 0 (prevents “page gets wider than viewport”) */
 @media (max-width: 980px) {
   .tech3d-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
-/* 2) Your ULs are display:grid with no explicit columns.
-      On iOS Safari this can size to max-content and create horizontal overflow. */
 .tech-bullets,
 .lead-bullets {
   grid-template-columns: minmax(0, 1fr);
@@ -1853,10 +1809,7 @@ body{
   word-break: break-word;
 }
 
-/* 3) Ensure the 3D stage never “demands” extra width on iOS */
 .decarb-trailer3d__stage { width: 100%; }
-
-/* 4) Make kicker text shrink/wrap inside its flex row (prevents overflow widening) */
 .decarb-trailer3d__kicker,
 .tech3d-kicker { max-width: 100%; }
 
@@ -1868,7 +1821,6 @@ body{
   word-break: break-word;
 }
 
-/* 5) Let the Tech CTA button wrap instead of forcing a wider layout on iOS */
 .tech3d-actions .btn {
   max-width: 100%;
   white-space: normal;
@@ -1881,9 +1833,49 @@ body{
 }
 
 
+/* =========================   Mobile Drawer — iOS Safari ========================= */
 
+.mobile-menu{
+  position: fixed;
+  inset: 0;
+  z-index: 2000; /* higher than header/progress */
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  background: rgba(0,0,0,0.55);
+  /* iOS Safari: cover the “real” viewport */
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden; /* overlay doesn't scroll */
+}
 
+.mobile-menu[hidden]{
+  display: none;
+}
 
+.mobile-menu-panel{
+  position: relative;
+  height: 100%;
+  width: min(92vw, 420px);
+  max-width: 420px;
+
+  background: #ffffff;
+  border-left: 1px solid rgba(22,33,43,0.14);
+  box-shadow: var(--shadow);
+
+  /* Safe-area aware padding */
+  padding: 16px;
+  padding-top: calc(16px + env(safe-area-inset-top));
+  padding-bottom: calc(16px + env(safe-area-inset-bottom));
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  overflow-y: auto; /* panel scrolls */
+  -webkit-overflow-scrolling: touch; /* iOS momentum scroll */
+  overscroll-behavior: contain;
+}
 
 
   </style>
@@ -1934,87 +1926,86 @@ body{
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- =========================       Section: Header       ========================= -->
-
   <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Decarb Energy Home">
-        <img src="Decarb Energy Partners Logo Horizontal.png" alt="Decarb Energy Partners logo" />
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="Decarb Energy Home">
+      <img src="Decarb Energy Partners Logo Horizontal.png" alt="Decarb Energy Partners logo" />
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary navigation">
+      <a href="#highlights">Advantages</a>
+      <a href="#technology">Technology</a>
+      <a href="#Biofuel">Biofuel</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-cta">
+      <a
+        class="btn btn-primary"
+        href="mailto:info@decarbenergypartners.com?subject=Learn%20More%20and%20Waiting%20List">
+        <span class="btn-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16v12H4z"></path>
+            <path d="M4 7l8 6 8-6"></path>
+          </svg>
+        </span>
+        <span>Learn More</span>
       </a>
 
-      <nav class="nav-desktop" aria-label="Primary navigation">
-        <a href="#highlights">Advantages</a>
-        <a href="#technology">Technology</a>
-        <a href="#Biofuel">Biofuel</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="header-cta">
-        <a
-          class="btn btn-primary"
-          href="mailto:info@decarbenergypartners.com?subject=Learn%20More%20and%20Waiting%20List">
-          <span class="btn-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 6h16v12H4z"></path>
-              <path d="M4 7l8 6 8-6"></path>
-            </svg>
-          </span>
-          <span>Learn More</span>
-        </a>
-
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-label="Open menu"
-          aria-controls="mobileMenu"
-          aria-expanded="false"
-          data-nav-toggle
-        >
-          <span class="nav-toggle-bars" aria-hidden="true"></span>
-        </button>
-      </div>
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="mobileMenu"
+        aria-expanded="false"
+        data-nav-toggle
+      >
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
     </div>
-
-    <!-- Mobile Drawer -->
-    <div class="mobile-menu" id="mobileMenu" hidden aria-hidden="true">
-      <div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Menu">
-        <div class="mobile-menu-top">
-          <span class="mobile-menu-title">Menu</span>
-          <button class="mobile-close" type="button" aria-label="Close menu" data-nav-close>✕</button>
-        </div>
-
-        <nav class="mobile-nav" aria-label="Mobile navigation">
-          <a href="#highlights">Advantages</a>
-          <a href="#technology">Technology</a>
-          <a href="#Biofuel">Biofuel</a>
-          <a href="#news">News</a>
-          <a href="#contact">Contact</a>
-        </nav>
-
-        <a
-          class="btn btn-primary mobile-cta"
-          href="mailto:info@decarbenergypartners.com?subject=Learn%20More%20and%20Wait%20List"
-        >
-          <span class="btn-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 6h16v12H4z"></path>
-              <path d="M4 7l8 6 8-6"></path>
-            </svg>
-          </span>
-          <span>Contact</span>
-        </a>
-
-        <p class="mobile-note">
-          Operator light, iOS friendly navigation. No heavy libraries.
-        </p>
-      </div>
-    </div>
-  </header>
-
-  <!-- Scroll progress bar (scroll-linked; iOS-safe) -->
-  <div class="scroll-progress" aria-hidden="true">
-    <div class="scroll-progress__bar"></div>
   </div>
+</header>
+
+<!-- Mobile Drawer -->
+<div class="mobile-menu" id="mobileMenu" hidden aria-hidden="true">
+  <div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="mobile-menu-top">
+      <span class="mobile-menu-title">Menu</span>
+      <button class="mobile-close" type="button" aria-label="Close menu" data-nav-close>✕</button>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href="#highlights">Advantages</a>
+      <a href="#technology">Technology</a>
+      <a href="#Biofuel">Biofuel</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a
+      class="btn btn-primary mobile-cta"
+      href="mailto:info@decarbenergypartners.com?subject=Learn%20More%20and%20Wait%20List"
+    >
+      <span class="btn-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 6h16v12H4z"></path>
+          <path d="M4 7l8 6 8-6"></path>
+        </svg>
+      </span>
+      <span>Contact</span>
+    </a>
+
+    <p class="mobile-note">
+      Operator light, iOS friendly navigation. No heavy libraries.
+    </p>
+  </div>
+</div>
+
+<!-- Scroll progress bar (scroll-linked; iOS-safe) -->
+<div class="scroll-progress" aria-hidden="true">
+  <div class="scroll-progress__bar"></div>
+</div>
 
   <main id="main">
 
@@ -2380,8 +2371,6 @@ body{
                   <b>None</b>
                 </div>
               </div>
-
-              <!-- <p class="tech3d-note"><strong><i>Because sludge is a feedstock, not a waste.</i></strong></p> -->
 
               <div class="tech3d-actions">
 
@@ -2826,7 +2815,7 @@ body{
       window.addEventListener("resize", update);
     })();
 
-    // NEW: Align the Highlights outline background image so it lines up with the Hero image on scroll
+    // Align the Highlights outline background image
     (function syncHighlightsBackground(){
       const hero = document.querySelector(".hero");
       const heroImg = document.querySelector(".hero-bg");
@@ -2871,90 +2860,145 @@ body{
     })();
 
     // Mobile menu (accessible + iOS-safe scroll lock)
-    (function mobileNav(){
-      const openBtn = document.querySelector("[data-nav-toggle]");
-      const closeBtn = document.querySelector("[data-nav-close]");
-      const menu = document.getElementById("mobileMenu");
-      const panel = menu ? menu.querySelector(".mobile-menu-panel") : null;
+  // Mobile menu (accessible + iOS-safe scroll lock + reliable hash nav)
+  (function mobileNav(){
+    const openBtn = document.querySelector("[data-nav-toggle]");
+    const menu = document.getElementById("mobileMenu");
+    if (!openBtn || !menu) return;
 
-      if (!openBtn || !closeBtn || !menu || !panel) return;
+    const panel = menu.querySelector(".mobile-menu-panel");
+    const closeBtn = menu.querySelector("[data-nav-close]");
+    if (!panel || !closeBtn) return;
 
-      let lastFocus = null;
-      let scrollY = 0;
+    let lastFocus = null;
+    let scrollY = 0;
+    let isOpen = false;
 
-      function lockScroll(){
-        scrollY = window.scrollY || 0;
-        document.body.style.position = "fixed";
-        document.body.style.top = `-${scrollY}px`;
-        document.body.style.left = "0";
-        document.body.style.right = "0";
-        document.body.style.width = "100%";
+    function lockScroll(){
+      scrollY = window.scrollY || 0;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+    }
+
+    function unlockScroll(){
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      window.scrollTo(0, scrollY);
+    }
+
+    function openMenu(){
+      if (isOpen) return;
+      isOpen = true;
+
+      lastFocus = document.activeElement;
+
+      menu.hidden = false;
+      menu.setAttribute("aria-hidden", "false");
+      openBtn.setAttribute("aria-expanded", "true");
+
+      lockScroll();
+
+      // Ensure panel starts at top every open
+      panel.scrollTop = 0;
+
+      closeBtn.focus();
+    }
+
+    function closeMenu(opts){
+      if (!isOpen) return;
+      isOpen = false;
+
+      menu.hidden = true;
+      menu.setAttribute("aria-hidden", "true");
+      openBtn.setAttribute("aria-expanded", "false");
+
+      unlockScroll();
+
+      const restoreFocus = !opts || opts.restoreFocus !== false;
+      if (restoreFocus && lastFocus && typeof lastFocus.focus === "function") {
+        lastFocus.focus();
       }
+    }
 
-      function unlockScroll(){
-        document.body.style.position = "";
-        document.body.style.top = "";
-        document.body.style.left = "";
-        document.body.style.right = "";
-        document.body.style.width = "";
-        window.scrollTo(0, scrollY);
-      }
+    openBtn.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", () => closeMenu());
 
-      function openMenu(){
-        lastFocus = document.activeElement;
-        menu.hidden = false;
-        menu.setAttribute("aria-hidden", "false");
-        openBtn.setAttribute("aria-expanded", "true");
-        lockScroll();
-        closeBtn.focus();
-      }
+    // Click/tap outside the drawer closes
+    menu.addEventListener("click", (e) => {
+      if (e.target === menu) closeMenu();
+    });
 
-      function closeMenu(){
-        menu.hidden = true;
-        menu.setAttribute("aria-hidden", "true");
-        openBtn.setAttribute("aria-expanded", "false");
-        unlockScroll();
-        if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
-      }
+    // Escape closes
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !menu.hidden) closeMenu();
+    });
 
-      openBtn.addEventListener("click", openMenu);
-      closeBtn.addEventListener("click", closeMenu);
+    // Close + smooth-scroll after clicking any in-drawer anchor
+    menu.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", (e) => {
+        const href = a.getAttribute("href") || "";
+        const isHash = href.startsWith("#") && href.length > 1;
 
-      // Click outside the drawer closes
-      menu.addEventListener("click", function(e){
-        if (e.target === menu) closeMenu();
-      });
-
-      // Escape closes
-      window.addEventListener("keydown", function(e){
-        if (e.key === "Escape" && !menu.hidden) closeMenu();
-      });
-
-      // Close after clicking any in-drawer anchor
-      menu.querySelectorAll("a").forEach(function(a){
-        a.addEventListener("click", closeMenu);
-      });
-
-      // Basic focus trap
-      window.addEventListener("keydown", function(e){
-        if (e.key !== "Tab" || menu.hidden) return;
-
-        const focusables = panel.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
-        const list = Array.prototype.slice.call(focusables);
-        if (!list.length) return;
-
-        const first = list[0];
-        const last = list[list.length - 1];
-
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
+        // Mailto/external: just close and let default proceed
+        if (!isHash) {
+          closeMenu({ restoreFocus: false });
+          return;
         }
+
+        // iOS: prevent default jump while scroll is locked
+        e.preventDefault();
+
+        // Update URL without triggering the native jump
+        if (history.pushState) history.pushState(null, "", href);
+        else window.location.hash = href;
+
+        closeMenu({ restoreFocus: false });
+
+        // After scroll is unlocked, perform the navigation
+        requestAnimationFrame(() => {
+          const target = document.querySelector(href);
+          if (!target) return;
+
+          const reduceMotion = window.matchMedia &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+          target.scrollIntoView({
+            behavior: reduceMotion ? "auto" : "smooth",
+            block: "start"
+          });
+        });
       });
-    })();
+    });
+
+    // Basic focus trap
+    window.addEventListener("keydown", (e) => {
+      if (e.key !== "Tab" || menu.hidden) return;
+
+      const focusables = panel.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      const list = Array.prototype.slice.call(focusables);
+      if (!list.length) return;
+
+      const first = list[0];
+      const last = list[list.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+  })();
+
 
     // Advantages tabs
     (function advantagesDetail(){
@@ -3538,7 +3582,7 @@ body{
       // Default for light sections
       let backdrop = "var(--bg-color)";
 
-      // Dark sections shown in your screenshots (Technology + Contact band)
+      // Dark sections (Technology + Contact band)
       if (midInView(tech) || midInView(contact)) {
         backdrop = "var(--page-backdrop-dark)";
       } else if (midInView(hero)) {
