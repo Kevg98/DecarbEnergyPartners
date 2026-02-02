@@ -1877,8 +1877,41 @@ body{
   overscroll-behavior: contain;
 }
 
+/* ========================================================= Header + Scroll Bar Visible on Scroll   ========================================================= */
+body{
+  /* restore the offset needed for fixed header + progress bar */
+  padding-top: calc(var(--header-height) + var(--progress-height) + env(safe-area-inset-top)) !important;
+}
+
+.site-header{
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* keep below the mobile menu (z-index: 2000) */
+  z-index: 1000;
+
+  /* iOS/Safari paint stability (prevents “disappearing” during scroll) */
+  overflow: hidden !important;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+.scroll-progress{
+  position: fixed !important;
+  top: calc(var(--header-height) + env(safe-area-inset-top));
+  left: 0;
+  right: 0;
+  z-index: 999;
+
+  /* iOS/Safari paint stability */
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
 
   </style>
+
+
 
   <!-- Structured data -->
 
@@ -1995,10 +2028,7 @@ body{
       </span>
       <span>Contact</span>
     </a>
-
-    <p class="mobile-note">
-      Operator light, iOS friendly navigation. No heavy libraries.
-    </p>
+    <!--   <p class="mobile-note">© 2026 Decarb Energy Partners</p>   -->
   </div>
 </div>
 
@@ -2206,7 +2236,7 @@ body{
             </div>
 
             <div class="adv-detail-panel" role="tabpanel" id="adv-panel-turnkey" aria-labelledby="adv-tab-turnkey" data-adv-panel="turnkey" hidden>
-              <h3>Turnkey & Scalable</h3>
+              <h3>Turnkey Deployments & Scalable Technology</h3>
               <p>
                 You run a water utility—not a PFAS destruction specialist or biofuels developer—so we don’t ask you to become one. Decarb Energy fabricates, finances, owns, operates, services, and maintains the equipment. You provide site access, a parking area, and data. Residual solids remain under existing disposal contracts.
               </p>
@@ -2251,7 +2281,7 @@ body{
     <section class="section tech3d" id="technology" aria-label="Technology">
       <div class="container">
         <div class="section-head">
-          <h2 class="cw-proof-title"><strong>Meet the Biosolids+™ Trailer</strong></h2>
+          <h2 class="cw-proof-title" style="color: white;"><strong>Meet the Biosolids+™ Trailer</strong></h2>
           <div class="scroll-underline" data-scroll-underline aria-hidden="true"></div>
 
           <p class="section-lead section-lead--full"><strong>Why can’t clean energy development be as simple as setting up a rental power generator?</strong> No smokestacks, grid connects, permanent infrastructure, or science experiments. Just a system of simple, permit-light trailers that roll up, sit on site, and bolt on to existing infrastructure.</p>
@@ -2638,12 +2668,12 @@ body{
       <div class="cta-band">
         <div class="container cta-inner">
           <div class="cta-left">
-            <h2>Learn Your Sludge&#39;s Real Value &amp; Destroy &quot;<s><i>Forever</i></s> Chemicals&quot;</h2>
+            <h2 class="cw-proof-title"><strong>Learn Your Sludge&#39;s Real Value</strong></h2>
             <p><strong>Lower Sludge Costs • Zero Capex • PFAS Destroyed On-Site</strong></p>
 
-            <p>You run a water utility—not a PFAS destruction specialist or an energy developer—so we don’t ask you to become one. We&#39;ve designed the one-size-fits-most solution so you can focus on keeping your community&#39;s water clean.</p>
-
             <p>Join other wastewater facilities and industrial sites exploring on-site PFAS risk management and local waste-to-value.</p>
+
+            <p>You run a water utility—not a PFAS destruction specialist or an energy developer—so we don’t ask you to become one. We&#39;ve designed the one-size-fits-most solution so you can focus on keeping your community&#39;s water clean.</p>
 
             <p>Email our team, and we&#39;ll talk plainly about what’s possible with your waste.</p>
 
