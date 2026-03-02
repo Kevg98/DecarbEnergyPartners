@@ -34,6 +34,11 @@
 
   <link rel="icon" href="DecarbEnergyPartnersGreen.png" type="image/png" />
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap" />
+
   <style>
 
     /* =========================
@@ -62,27 +67,16 @@
       --radius: 18px;
       --shadow: 0 12px 34px rgba(0, 0, 0, 0.10);
       --shadow-soft: 0 10px 26px rgba(0, 0, 0, 0.08);
-
-      /* Global page padding (keeps hero margins consistent) */
-      --page-pad: 1rem;
-
-      /* Type */
+      --page-pad: 1rem; /* Global page padding; consistent hero margins */
+      --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       --h1: clamp(2.05rem, 4.1vw, 3.35rem);
       --h2: clamp(1.55rem, 2.5vw, 2.05rem);
       --h3: 1.08rem;
       --p: 1.02rem;
-
-      /* Focus */
-      --focus: 0 0 0 3px rgba(var(--accent-rgb), 0.35);
-
-      /* Header */
-      --header-height: 84px;
-
-      /* Scroll progress bar (under fixed header) */
-      --progress-height: 6px;
-
-      /* Scroll-linked Hero -> Outline crossfade (JS updates these) */
-      --hero-image-opacity: 1;
+      --focus: 0 0 0 3px rgba(var(--accent-rgb), 0.35); /* Focus */
+      --header-height: 84px; /* Header */
+      --progress-height: 6px; /* Scroll progress bar (under fixed header) */
+      --hero-image-opacity: 1; /* Scroll-linked Hero -> Outline crossfade (JS updates these) */
       --outline-image-opacity: 0;
     }
 
@@ -102,9 +96,7 @@
     a { color: inherit; text-decoration: none; }
     a:hover { text-decoration: none; }
     button, input { font: inherit; }
-
-    /* Smooth scroll (respects reduced motion below) */
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; } /* Smooth scroll (respects reduced motion below) */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       * { transition: none !important; animation: none !important; }
@@ -367,6 +359,81 @@
       box-shadow: 0 10px 24px rgba(0,0,0,0.10);
     }
 
+    /* Header "Learn More" Dropdown */
+    .header-contact-trigger { touch-action: manipulation; }
+    .header-contact-chevron { opacity: 0.90; margin-left: 2px; }
+
+    .contact-dropdown {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1500; /* above header (1000), below mobile menu overlay (2000) */
+
+      width: min(92vw, 360px);
+      max-height: min(70vh, 520px);
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+
+      padding: 8px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.98);
+      border: 1px solid rgba(22,33,43,0.14);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.18);
+
+      backdrop-filter: blur(10px) saturate(180%);
+      -webkit-backdrop-filter: blur(10px) saturate(180%);
+    }
+    .contact-dropdown__item {
+      display: grid;
+      gap: 2px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: rgba(22,33,43,0.92);
+      border: 1px solid transparent;
+    }
+    .contact-dropdown__item:hover {
+      background: rgba(0, 100, 138, 0.07);
+      border-color: rgba(0, 100, 138, 0.10);
+    }
+    .contact-dropdown__item:focus-visible {
+      outline: none;
+      box-shadow: var(--focus);
+    }
+    .contact-dropdown__item-title {
+      font-weight: 850;
+      letter-spacing: -0.1px;
+    }
+    .contact-dropdown__item-meta {
+      font-size: 0.86rem;
+      color: rgba(22,33,43,0.62);
+      overflow-wrap: anywhere;
+    }
+
+    /* Mobile drawer: Contact Options disclosure */
+    details.mobile-contact { border-radius: 14px; }
+    details.mobile-contact > summary {
+      list-style: none;
+      width: 100%;
+    }
+    details.mobile-contact > summary::-webkit-details-marker { display: none; }
+    .mobile-contact-chevron { opacity: 0.85; }
+    .mobile-contact-menu {
+      margin-top: 10px;
+      display: grid;
+      gap: 10px;
+    }
+    .mobile-contact-menu a {
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(22,33,43,0.12);
+      background: rgba(22,33,43,0.03);
+      color: rgba(22,33,43,0.90);
+      font-weight: 650;
+      overflow: auto;
+    }
+    .mobile-contact-menu a:hover { background: rgba(0,100,138,0.07); }
+
+
     /* Hamburger */
     .nav-toggle {
       display: none;
@@ -474,15 +541,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      /* Keep the trailer on the right side of the hero */
-      object-position: 78% center;
-      /* IMPORTANT: no zoom (prevents extra blur) */
-      transform: none;
+      object-position: 78% center; /* Trailer on the right side of the hero */
+      transform: none; /* No zoom to prevent added blur */
       opacity: var(--hero-image-opacity, 1);
       will-change: opacity;
     }
 
-    /* Lighter overlay (barely visible) */
     .hero-overlay {
       position: absolute;
       inset: 0;
@@ -494,7 +558,6 @@
           rgba(0,100,138,0.04) 100%);
     }
 
-    /* Reduced bubble motif so image stays clear */
     .hero-bubbles {
       position: absolute;
       inset: 0;
@@ -506,6 +569,101 @@
         radial-gradient(200px 200px at 98% 32%, rgba(255,255,255,0.08), transparent 62%);
       opacity: 0.38;
       mix-blend-mode: screen;
+    }
+
+    /* ========================= Hero Motion Overlay (disabled on iOS + mobile/touch) ========================= */
+    .hero { isolation: isolate; }
+    .hero-motion {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      clip-path: inset(0 0 0 clamp(240px, 30vw, 520px)); /* Fallback: Effect on the right side to avoid headlines */
+      z-index: 1;
+      opacity: 0.86;
+      mix-blend-mode: screen;
+      transform: translateZ(0);
+    }
+    @supports ((-webkit-mask-image: linear-gradient(#000, #000)) or (mask-image: linear-gradient(#000, #000))) { /* Soft fade instead of a hard clip */
+      .hero-motion {
+        clip-path: none;
+        -webkit-mask-image: linear-gradient(90deg,
+          rgba(0,0,0,0) 0%,
+          rgba(0,0,0,0) 18%,
+          rgba(0,0,0,0.65) 52%,
+          rgba(0,0,0,1) 76%);
+        mask-image: linear-gradient(90deg,
+          rgba(0,0,0,0) 0%,
+          rgba(0,0,0,0) 18%,
+          rgba(0,0,0,0.65) 52%,
+          rgba(0,0,0,1) 76%);
+      }
+    }
+
+    .hero-motion::before {
+      content: "";
+      position: absolute;
+      inset: -28%;
+      /* background: radial-gradient(closest-side at 78% 34%, rgba(var(--accent-rgb), 0.38), rgba(var(--accent-rgb), 0) 62%), radial-gradient(closest-side at 92% 74%, rgba(0, 100, 138, 0.28), rgba(0, 100, 138, 0) 64%), conic-gradient(from 210deg at 76% 42%, rgba(255,255,255,0) 0 12%, rgba(255,255,255,0.10) 12% 18%, rgba(255,255,255,0) 18% 34%, rgba(255,255,255,0.08) 34% 40%, rgba(255,255,255,0) 40% 100%); */
+      opacity: 0.90;
+      filter: blur(0.2px);
+      animation: heroAurora 18s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .hero-motion::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      /* background: repeating-linear-gradient(90deg, rgba(255,255,255,0.10) 0 1px, rgba(255,255,255,0) 1px 40px), repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, rgba(255,255,255,0) 1px 40px); */
+      opacity: 0.14;
+      transform: translateZ(0);
+      animation: heroGridDrift 16s linear infinite;
+      will-change: transform;
+    }
+
+    .hero-motion__svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.95;
+      transform: translateZ(0);
+    }
+
+    .hero-motion__dot {
+      fill: rgba(var(--accent-rgb), 0.95);
+      opacity: 0.0;
+      animation: heroPulse 3.6s ease-in-out infinite;
+      filter: drop-shadow(0 0 14px rgba(var(--accent-rgb), 0.35));
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+
+    @keyframes heroDash { to { stroke-dashoffset: -180; } }
+
+    @keyframes heroAurora {
+      0%, 100% { transform: translate3d(-2%, -1%, 0) rotate(0deg) scale(1.02); }
+      50%      { transform: translate3d(2%, 1%, 0) rotate(8deg) scale(1.06); }
+    }
+
+    @keyframes heroGridDrift { to { transform: translate3d(-64px, 32px, 0); } }
+
+    @keyframes heroPulse {
+      0%   { opacity: 0; transform: scale(0.92); }
+      20%  { opacity: 0.85; transform: scale(1); }
+      45%  { opacity: 0.0; transform: scale(1.18); }
+      100% { opacity: 0.0; transform: scale(1.18); }
+    }
+
+    /* Intentional: disable the motion overlay on iOS + mobile/touch devices */
+    @media (hover: none) and (pointer: coarse) {
+      .hero-motion { display: none !important; }
+    }
+    @supports (-webkit-touch-callout: none) {
+      .hero-motion { display: none !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-motion { display: none !important; }
     }
 
     .hero-content {
@@ -611,8 +769,7 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  /* Light wash + aligned outline image */
-  background-image:
+  background-image: /* Light wash + aligned outline image */
     linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.94)),
     url("Decarb%20Energy%20Partners%20Biosolids+%20Trailer%20--%20Hero%20Image%20Outline.png");
   background-repeat: no-repeat, no-repeat;
@@ -632,8 +789,7 @@
       grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 14px;
       margin-top: 18px;
-      /* Allow each box to hug its own text height (no stretched height/whitespace) */
-      align-items: start;
+      align-items: start; /* Allow each box to hug its own text height; no stretched height/whitespace */
     }
 
     .adv-card {
@@ -645,8 +801,6 @@
       border: 1px solid rgba(22,33,43,0.10);
       border-radius: 14px;
       box-shadow: 0 8px 22px rgba(0,0,0,0.05);
-
-      /* Tighter padding + remove forced minimum height */
       padding: 10px 14px 12px;
       min-height: 0;
 
@@ -1183,7 +1337,6 @@
       height: 100%;
       display: grid;
       place-items: center;
-
       transform-style: preserve-3d;
       transform-origin: 50% 62%;
       animation: decarbD3DOrbit 18s ease-in-out infinite;
@@ -1204,13 +1357,8 @@
     .decarb-trailer3d__asset {
       --d3d-trailer-image: none;
       position: relative;
-
-      /* dynamic sizing (relative to stage) */
-      width: min(84%, 860px);
-
-      /* reduce “coming out of the screen” so it doesn’t clip */
-      transform: translateZ(22px);
-
+      width: min(84%, 860px); /* dynamic sizing (relative to stage) */
+      transform: translateZ(22px); /* reduce “coming out of the screen” so it doesn’t clip */
       will-change: transform;
     }
 
@@ -1287,7 +1435,7 @@
     }
     /* ====== END: Decarb Biosolids+ Trailer (CSS-only 3D) ====== */
 
-    /* =========================       Section: Legacy Biofuel with Two-Column Layout Style       ========================= */
+    /* =========================       Section: Two-Colum Biofuel Layout Style       ========================= */
     .split {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
@@ -1580,13 +1728,16 @@
       background: #efefef;
       border-top: 1px solid rgba(22,33,43,0.10);
       padding: 18px 0;
+      /* iOS safe-area: keep content clear of the home indicator */
+      padding-bottom: calc(18px + constant(safe-area-inset-bottom));
+      padding-bottom: calc(18px + env(safe-area-inset-bottom));
     }
     .footer-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
     .footer-links {
       display: flex;
@@ -1606,28 +1757,41 @@
     .footer-copy {
       color: rgba(22,33,43,0.70);
       font-size: 0.92rem;
+      flex: 1 1 auto;
+      min-width: 0;
       display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 2px;
+      line-height: 1.25;
     }
+    .footer-copy p { margin: 0; }
+    .footer-copy__privacy { max-width: 92ch; }
     .social {
       display: inline-flex;
       align-items: center;
+      justify-content: flex-end;
       gap: 10px;
+      flex: 0 0 auto;
+      margin-left: auto; /* physical fallback */
+      margin-inline-start: auto; /* logical (RTL-safe) */
     }
     .social a {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: rgba(22,33,43,0.06);
       border: 1px solid rgba(22,33,43,0.10);
       transition: transform 0.12s ease, background 0.12s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
     .social a:hover { transform: translateY(-1px); background: rgba(22,33,43,0.09); }
-    .social svg { width: 18px; height: 18px; fill: rgba(22,33,43,0.72); }
+    .social svg { width: 24px; height: 24px; fill: rgba(22,33,43,0.72); }
 
     /* =========================       Responsive       ========================= */
     @media (max-width: 1080px) {
@@ -1661,6 +1825,10 @@
       .cw-card-icon { width: 96px; height: 96px; }
       .cw-card-icon svg { width: 96px; height: 96px; }
       .impact-item { flex-basis: 76px; width: 76px; }
+      .footer-row { align-items: flex-start; }
+      .social { gap: 8px; }
+      .social a { width: 48px; height: 48px; border-radius: 14px; }
+      .social svg { width: 22px; height: 22px; }
     }
 
 /* =========================   iOS / Mobile Zoom-Out ========================= */
@@ -1819,8 +1987,7 @@ body{
   justify-content: flex-end;
   align-items: stretch;
   background: rgba(0,0,0,0.55);
-  /* iOS Safari: cover the “real” viewport */
-  height: 100vh;
+  height: 100vh; /* iOS Safari: cover the “real” viewport */
   height: 100dvh;
   overflow: hidden; /* overlay doesn't scroll */
 }
@@ -1834,20 +2001,15 @@ body{
   height: 100%;
   width: min(92vw, 420px);
   max-width: 420px;
-
   background: #ffffff;
   border-left: 1px solid rgba(22,33,43,0.14);
   box-shadow: var(--shadow);
-
-  /* Safe-area aware padding */
-  padding: 16px;
+  padding: 16px; /* Safe-area aware padding */
   padding-top: calc(16px + env(safe-area-inset-top));
   padding-bottom: calc(16px + env(safe-area-inset-bottom));
-
   display: flex;
   flex-direction: column;
   gap: 12px;
-
   overflow-y: auto; /* panel scrolls */
   -webkit-overflow-scrolling: touch; /* iOS momentum scroll */
   overscroll-behavior: contain;
@@ -1855,8 +2017,7 @@ body{
 
 /* ========================================================= Header + Scroll Bar Visible on Scroll   ========================================================= */
 body{
-  /* restore the offset needed for fixed header + progress bar */
-  padding-top: calc(var(--header-height) + var(--progress-height) + env(safe-area-inset-top)) !important;
+  padding-top: calc(var(--header-height) + var(--progress-height) + env(safe-area-inset-top)) !important;   /* restore the offset needed for fixed header + progress bar */
 }
 
 .site-header{
@@ -1864,11 +2025,8 @@ body{
   top: 0;
   left: 0;
   right: 0;
-  /* keep below the mobile menu (z-index: 2000) */
-  z-index: 1000;
-
-  /* iOS/Safari paint stability (prevents “disappearing” during scroll) */
-  overflow: hidden !important;
+  z-index: 1000; /* keep below the mobile menu (z-index: 2000) */
+  overflow: hidden !important; /* iOS/Safari paint stability (prevents “disappearing” during scroll) */
   -webkit-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0);
 }
@@ -1879,12 +2037,9 @@ body{
   left: 0;
   right: 0;
   z-index: 999;
-
-  /* iOS/Safari paint stability */
-  -webkit-transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,0,0); /* iOS/Safari paint stability */
   transform: translate3d(0,0,0);
 }
-
   </style>
 
   <!-- Structured data -->
@@ -1949,17 +2104,27 @@ body{
     </nav>
 
     <div class="header-cta">
-      <a
-        class="btn btn-primary"
-        href="mailto:info@decarbenergypartners.com?subject=Learn%20More%20and%20Waiting%20List">
-        <span class="btn-icon" aria-hidden="true">
+      <button
+        class="btn btn-primary header-contact-trigger"
+        type="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+        aria-controls="headerContactMenu"
+        data-contact-menu-trigger
+      >
+         <span class="btn-icon" aria-hidden="true">
+           <svg viewBox="0 0 24 24" aria-hidden="true">
+             <path d="M4 6h16v12H4z"></path>
+             <path d="M4 7l8 6 8-6"></path>
+           </svg>
+         </span>
+         <span>Learn More</span>
+        <span class="btn-icon header-contact-chevron" aria-hidden="true">
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 6h16v12H4z"></path>
-            <path d="M4 7l8 6 8-6"></path>
+            <path d="M6 9l6 6 6-6"></path>
           </svg>
         </span>
-        <span>Learn More</span>
-      </a>
+      </button>
 
       <button
         class="nav-toggle"
@@ -1974,6 +2139,38 @@ body{
     </div>
   </div>
 </header>
+
+<!-- Header “Learn More” dropdown (fixed-position) -->
+<div class="contact-dropdown" id="headerContactMenu" hidden role="region" aria-label="Learn More contact options">
+  <a class="contact-dropdown__item" href="mailto:Info@DecarbEnergyPartners.com?subject=General%20Inquiry">
+    <span class="contact-dropdown__item-title">General</span>
+    <span class="contact-dropdown__item-meta">Info@DecarbEnergyPartners.com</span>
+  </a>
+  <a class="contact-dropdown__item" href="mailto:BusinessDevelopment@DecarbEnergyPartners.com?subject=Site%20Assessment%20Inquity%20&amp;%20Join%20Wait%20List">
+    <span class="contact-dropdown__item-title">Join Wait List</span>
+    <span class="contact-dropdown__item-meta">BusinessDevelopment@DecarbEnergyPartners.com</span>
+  </a>
+  <a class="contact-dropdown__item" href="mailto:Biofuel@DecarbEnergyPartners.com?cc=BusinessDevelopment@DecarbEnergyPartners.com&subject=Biodiesel%20Inquiries">
+    <span class="contact-dropdown__item-title">Biodiesel Inquiries</span>
+    <span class="contact-dropdown__item-meta">Biofuel@DecarbEnergyPartners.com</span>
+  </a>
+  <a class="contact-dropdown__item" href="mailto:Media@DecarbEnergyPartners.com?subject=Press%20&amp;%20Media">
+    <span class="contact-dropdown__item-title">Press &amp; Media</span>
+    <span class="contact-dropdown__item-meta">Media@DecarbEnergyPartners.com</span>
+  </a>
+  <a class="contact-dropdown__item" href="mailto:Careers@DecarbEnergyPartners.com?subject=Careers&body=Include%20Resume">
+    <span class="contact-dropdown__item-title">Careers</span>
+    <span class="contact-dropdown__item-meta">Careers@DecarbEnergyPartners.com</span>
+  </a>
+  <a class="contact-dropdown__item" href="mailto:Impact@DecarbEnergyPartners.com?subject=Community%20Leaders">
+    <span class="contact-dropdown__item-title">Community Leaders</span>
+    <span class="contact-dropdown__item-meta">Impact@DecarbEnergyPartners.com</span>
+  </a>
+  <a class="contact-dropdown__item" href="#contact">
+    <span class="contact-dropdown__item-title">Newsletter</span>
+    <span class="contact-dropdown__item-meta">Scroll to sign-up</span>
+  </a>
+</div>
 
 <!-- Mobile Drawer -->
 <div class="mobile-menu" id="mobileMenu" hidden aria-hidden="true">
@@ -1991,19 +2188,32 @@ body{
       <a href="#contact">Contact</a>
     </nav>
 
-    <a
-      class="btn btn-primary mobile-cta"
-      href="mailto:info@decarbenergypartners.com?subject=Learn%20More%20and%20Wait%20List"
-    >
-      <span class="btn-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 6h16v12H4z"></path>
-          <path d="M4 7l8 6 8-6"></path>
-        </svg>
-      </span>
-      <span>Contact</span>
-    </a>
-    <!--   <p class="mobile-note">© 2026 Decarb Energy Partners LLC. All rights reserved</p>   -->
+    <details class="mobile-contact">
+      <summary class="btn btn-primary mobile-cta">
+        <span class="btn-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16v12H4z"></path>
+            <path d="M4 7l8 6 8-6"></path>
+          </svg>
+        </span>
+        <span>Contact</span>
+        <span class="btn-icon mobile-contact-chevron" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 9l6 6 6-6"></path>
+          </svg>
+        </span>
+      </summary>
+
+      <div class="mobile-contact-menu" role="group" aria-label="Contact options">
+        <a href="mailto:Info@DecarbEnergyPartners.com?subject=General%20Inquiry">General: Info@DecarbEnergyPartners.com</a>
+        <a href="mailto:mailto:BusinessDevelopment@DecarbEnergyPartners.com?subject=Site%20Assessment%20Inquity%20&amp;%20Join%20Wait%20List">Join Wait List: BusinessDevelopment@DecarbEnergyPartners.com</a>
+        <a href="mailto:Biofuel@DecarbEnergyPartners.com?cc=BusinessDevelopment@DecarbEnergyPartners.com&subject=Biodiesel%20Inquiries">Biodiesel Inquiries: Biofuel@DecarbEnergyPartners.com</a>
+        <a href="mailto:Media@DecarbEnergyPartners.com?subject=Press%20&amp;%20Media">Press &amp; Media: Media@DecarbEnergyPartners.com</a>
+        <a href="mailto:Careers@DecarbEnergyPartners.com?subject=Careers&body=Include%20Resume">Careers: Careers@DecarbEnergyPartners.com</a>
+        <a href="mailto:Impact@DecarbEnergyPartners.com?subject=Community%20Leaders">Community Leaders: Impact@DecarbEnergyPartners.com</a>
+        <a href="#contact">Newsletter: Scroll to sign-up</a>
+      </div>
+    </details>
   </div>
 </div>
 
@@ -2013,7 +2223,6 @@ body{
 </div>
 
   <main id="main">
-
     <!-- =========================         Section: Hero         ========================= -->
     <section class="hero" id="top" aria-label="Hero">
       <img
@@ -2027,13 +2236,30 @@ body{
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-bubbles" aria-hidden="true"></div>
 
+      <!-- Hero motion overlay (desktop only) -->
+      <div class="hero-motion" aria-hidden="true">
+        <svg
+          class="hero-motion__svg"
+          viewBox="0 0 1200 600"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <g>
+            <circle class="hero-motion__dot" cx="900" cy="160" r="4.6" style="animation-delay: 0.2s" />
+            <circle class="hero-motion__dot" cx="1020" cy="300" r="4.2" style="animation-delay: 0.8s" />
+            <circle class="hero-motion__dot" cx="860" cy="420" r="4.0" style="animation-delay: 1.3s" />
+            <circle class="hero-motion__dot" cx="1120" cy="220" r="3.6" style="animation-delay: 2.0s" />
+          </g>
+        </svg>
+      </div>
       <div class="container hero-content">
         <div class="hero-copy">
           <h1>Turn PFAS-Laden Biosolids into Biofuel</h1>
           <p class="hero-sub">On-Site  •  Modular  •  Zero Capex</p>
 
           <div class="hero-actions">
-            <a class="btn btn-outline" href="mailto:info@decarbenergypartners.com?subject=Site%20Assessment%20Inquiry">
+            <a class="btn btn-outline" href="mailto:BusinessDevelopment@DecarbEnergyPartners.com?subject=Site%20Assessment%20Inquity%20&amp;%20Join%20Wait%20List">
               <span class="btn-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M4 6h16v12H4z"></path>
@@ -2511,7 +2737,7 @@ body{
         </div>
 
         <div class="cw-proof-cta">
-          <a class="btn btn-primary" href="mailto:info@decarbenergypartners.com?subject=Biofuel%20Inquiry%20Request">
+          <a class="btn btn-primary" href="mailto:Biofuel@DecarbEnergyPartners.com?cc=BusinessDevelopment@DecarbEnergyPartners.com&subject=Biodiesel%20Inquiries">
             <span class="btn-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 6h16v12H4z"></path>
@@ -2642,7 +2868,7 @@ body{
             <p>Email our team, and we&#39;ll talk plainly about what’s possible with your waste.</p>
 
             <div class="cta-buttons">
-              <a class="btn btn-primary" href="mailto:info@decarbenergypartners.com?subject=Learn%20More%20and%20Waiting%20List">
+              <a class="btn btn-primary" href="mailto:BusinessDevelopment@DecarbEnergyPartners.com?subject=Site%20Assessment%20Inquity%20&amp;%20Join%20Wait%20List">
                 <span class="btn-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M4 6h16v12H4z"></path>
@@ -2652,8 +2878,14 @@ body{
                 <span>Learn More &amp; Join Wait List</span>
               </a>
 
-              <a class="btn btn-outline" href="mailto:info@decarbenergypartners.com">
-                General: info@decarbenergypartners.com
+              <a class="btn btn-outline" href="mailto:info@decarbenergypartners.com?subject=Learn%20More">
+		<span class="btn-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 6h16v12H4z"></path>
+                    <path d="M4 7l8 6 8-6"></path>
+                  </svg>
+                </span>
+                <span>General: Info@DecarbEnergyPartners.com</span>
               </a>
             </div>
           </div>
@@ -2711,21 +2943,20 @@ body{
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-row">
       <div class="footer-copy">
-        <span>© <span id="year"></span> Decarb Energy Partners</span>
-        <!--   <span>© <span id="year"></span> Decarb Energy Partners LLC. All rights reserved</span>   -->
-      </div>
+        <p class="footer-copy__copyright">© <span id="year"></span> Decarb Energy Partners</p>
+        <p class="footer-copy__privacy">We respect your privacy. Our website does not collect any personal data or cookies.</p>
+       </div>
 
       <div class="social" aria-label="Social links">
         <a href="https://www.linkedin.com/company/decarbenergypartners/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path d="M20.45 20.45h-3.55v-5.56c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.95v5.65H9.3V9h3.41v1.56h.05c.47-.9 1.62-1.85 3.34-1.85 3.57 0 4.23 2.35 4.23 5.41v6.33zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/>
           </svg>
         </a>
 
-        <a href="mailto:Info@DecarbEnergyPartners.com" aria-label="Email">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 6h16v12H4z"></path>
-            <path d="M4 7l8 6 8-6"></path>
+        <a href="mailto:info@decarbenergypartners.com?subject=Learn%20More" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
           </svg>
         </a>
       </div>
@@ -2737,6 +2968,162 @@ body{
     (function setYear(){
       const y = document.getElementById("year");
       if (y) y.textContent = new Date().getFullYear();
+    })();
+
+    // Header “Learn More” dropdown (touch + keyboard friendly; fixed-position)
+    (function headerContactDropdown(){
+      const trigger = document.querySelector("[data-contact-menu-trigger]");
+      const menu = document.getElementById("headerContactMenu");
+      if (!trigger || !menu) return;
+
+      let isOpen = false;
+
+      function clamp(x, min, max){
+        return Math.max(min, Math.min(max, x));
+      }
+
+      function position(){
+        if (!isOpen) return;
+
+        const rect = trigger.getBoundingClientRect();
+        const gap = 10;
+
+        const vw = window.innerWidth || document.documentElement.clientWidth || 0;
+        const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+
+        const menuW = menu.offsetWidth || 0;
+        const menuH = menu.offsetHeight || 0;
+
+        // Right-align to the trigger by default
+        let left = rect.right - menuW;
+        left = clamp(left, 8, vw - menuW - 8);
+
+        // Prefer opening downward; flip upward if we'd overflow the viewport and have room above
+        let top = rect.bottom + gap;
+        let flipped = false;
+        if ((top + menuH > vh - 8) && (rect.top - gap - menuH > 8)) {
+          top = rect.top - gap - menuH;
+          flipped = true;
+        }
+
+        menu.style.left = `${Math.round(left)}px`;
+        menu.style.top = `${Math.round(top)}px`;
+        menu.classList.toggle("is-flipped", flipped);
+      }
+
+      function onDocPointerDown(e){
+        const t = e.target;
+        if (t === trigger || trigger.contains(t) || menu.contains(t)) return;
+        close();
+      }
+
+      function onKeyDown(e){
+        if (e.key === "Escape") {
+          close();
+          return;
+        }
+        if (!isOpen) return;
+
+        // Optional: arrow-key navigation within the open menu
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+          const items = Array.from(menu.querySelectorAll("a[href]"));
+          if (!items.length) return;
+
+          const active = document.activeElement;
+          const idx = items.indexOf(active);
+
+          let nextIdx = idx;
+          if (e.key === "ArrowDown") nextIdx = idx < 0 ? 0 : (idx + 1) % items.length;
+          if (e.key === "ArrowUp") nextIdx = idx < 0 ? items.length - 1 : (idx - 1 + items.length) % items.length;
+
+          e.preventDefault();
+          items[nextIdx].focus({ preventScroll: true });
+        }
+      }
+
+      function addListeners(){
+        document.addEventListener("pointerdown", onDocPointerDown, true);
+        document.addEventListener("keydown", onKeyDown);
+
+        window.addEventListener("resize", position);
+        window.addEventListener("scroll", position, { passive: true });
+
+        // iOS URL bar collapse / viewport changes
+        if (window.visualViewport) {
+          window.visualViewport.addEventListener("resize", position, { passive: true });
+          window.visualViewport.addEventListener("scroll", position, { passive: true });
+        }
+      }
+
+      function removeListeners(){
+
+        document.removeEventListener("pointerdown", onDocPointerDown, true);
+        document.removeEventListener("keydown", onKeyDown);
+
+        window.removeEventListener("resize", position);
+        window.removeEventListener("scroll", position);
+
+        if (window.visualViewport) {
+          window.visualViewport.removeEventListener("resize", position);
+          window.visualViewport.removeEventListener("scroll", position);
+        }
+      }
+
+      function open(opts){
+        if (isOpen) return;
+        isOpen = true;
+
+        trigger.setAttribute("aria-expanded", "true");
+        menu.hidden = false;
+
+        // Prevent a visible “jump” while we compute position
+        menu.style.visibility = "hidden";
+        position();
+        requestAnimationFrame(() => { menu.style.visibility = ""; });
+
+        addListeners();
+
+        if (opts && opts.focusFirst) {
+          const first = menu.querySelector("a[href]");
+          if (first) first.focus({ preventScroll: true });
+        }
+      }
+
+      function close(){
+        if (!isOpen) return;
+        isOpen = false;
+
+        trigger.setAttribute("aria-expanded", "false");
+        menu.hidden = true;
+        menu.classList.remove("is-flipped");
+
+        removeListeners();
+      }
+
+      function toggle(){
+        if (isOpen) close();
+        else open();
+      }
+
+      trigger.addEventListener("click", (e) => {
+        e.preventDefault();
+        toggle();
+      });
+
+      // Keyboard: open and focus first item
+      trigger.addEventListener("keydown", (e) => {
+        if ((e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") && !isOpen) {
+          e.preventDefault();
+          open({ focusFirst: true });
+        }
+      });
+
+      // Close immediately when a user selects an option (do NOT block default navigation)
+      menu.addEventListener("click", (e) => {
+        const a = e.target.closest("a[href]");
+        if (!a) return;
+        close();
+      });
     })();
 
     // Header glass + scroll progress bar + section underline bars (single rAF loop; iOS-safe)
@@ -3720,10 +4107,3 @@ body{
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
