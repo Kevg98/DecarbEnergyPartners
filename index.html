@@ -2051,6 +2051,20 @@ body{
   -webkit-transform: translate3d(0,0,0); /* iOS/Safari paint stability */
   transform: translate3d(0,0,0);
 }
+
+/* Biofuel carousel loop divider (shows where the carousel wraps) */
+.cw-loop-divider{
+  flex: 0 0 auto;
+  width: 2px;
+  align-self: stretch;
+  margin-block: 18px;
+  /* JS sets this to -(gap/2) so the divider doesn't add extra whitespace */
+  margin-inline: var(--cw-loop-divider-comp, -10px);
+  border-radius: 999px;
+  background: rgba(22,33,43,0.26);
+  pointer-events: none;
+}
+
   </style>
 
   <!-- Structured data -->
@@ -3674,18 +3688,31 @@ body{
       };
     }
 
-    // Biofuel carousel: looping + auto-move
+    // Biofuel carousel: looping + auto-move + loop divider
     (function cwProofCarousel(){
       const scroller = document.querySelector("[data-cw-carousel]");
       const prev = document.querySelector("[data-cw-prev]");
       const next = document.querySelector("[data-cw-next]");
       if (!scroller || !prev || !next) return;
 
+      // Visual divider so users can see where the carousel wraps (end → start)
+      if (!scroller.querySelector(".cw-loop-divider")) {
+        // Match the carousel's computed gap so adding the divider doesn't create extra whitespace
+        const styles = getComputedStyle(scroller);
+        const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+        if (gap) scroller.style.setProperty("--cw-loop-divider-comp", `${-(gap / 2)}px`);
+
+        const loopDivider = document.createElement("div");
+        loopDivider.className = "cw-loop-divider";
+        loopDivider.setAttribute("aria-hidden", "true");
+        scroller.appendChild(loopDivider);
+      }
+
       setupLoopingCarousel({
         scroller,
         prev,
         next,
-        itemSelector: ".cw-card",
+        itemSelector: ".cw-card, .cw-loop-divider",
         auto: true,
         autoSpeed: 30
       });
