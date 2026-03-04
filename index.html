@@ -1670,6 +1670,17 @@
     }
     .impact-carousel::-webkit-scrollbar { height: 0; }
 
+    .impact-loop-divider{ /* SDG carousel loop divider (shows where the carousel wraps) */
+      flex: 0 0 auto;
+      width: 2px;
+      align-self: stretch;
+      margin-block: 10px;
+      margin-inline: -6px; /* compensate for the 12px flex gap so spacing stays consistent */
+      border-radius: 999px;
+      background: rgba(22,33,43,0.26);
+      pointer-events: none;
+    }
+
     .impact-item {
       appearance: none;
       -webkit-appearance: none;
@@ -2627,8 +2638,8 @@ body{
           <div class="scroll-underline" data-scroll-underline aria-hidden="true"></div>
         <div class="cw-carousel" data-cw-carousel role="list" aria-label="Biofuel highlights" tabindex="0">
           <article class="cw-card cw-card--top" role="listitem">
-            <h3 class="cw-card-title">Drop-In Ready</h3>
-            <img src="Decarb Energy Partners -- Drop-In-Ready (Sustainable Biofuel Icon).png" alt="Drop-In Ready icon" />
+            <h3 class="cw-card-title">Drop-In-Ready</h3>
+            <img src="Decarb Energy Partners -- Drop-In-Ready (Sustainable Biofuel Icon).png" alt="Drop-In-Ready icon" />
             <p class="cw-card-foot">Drop‑in biodiesel that works with the trucks already on the road—helping fleets and producers cut emissions now.</p>
           </article>
 
@@ -2651,9 +2662,9 @@ body{
           </article>
 
           <article class="cw-card cw-card--top" role="listitem">
-            <h3 class="cw-card-title">Premium Quality</h3>
+            <h3 class="cw-card-title">Premium</h3>
             <img src="Decarb Energy Partners -- Premium Quality (Sustainable Biofuel Icon).png" alt="Premium Quality icon" />
-            <p class="cw-card-foot">Made to meet ASTM biodiesel specifications for consistent performance and compatibility.</p>
+            <p class="cw-card-foot">Engineered to meet ASTM biodiesel specifications for consistent performance and compatibility.</p>
           </article>
 
           <article class="cw-card cw-card--bottom" role="listitem">
@@ -2671,7 +2682,7 @@ body{
           <article class="cw-card cw-card--bottom" role="listitem">
             <h3 class="cw-card-title">Waste-to-Value</h3>
             <img src="Decarb Energy Partners -- Waste-to-Value (Sustainable Biofuel Icon).png" alt="Waste-to-Value icon" />
-            <p class="cw-card-foot">Turns waste‑derived feedstocks into a high‑value fuel—helping keep costs competitive.</p>
+            <p class="cw-card-foot">Turns waste‑derived feedstocks into a high‑value fuel—keeping costs competitive.</p>
           </article>
 
           <article class="cw-card cw-card--top" role="listitem">
@@ -2693,7 +2704,7 @@ body{
           </article>
 
           <article class="cw-card cw-card--bottom" role="listitem">
-            <h3 class="cw-card-title">Familiar</h3>
+            <h3 class="cw-card-title">Established</h3>
             <img src="Decarb Energy Partners -- Familiar (Sustainable Biofuel Icon).png" alt="Familiar icon" />
             <p class="cw-card-foot">Works with existing distribution and fueling infrastructure—no new playbook for operators.</p>
           </article>
@@ -2707,7 +2718,7 @@ body{
           <article class="cw-card cw-card--bottom" role="listitem">
             <h3 class="cw-card-title">Low-Carbon</h3>
             <img src="Decarb Energy Partners -- Low-Carbon (Sustainable Biofuel Icon).png" alt="Low-Carbon icon" />
-            <p class="cw-card-foot">Our process is designed to drive very low lifecycle carbon intensity, including permanent sequestration of excess carbon where applicable.</p>
+            <p class="cw-card-foot">Our process is designed to drive low lifecycle carbon intensity, including permanent sequestration of excess carbon where applicable.</p>
           </article>
 
           <article class="cw-card cw-card--top" role="listitem">
@@ -3775,7 +3786,7 @@ body{
           img: "UN SDG 06 - Clean Water and Sanitation.png",
           body: "Decarb is built for wastewater operators—destroying PFAS at the source and turning biosolids from a disposal burden into a valuable feedstock.",
           bullets: [
-            "Helps prevent PFAS from spreading through land application or disposal",
+            "Prevents PFAS from spreading through land application or disposal",
             "Supports compliance confidence for utilities",
             "Turns sludge management from a liability into structured savings & low-risk cashflow",
 			"Supports critical water infrastructure & cash-strapped utilities",
@@ -3910,12 +3921,18 @@ body{
         scroller.appendChild(btn);
       });
 
-      // Setup looping + auto movement
-      const api = setupLoopingCarousel({
+      if (!scroller.querySelector(".impact-loop-divider")) { // Visual divider so users can see where the carousel loops
+        const loopDivider = document.createElement("div");
+        loopDivider.className = "impact-loop-divider";
+        loopDivider.setAttribute("aria-hidden", "true");
+        scroller.appendChild(loopDivider);
+      }
+
+      const api = setupLoopingCarousel({ // Setup looping + auto movement
         scroller,
         prev,
         next,
-        itemSelector: ".impact-item",
+        itemSelector: ".impact-item, .impact-loop-divider",
         auto: true,
         autoSpeed: 22
       });
