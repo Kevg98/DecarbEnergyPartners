@@ -961,8 +961,7 @@
       box-shadow: 0 16px 36px rgba(0,0,0,0.08);
     }
 
-    /* Odd cards: green at top → white at bottom */
-    .cw-card--top {
+    .cw-card--top { /* Odd cards: green at top → white at bottom */
       background: linear-gradient(
         180deg,
         rgba(120, 226, 175, 0.95) 0%,
@@ -971,8 +970,7 @@
       );
     }
 
-    /* Even cards: white at top → green at bottom */
-    .cw-card--bottom {
+    .cw-card--bottom { /* Even cards: white at top → green at bottom */
       background: linear-gradient(
         180deg,
         rgba(255, 255, 255, 0.95) 0%,
@@ -1086,6 +1084,53 @@
       display: flex;
       justify-content: flex-start; 
     }
+
+    /* =========================       Section: Biofuel: Biofuel Carousel Position Indicator       ========================= */
+.cw-pagination{
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: rgba(22,33,43,0.62);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
+.cw-pagination-dots{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cw-dot{
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(22,33,43,0.28);
+  transition: transform 0.12s ease, background 0.12s ease, opacity 0.12s ease;
+}
+
+.cw-dot.is-active{
+  background: rgba(var(--accent-rgb), 1);
+  transform: scale(1.55);
+}
+
+.cw-pagination-count{
+  min-width: 56px;               /* prevents layout jitter (9/16 -> 10/16) */
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.cw-proof .cw-carousel-footer{ margin-top: 14px; } /* Keep overall spacing consistent after adding the indicator */
+
+@media (max-width: 520px){
+  .cw-pagination{ font-size: 0.88rem; gap: 8px; }
+  .cw-dot{ width: 5px; height: 5px; }
+  .cw-pagination-count{ min-width: 52px; }
+}
+
+
 
     /* =========================       Section: Technology (3D Trailer + Description)       ========================= */
     .tech3d {
@@ -2820,7 +2865,12 @@ body{
             <img src="Decarb Energy Partners -- No New Infrastructure (Sustainable Biofuel Icon).png" alt="No New Infrastructure icon" />
             <p class="cw-card-foot">Lower lifecycle emissions and displace fossil diesel without waiting for new electric truck technologies or major grid build‑outs.</p>
           </article>
+        </div>
 
+        <!-- Biofuel carousel position indicator (dots + count) -->
+        <div class="cw-pagination" data-cw-pagination aria-label="Biofuel carousel position">
+          <div class="cw-pagination-dots" data-cw-dots aria-hidden="true"></div>
+          <div class="cw-pagination-count" data-cw-count></div>
         </div>
 
         <div class="cw-carousel-footer" aria-label="Carousel navigation">
@@ -3782,35 +3832,121 @@ body{
       };
     }
 
-    // Biofuel carousel: looping + auto-move + loop divider
-    (function cwProofCarousel(){
-      const scroller = document.querySelector("[data-cw-carousel]");
-      const prev = document.querySelector("[data-cw-prev]");
-      const next = document.querySelector("[data-cw-next]");
-      if (!scroller || !prev || !next) return;
+    // Biofuel Carousel: looping + auto-move + loop divider + position indicator
+(function cwProofCarousel(){
+  const scroller = document.querySelector("[data-cw-carousel]");
+  const prev = document.querySelector("[data-cw-prev]");
+  const next = document.querySelector("[data-cw-next]");
+  const pager = document.querySelector("[data-cw-pagination]");
+  const dotsWrap = pager ? pager.querySelector("[data-cw-dots]") : null;
+  const countEl = pager ? pager.querySelector("[data-cw-count]") : null;
 
-      // Visual divider so users can see where the carousel wraps (end → start)
-      if (!scroller.querySelector(".cw-loop-divider")) {
-        // Match the carousel's computed gap so adding the divider doesn't create extra whitespace
-        const styles = getComputedStyle(scroller);
-        const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
-        if (gap) scroller.style.setProperty("--cw-loop-divider-comp", `${-(gap / 2)}px`);
+  if (!scroller || !prev || !next) return;
 
-        const loopDivider = document.createElement("div");
-        loopDivider.className = "cw-loop-divider";
-        loopDivider.setAttribute("aria-hidden", "true");
-        scroller.appendChild(loopDivider);
+  // 1) Index ORIGINAL cards (clones inherit attributes automatically)
+  const originalCards = Array.from(scroller.querySelectorAll(".cw-card"));
+  const total = originalCards.length;
+
+  originalCards.forEach((card, i) => {
+    card.dataset.cwIndex = String(i);
+  });
+
+  // 2) Build Dots
+  let dots = [];
+  if (pager && dotsWrap && total > 1) {
+    dotsWrap.innerHTML = "";
+    dots = originalCards.map((_, i) => {
+      const dot = document.createElement("span");
+      dot.className = "cw-dot";
+      dot.dataset.cwDot = String(i);
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+    if (countEl) countEl.textContent = `1 / ${total}`;
+  } else if (pager) {
+    // If something is missing, don't show an empty UI element
+    pager.hidden = true;
+  }
+
+  // 3) Visual loop divider so users can see where the carousel wraps (end → start)
+  if (!scroller.querySelector(".cw-loop-divider")) {
+    const styles = getComputedStyle(scroller);
+    const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+    if (gap) scroller.style.setProperty("--cw-loop-divider-comp", `${-(gap / 2)}px`);
+
+    const loopDivider = document.createElement("div");
+    loopDivider.className = "cw-loop-divider";
+    loopDivider.setAttribute("aria-hidden", "true");
+    scroller.appendChild(loopDivider);
+  }
+
+  // Keep a handle to the looping carousel (for future extensions if needed)
+  setupLoopingCarousel({
+    scroller,
+    prev,
+    next,
+    itemSelector: ".cw-card, .cw-loop-divider",
+    auto: true,
+    autoSpeed: 30
+  });
+
+  // 4) Indicator logic: active = card whose LEFT edge is closest to the snap edge
+  let active = -1;
+
+  function setActive(idx){
+    if (idx === active) return;
+    active = idx;
+
+    if (dots.length) {
+      dots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
+    }
+    if (countEl) countEl.textContent = `${idx + 1} / ${total}`;
+  }
+
+  function computeActive(){
+    if (!dots.length && !countEl) return;
+
+    const scRect = scroller.getBoundingClientRect();
+    const styles = getComputedStyle(scroller);
+    const padLeft = parseFloat(styles.paddingLeft || "0") || 0;
+
+    // Anchor point = the scroll-snap "start" edge
+    const anchorX = scRect.left + padLeft;
+
+    // Include clones too; divider is excluded by selecting only `.cw-card`
+    const cards = Array.from(scroller.querySelectorAll(".cw-card"));
+
+    let bestIdx = 0;
+    let bestDist = Infinity;
+
+    for (const card of cards) {
+      const r = card.getBoundingClientRect();
+      const dist = Math.abs(r.left - anchorX);
+      if (dist < bestDist) {
+        bestDist = dist;
+        bestIdx = parseInt(card.dataset.cwIndex || "0", 10) || 0;
       }
+    }
 
-      setupLoopingCarousel({
-        scroller,
-        prev,
-        next,
-        itemSelector: ".cw-card, .cw-loop-divider",
-        auto: true,
-        autoSpeed: 30
-      });
-    })();
+    setActive(bestIdx);
+  }
+
+  // rAF-throttled scroll updates (plays nicely with the carousel's own normalize rAF)
+  let raf = null;
+  function schedule(){
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      computeActive();
+      raf = null;
+    });
+  }
+
+  scroller.addEventListener("scroll", schedule, { passive: true });
+  window.addEventListener("resize", schedule);
+
+  // Initial render
+  schedule();
+})();
 
     // News carousel controls
     (function newsCarousel(){
