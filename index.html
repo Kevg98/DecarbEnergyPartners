@@ -2067,6 +2067,86 @@ body{
 
   </style>
 
+<style>
+  /* ===== Contact Section: Transparent Sketch Feature ===== */
+  .cta-band{
+    isolation: isolate; /* keeps z-index layers contained (Safari/iOS friendly) */
+
+    /* Easy tune knobs */
+    --cta-sketch-opacity: 0.32;
+    --cta-sketch-width: 100%;
+    --cta-sketch-bottom: -24px;
+  }
+  .cta-band::before{   /* Ensure existing bubble layer stays BEHIND the sketch */
+    z-index: 0;
+  }
+  .cta-band-sketch{   /* The sketch itself: above gradient/bubbles, below all content */
+    position: absolute;
+    left: 50%;
+    bottom: var(--cta-sketch-bottom);
+    z-index: 1;
+    width: var(--cta-sketch-width);
+    max-width: none;
+    height: auto;
+    transform: translate3d(-50%, 0, 0); /* iOS paint stability */
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    opacity: var(--cta-sketch-opacity);
+    -webkit-mask-image: linear-gradient( /* Keep headline area clean: fade the sketch upward (Safari uses -webkit-mask-image) */
+      to top,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 40%,
+      rgba(0,0,0,0) 78%
+    );
+    mask-image: linear-gradient(
+      to top,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 40%,
+      rgba(0,0,0,0) 78%
+    );
+    filter: saturate(1.12) brightness(1.14);     /* Subtle punch for line art (optional) */
+  }
+  @supports (-webkit-touch-callout: none){   /* iOS performance fallback */
+    .cta-band-sketch{ filter: none; }
+  }
+  .cta-inner{   /* Keep CTA content ABOVE all overlay layers */
+    z-index: 2; /* Existing CSS already has position:relative; just bump stacking */
+  }
+  .cta-left h2, /* Preserve readability over the sketch */
+  .cta-left p{
+    text-shadow: 0 12px 28px rgba(0,0,0,0.22);
+  }
+  @media (max-width: 920px){   /* Responsive tuning */
+    .cta-band{
+      --cta-sketch-opacity: 0.24;
+      --cta-sketch-width: 100%;
+      --cta-sketch-bottom: -40px;
+    }
+    .cta-band-sketch{
+      -webkit-mask-image: linear-gradient(
+        to top,
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,1) 34%,
+        rgba(0,0,0,0) 72%
+      );
+      mask-image: linear-gradient(
+        to top,
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,1) 34%,
+        rgba(0,0,0,0) 72%
+      );
+    }
+  }
+  @media (max-width: 520px){
+    .cta-band{
+      --cta-sketch-opacity: 0.20;
+      --cta-sketch-bottom: -52px;
+    }
+  }
+</style>
+
+
   <!-- Structured data -->
   <script type="application/ld+json">
   {
@@ -2883,6 +2963,20 @@ body{
     <!-- =========================         Section: Contact         ========================= -->
     <section class="cta" id="contact" aria-label="Contact section">
       <div class="cta-band">
+
+    <img
+      class="cta-band-sketch"
+      src="DecarbEnergyBiosolids+TrailerSketch.png"
+      width="1264"
+      height="389"
+      alt=""
+      aria-hidden="true"
+      decoding="async"
+      loading="lazy"
+      fetchpriority="low"
+      draggable="false"
+    />
+
         <div class="container cta-inner">
           <div class="cta-left">
             <h2 class="cw-proof-title"><strong>Learn Your Sludge&#39;s Real Value</strong></h2>
