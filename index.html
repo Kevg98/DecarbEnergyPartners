@@ -3648,192 +3648,227 @@ body{
 
     // Helper: looping carousel with optional auto-scroll
     function setupLoopingCarousel(opts){
-      const scroller = opts.scroller;
-      const prev = opts.prev;
-      const next = opts.next;
-      const itemSelector = opts.itemSelector || ":scope > *";
-      const auto = !!opts.auto;
-      const autoSpeed = typeof opts.autoSpeed === "number" ? opts.autoSpeed : 28; // px/sec
-      const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const scroller = opts.scroller;
+    const prev = opts.prev;
+    const next = opts.next;
+    const itemSelector = opts.itemSelector || ":scope > *";
+    const auto = !!opts.auto;
+    const autoSpeed = typeof opts.autoSpeed === "number" ? opts.autoSpeed : 28; // px/sec
+    const reduceMotion =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      if (!scroller || !prev || !next) return null;
+    if (!scroller || !prev || !next) return null;
+    if (scroller.dataset.loopingCarousel === "true") return null; // Prevent double init (important if scripts ever re-run)
+    const originals = Array.from(scroller.querySelectorAll(itemSelector)) // ORIGINAL items only (ignore any clones if they somehow exist already)
+      .filter((el) => el.getAttribute("data-loop-clone") !== "true");
 
-      let items = Array.from(scroller.querySelectorAll(itemSelector));
-      if (items.length < 2) {
-        prev.disabled = true;
-        next.disabled = true;
-        return null;
-      }
+    if (originals.length < 2) {
+      prev.disabled = true;
+      next.disabled = true;
+      return null;
+    }
 
-      const originalCount = items.length;
+    const originalCount = originals.length;
+    let isNormalizing = false;
+    let originalWidth = 0;
 
-      // Clone once to enable seamless looping
-      items.forEach((item) => {
-        const clone = item.cloneNode(true);
-        clone.setAttribute("aria-hidden", "true");
-        clone.tabIndex = -1;
-        scroller.appendChild(clone);
-      });
+    function measureOriginalWidth(){
+      const first = originals[0];
+      const last = originals[originalCount - 1];
+      return (last.offsetLeft + last.offsetWidth) - first.offsetLeft;
+    }
 
-      let isNormalizing = false;
-      let originalWidth = 0;
+    function measure(){
+      originalWidth = measureOriginalWidth();
+    }
 
-      function measureOriginalWidth(){
-        const children = Array.from(scroller.children);
-        if (children.length < originalCount) return 0;
-        const first = children[0];
-        const last = children[originalCount - 1];
-        return (last.offsetLeft + last.offsetWidth) - first.offsetLeft;
-      }
+    function hasOverflow(){
+      if (!originalWidth) measure();
+      return (originalWidth - scroller.clientWidth) > 2;
+    }
 
-      function measure(){
-        originalWidth = measureOriginalWidth();
-      }
+    function updateButtons(){
+      const ok = hasOverflow();
+      prev.disabled = !ok;
+      next.disabled = !ok;
+    }
 
-      function normalize(){
-        if (isNormalizing || !originalWidth) return;
-
-        const x = scroller.scrollLeft;
-
-        if (x >= originalWidth) {
-          isNormalizing = true;
-          scroller.scrollLeft = x - originalWidth;
-          isNormalizing = false;
-        } else if (x < 0) {
-          isNormalizing = true;
-          scroller.scrollLeft = x + originalWidth;
-          isNormalizing = false;
-        }
-      }
-
-      function getStep(){
-        const firstItem = scroller.querySelector(itemSelector);
-        if (!firstItem) return Math.max(260, scroller.clientWidth * 0.8);
-        const gap = parseFloat(getComputedStyle(scroller).gap || "0") || 0;
-        return firstItem.getBoundingClientRect().width + gap;
-      }
-
-      function hasOverflow(){
-        const max = scroller.scrollWidth - scroller.clientWidth;
-        return max > 2;
-      }
-
-      function updateButtons(){
-        const ok = hasOverflow();
-        prev.disabled = !ok;
-        next.disabled = !ok;
-      }
-
-      function scrollByDir(dir){
-        if (!originalWidth) measure();
-
-        // If heading left near the "start", jump forward by one loop so the smooth scroll has room
-        if (dir < 0 && scroller.scrollLeft <= 2 && originalWidth) {
-          isNormalizing = true;
-          scroller.scrollLeft = scroller.scrollLeft + originalWidth;
-          isNormalizing = false;
-        }
-
-        scroller.scrollBy({ left: dir * getStep(), behavior: reduceMotion ? "auto" : "smooth" });
-      }
-
-      // Auto-scroll controls
-      let raf = null;
-      let lastTime = null;
-      let pauseUntil = 0;
-      let hardPaused = false;
-
-      function pause(ms){
-        if (reduceMotion) return;
-        const now = performance.now();
-        pauseUntil = Math.max(pauseUntil, now + (ms || 3000));
-      }
-
-      function setHardPaused(v){
-        hardPaused = !!v;
-      }
-
-      function tick(t){
-        if (!auto || reduceMotion) return;
-
-        if (lastTime == null) lastTime = t;
-        const dt = (t - lastTime) / 1000;
-        lastTime = t;
-
-        if (!hardPaused && t >= pauseUntil) {
-          scroller.scrollLeft += autoSpeed * dt;
-          normalize();
-        }
-
-        raf = requestAnimationFrame(tick);
-      }
-
-      function start(){
-        if (!auto || reduceMotion) return;
-        if (raf) return;
-        lastTime = null;
-        raf = requestAnimationFrame(tick);
-      }
-
-      function stop(){
-        if (raf) cancelAnimationFrame(raf);
-        raf = null;
-        lastTime = null;
-      }
-
-      prev.addEventListener("click", function(){
-        pause(3500);
-        scrollByDir(-1);
-      });
-      next.addEventListener("click", function(){
-        pause(3500);
-        scrollByDir(1);
-      });
-
-      // Normalize while scrolling (user drag / touch)
-      let scrollRaf = null;
-      scroller.addEventListener("scroll", function(){
-        if (scrollRaf) return;
-        scrollRaf = requestAnimationFrame(function(){
-          normalize();
-          updateButtons();
-          scrollRaf = null;
-        });
-      }, { passive: true });
-
-      // Pause on interaction
-      scroller.addEventListener("mouseenter", () => pause(3500));
-      scroller.addEventListener("focusin", () => pause(3500));
-      scroller.addEventListener("pointerdown", () => pause(3500));
-      scroller.addEventListener("touchstart", () => pause(3500), { passive: true });
-
-      // Keyboard support when the carousel is focused
-      scroller.addEventListener("keydown", function(e){
-        if (e.key === "ArrowLeft") { e.preventDefault(); pause(3500); scrollByDir(-1); }
-        if (e.key === "ArrowRight") { e.preventDefault(); pause(3500); scrollByDir(1); }
-      });
-
-      window.addEventListener("resize", function(){
-        measure();
-        updateButtons();
-      });
-
-      // Initial
-      measure();
+    measure(); // If the content fits (no horizontal overflow), don’t create clones or autoplay.
+    if (!hasOverflow()) {
       updateButtons();
-      start();
-
       return {
-        pause,
-        setPaused: setHardPaused,
-        start,
-        stop,
-        scrollBy: scrollByDir
+        pause(){},
+        setPaused(){},
+        start(){},
+        stop(){},
+        scrollBy(){},
       };
     }
 
-    // Biofuel Carousel: looping + auto-move + loop divider + position indicator
-(function cwProofCarousel(){
+    scroller.dataset.loopingCarousel = "true";
+    function stripDuplicateIds(root){
+      if (!root || !root.querySelectorAll) return; // Defensive: clones should not duplicate IDs in the DOM
+      root.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
+    }
+
+    function makeClone(node){
+      const clone = node.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.setAttribute("data-loop-clone", "true");
+      clone.tabIndex = -1;
+      if (clone.id) clone.removeAttribute("id");
+      stripDuplicateIds(clone);
+      return clone;
+    }
+
+    // Clone both ends (prepend + append); enables natural backward scroll + backward wrap (first -> last) on touch/trackpad.
+    const beforeFrag = document.createDocumentFragment();
+    originals.forEach((item) => beforeFrag.appendChild(makeClone(item)));
+    scroller.insertBefore(beforeFrag, scroller.firstChild);
+    originals.forEach((item) => scroller.appendChild(makeClone(item)));
+    measure(); // Re-measure after cloning (responsive widths can change)
+    scroller.scrollLeft = originalWidth; // Start on the middle/original set so you can scroll left OR right immediately
+    function normalize(){ // Keep scrollLeft inside the “middle” band: [originalWidth, 2*originalWidth)
+      if (isNormalizing || !originalWidth) return;
+      const x = scroller.scrollLeft;
+      const min = originalWidth;        // start of middle band (original set)
+      const max = originalWidth * 2;    // end of middle band
+
+      if (x < min) {
+        isNormalizing = true;
+        scroller.scrollLeft = x + originalWidth;
+        isNormalizing = false;
+      } else if (x >= max) {
+        isNormalizing = true;
+        scroller.scrollLeft = x - originalWidth;
+        isNormalizing = false;
+      }
+    }
+
+    function getStep(){
+      const candidates = Array.from(scroller.querySelectorAll(itemSelector)); // Use a “real” card/tile width (ignore tiny dividers)
+      const gap = parseFloat(getComputedStyle(scroller).gap || "0") || 0;
+      for (const el of candidates) {
+        const w = el.getBoundingClientRect().width;
+        if (w > 12) return w + gap;
+      }
+      return Math.max(260, scroller.clientWidth * 0.8);
+    }
+
+    function scrollByDir(dir){
+      if (!originalWidth) measure();
+      const step = getStep();
+      if (dir < 0 && scroller.scrollLeft <= originalWidth + 2) { // Keep smooth scroll away from hard edges so it wraps cleanly
+        isNormalizing = true;
+        scroller.scrollLeft += originalWidth;
+        isNormalizing = false;
+      } else if (dir > 0 && scroller.scrollLeft >= (originalWidth * 2 - step - 2)) {
+        isNormalizing = true;
+        scroller.scrollLeft -= originalWidth;
+        isNormalizing = false;
+      }
+
+      scroller.scrollBy({
+        left: dir * step,
+        behavior: reduceMotion ? "auto" : "smooth"
+      });
+    }
+
+    // Auto-scroll controls
+    let raf = null;
+    let lastTime = null;
+    let pauseUntil = 0;
+    let hardPaused = false;
+    function pause(ms){
+      if (reduceMotion) return;
+      const now = performance.now();
+      pauseUntil = Math.max(pauseUntil, now + (ms || 3000));
+    }
+
+    function setHardPaused(v){
+      hardPaused = !!v;
+    }
+
+    function tick(t){
+      if (!auto || reduceMotion) return;
+      if (lastTime == null) lastTime = t;
+      const dt = (t - lastTime) / 1000;
+      lastTime = t;
+      if (!hardPaused && t >= pauseUntil) {
+        scroller.scrollLeft += autoSpeed * dt;
+        normalize();
+      }
+
+      raf = requestAnimationFrame(tick);
+    }
+
+    function start(){
+      if (!auto || reduceMotion) return;
+      if (raf) return;
+      lastTime = null;
+      raf = requestAnimationFrame(tick);
+    }
+
+    function stop(){
+      if (raf) cancelAnimationFrame(raf);
+      raf = null;
+      lastTime = null;
+    }
+
+    prev.addEventListener("click", function(){
+      pause(3500);
+      scrollByDir(-1);
+    });
+    next.addEventListener("click", function(){
+      pause(3500);
+      scrollByDir(1);
+    });
+
+    // Normalize while scrolling (touch/trackpad/drag)
+    let scrollRaf = null;
+    scroller.addEventListener("scroll", function(){
+      if (scrollRaf) return;
+      scrollRaf = requestAnimationFrame(function(){
+        normalize();
+        updateButtons();
+        scrollRaf = null;
+      });
+    }, { passive: true });
+
+    // Pause on interaction
+    scroller.addEventListener("mouseenter", () => pause(3500));
+    scroller.addEventListener("focusin", () => pause(3500));
+    scroller.addEventListener("pointerdown", () => pause(3500));
+    scroller.addEventListener("touchstart", () => pause(3500), { passive: true });
+
+    // Keyboard support
+    scroller.addEventListener("keydown", function(e){
+      if (e.key === "ArrowLeft")  { e.preventDefault(); pause(3500); scrollByDir(-1); }
+      if (e.key === "ArrowRight") { e.preventDefault(); pause(3500); scrollByDir(1); }
+    });
+
+    window.addEventListener("resize", function(){
+      measure();
+      normalize();
+      updateButtons();
+    });
+
+    // Initial
+    normalize();
+    updateButtons();
+    start();
+
+    return {
+      pause,
+      setPaused: setHardPaused,
+      start,
+      stop,
+      scrollBy: scrollByDir
+    };
+  }
+
+  // Biofuel Carousel: looping + auto-move + loop divider + position indicator
+  (function cwProofCarousel(){
   const scroller = document.querySelector("[data-cw-carousel]");
   const prev = document.querySelector("[data-cw-prev]");
   const next = document.querySelector("[data-cw-next]");
@@ -4320,13 +4355,11 @@ body{
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", () => { measure(); schedule(); });
 
-    // iOS URL bar / viewport changes
-    if (window.visualViewport) {
+    if (window.visualViewport) { // iOS URL bar / viewport changes
       window.visualViewport.addEventListener("resize", () => { measure(); schedule(); }, { passive: true });
     }
   })();
   </script>
-
 
 <script>
   // iOS page-zoom / pan can reveal the root (html) background.
@@ -4367,14 +4400,12 @@ body{
         raf = null;
       });
     }
-
     update();
 
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
 
-    // iOS: visualViewport fires during zoom + pan, even when window scroll doesn't.
-    if (window.visualViewport) {
+    if (window.visualViewport) { // iOS: visualViewport fires during zoom + pan, even when window scroll doesn't.
       window.visualViewport.addEventListener("scroll", schedule, { passive: true });
       window.visualViewport.addEventListener("resize", schedule);
     }
@@ -4382,5 +4413,3 @@ body{
 </script>
 </body>
 </html>
-
-
