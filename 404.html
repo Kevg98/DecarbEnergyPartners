@@ -1,0 +1,2066 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script src="/analytics.js" defer></script>
+  <script>
+    // A missing URL has no sibling asset directory; a direct draft does.
+    (function () {
+      var script = document.createElement("script");
+      script.src = location.protocol === "file:" || /\/404\.html$/i.test(location.pathname)
+        ? "site-search.js" : "/site-search.js";
+      script.defer = true;
+      // Even a missing path ending in /404.html must recover to root assets.
+      if (location.protocol !== "file:" && script.getAttribute("src") === "site-search.js") {
+        script.onerror = function () {
+          var fallback = document.createElement("script");
+          fallback.src = "/site-search.js";
+          fallback.defer = true;
+          document.head.appendChild(fallback);
+        };
+      }
+      document.head.appendChild(script);
+    }());
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#00648A" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="icon" href="/DecarbEnergyPartnersGreen.png" type="image/png" />
+  <title>Page Not Found | Decarb Energy Partners</title>
+  <script>
+    // Include iPadOS when Safari requests a desktop-style user agent.
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) {
+      document.documentElement.classList.add("ios-layout");
+    }
+  </script>
+  <style>
+    /* BB404-STYLES-BEGIN */
+    :root {
+      color-scheme: light;
+      --primary-color: #00648a;
+      --primary-dark: #004a66;
+      --accent-color: #41a776;
+      --accent-rgb: 65, 167, 118;
+      --accent-action: #2b7652;
+      --accent-action-hover: #256a48;
+      --text-color: #16212b;
+      --muted-color: #41515d;
+      --surface: #ffffff;
+      --surface-glass: rgba(255, 255, 255, 0.92);
+      --border: rgba(22, 33, 43, 0.16);
+      --focus: 0 0 0 3px #ffffff, 0 0 0 6px var(--primary-color);
+      --navy: #0d2d3a;
+      --container-width: 1200px;
+      --page-pad: 1rem;
+      --radius: 18px;
+      --shadow: 0 12px 34px rgba(0, 0, 0, 0.14);
+      --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      --game-background-image: url("/Decarb%20Energy%20Partners%20Biosolids+%20Trailer%20--%20Hero%20Image%20Outline.png");
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      background: #dfe3e5;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      overflow-x: hidden;
+      color: var(--text-color);
+      background: linear-gradient(135deg, #f5f6f7 0%, #dfe3e5 52%, #cbd1d4 100%);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+    }
+
+    @supports (min-height: 100dvh) {
+      body { min-height: 100dvh; }
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button, summary { font: inherit; }
+
+    :focus-visible {
+      outline: none;
+      border-radius: 12px;
+      box-shadow: var(--focus);
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding-left: calc(var(--page-pad) + env(safe-area-inset-left));
+      padding-right: calc(var(--page-pad) + env(safe-area-inset-right));
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .skip-link {
+      position: fixed;
+      z-index: 3000;
+      top: 0.75rem;
+      left: calc(0.75rem + env(safe-area-inset-left));
+      padding: 0.7rem 1rem;
+      color: #ffffff;
+      background: var(--primary-dark);
+      border-radius: 12px;
+      transform: translateY(-180%);
+      box-shadow: var(--shadow);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .btn {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.65rem 0.95rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.12);
+      font-weight: 750;
+      line-height: 1.2;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      touch-action: manipulation;
+      transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.38);
+      transform: translateY(-1px);
+    }
+
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      color: #ffffff;
+      background: var(--accent-action);
+      border-color: var(--accent-action);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-action-hover);
+      border-color: var(--accent-action-hover);
+    }
+
+    .btn-secondary {
+      color: var(--primary-dark);
+      background: rgba(255, 255, 255, 0.88);
+      border-color: rgba(0, 74, 102, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: #ffffff;
+      border-color: rgba(0, 74, 102, 0.52);
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 1000;
+      padding-top: env(safe-area-inset-top);
+      background: var(--surface-glass);
+      border-bottom: 1px solid rgba(22, 33, 43, 0.1);
+      box-shadow: 0 7px 24px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(14px) saturate(150%);
+      -webkit-backdrop-filter: blur(14px) saturate(150%);
+    }
+
+    .header-inner {
+      width: 100%;
+      max-width: none;
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-top: 0.55rem;
+      padding-bottom: 0.55rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      min-width: 0;
+      flex: 0 1 auto;
+      align-items: center;
+    }
+
+    .brand img {
+      width: auto;
+      height: 52px;
+      max-width: min(310px, 38vw);
+      object-fit: contain;
+    }
+
+    .header-controls {
+      display: flex;
+      min-width: 0;
+      flex: 0 1 auto;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.6rem;
+      margin-left: auto;
+    }
+
+    .nav-desktop {
+      display: flex;
+      min-width: 0;
+      flex: 0 1 auto;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.45rem;
+    }
+
+    .nav-desktop .home-nav,
+    .nav-desktop .privacy-nav { padding-inline: 0.9rem; }
+
+    .header-social {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.4rem;
+    }
+
+    .header-social a {
+      width: 46px;
+      height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(22, 33, 43, 0.12);
+      border-radius: 14px;
+      color: rgba(22, 33, 43, 0.74);
+      background: rgba(22, 33, 43, 0.06);
+      touch-action: manipulation;
+    }
+
+    .header-social a:hover { background: rgba(22, 33, 43, 0.1); }
+    .header-social svg { width: 21px; height: 21px; fill: currentColor; }
+
+    .site-search {
+      position: relative;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      flex: 0 0 44px;
+      align-items: center;
+      justify-content: flex-end;
+      transition: width 0.2s ease, flex-basis 0.2s ease;
+    }
+
+
+    .site-search.is-open { width: clamp(220px, 30vw, 380px); flex-basis: clamp(220px, 30vw, 380px); }
+
+    .site-search-input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      min-width: 0;
+      height: 44px;
+      padding: 9px 50px 9px 14px;
+      color: var(--text-color);
+      background: #ffffff;
+      border: 1px solid rgba(22, 33, 43, 0.2);
+      border-radius: 12px;
+      font: inherit;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: scaleX(0.18);
+      transform-origin: right center;
+      transition: opacity 0.14s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+    }
+
+    .site-search.is-open .site-search-input {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: scaleX(1);
+      transition-delay: 0s;
+    }
+
+    .site-search-trigger {
+      position: relative;
+      z-index: 1;
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      flex: 0 0 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      color: var(--text-color);
+      background: rgba(22, 33, 43, 0.04);
+      border: 1px solid rgba(22, 33, 43, 0.16);
+      border-radius: 12px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .site-search-trigger:hover { background: rgba(0, 100, 138, 0.08); }
+    .site-search.is-open .site-search-trigger { background: transparent; border-color: transparent; }
+    .site-search-trigger:focus-visible,
+    .site-search-input:focus-visible { outline: none; box-shadow: var(--focus); }
+    .site-search-icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    html.site-search-active .nav-desktop { display: none; }
+    html.site-search-active .header-controls { flex: 1 1 auto; }
+    html.site-search-active .site-search { width: min(420px, 100%); max-width: 420px; flex: 1 1 420px; }
+
+    @media (max-width: 57.5rem) {
+      html.site-search-active .brand { display: none; }
+      html.site-search-active .header-controls { width: 100%; }
+      html.site-search-active .site-search { width: 100%; max-width: none; flex-basis: 100%; }
+    }
+
+    main {
+      min-width: 0;
+      min-height: 0;
+      display: flex;
+      padding: 0;
+      background: #dfe3e5;
+    }
+
+    .game-shell {
+      isolation: isolate;
+      position: relative;
+      width: 100%;
+      min-width: 0;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: minmax(20rem, 1fr);
+      overflow: hidden;
+      border: 0;
+      border-radius: 0;
+      background-color: #d9dde0;
+      background-image: linear-gradient(135deg, #f6f7f8 0%, #dfe3e5 50%, #c8ced1 100%);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      box-shadow: none;
+      touch-action: pan-y pinch-zoom;
+    }
+
+    /* Blur only the decorative hero artwork; overscan prevents soft clipped edges. */
+    .game-shell::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      inset: -8px;
+      background-image: var(--game-background-image);
+      background-repeat: no-repeat;
+      background-position: center calc(100% - 8px);
+      background-size: calc(100% - 16px) auto;
+      -webkit-filter: blur(5px);
+      filter: blur(5px);
+      opacity: 0.72;
+      pointer-events: none;
+    }
+
+    /* A neutral wash keeps the artwork visible while maintaining readable foreground contrast. */
+    .game-shell::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(250, 251, 252, 0.74) 0%, rgba(222, 226, 229, 0.58) 52%, rgba(188, 194, 198, 0.66) 100%),
+        radial-gradient(90% 80% at 85% 20%, rgba(255, 255, 255, 0.5), rgba(169, 176, 181, 0.16) 62%, transparent 78%);
+      pointer-events: none;
+    }
+
+    .game-background-copy {
+      position: absolute;
+      z-index: 1;
+      top: clamp(0.75rem, 2vw, 1.25rem);
+      left: clamp(0.75rem, 2vw, 1.25rem);
+      width: min(calc(100% - 1.5rem), 78rem);
+      padding: 0;
+      color: #263238;
+      font-family: inherit;
+      text-align: left;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.92), 0 2px 12px rgba(255, 255, 255, 0.62);
+      pointer-events: none;
+    }
+
+    .game-background-copy:focus-within { z-index: 3; }
+
+    .game-background-title {
+      margin: 0;
+      color: #202b31;
+      font-size: clamp(4rem, 8vw, 6.5rem);
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: 0.95;
+    }
+
+    .game-background-message {
+      margin: clamp(0.55rem, 1.2vw, 0.85rem) 0 0;
+      color: #2c383e;
+      font-size: clamp(1.6rem, 2.5vw, 2rem);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .game-background-message a {
+      color: inherit;
+      font-weight: 850;
+      text-decoration: underline;
+      text-decoration-thickness: 0.11em;
+      text-underline-offset: 0.18em;
+      pointer-events: auto;
+    }
+
+    .score-hud {
+      position: absolute;
+      z-index: 4;
+      top: clamp(0.75rem, 2vw, 1.25rem);
+      right: clamp(0.75rem, 2vw, 1.25rem);
+      margin: 0;
+      display: flex;
+      align-items: baseline;
+      gap: 0.28em;
+      padding: 0;
+      border: 0;
+      color: #2c383e;
+      background: transparent;
+      font-family: inherit;
+      font-size: clamp(1rem, 1.8vw, 1.5rem);
+      font-weight: 700;
+      line-height: 1.35;
+      text-align: right;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, 0.92), 0 2px 12px rgba(255, 255, 255, 0.62);
+      white-space: nowrap;
+      box-shadow: none;
+      pointer-events: none;
+    }
+
+    .score-hud dt,
+    .score-hud dd {
+      margin: 0;
+      color: inherit;
+      font: inherit;
+      letter-spacing: normal;
+      text-transform: none;
+    }
+
+    .score-hud dd {
+      min-width: 1ch;
+      font-variant-numeric: tabular-nums;
+      text-align: left;
+    }
+
+    .score-hud .round-label::before {
+      content: "/";
+      margin-right: 0.28em;
+    }
+
+    .game-runtime:not([hidden]) {
+      position: relative;
+      z-index: 2;
+      min-width: 0;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: minmax(17rem, 1fr) auto;
+      pointer-events: none;
+    }
+
+    .game-stage {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(89, 98, 104, 0.1)),
+        radial-gradient(70% 65% at 50% 40%, rgba(255, 255, 255, 0.24), transparent 72%);
+    }
+
+    #game-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: transparent;
+      touch-action: pan-y pinch-zoom;
+      pointer-events: none;
+    }
+
+    .motion-toggle {
+      position: absolute;
+      z-index: 5;
+      right: 0.65rem;
+      bottom: 0.35rem;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.55rem 0.72rem;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 999px;
+      color: #ffffff;
+      background: rgba(8, 34, 46, 0.78);
+      font-size: clamp(0.625rem, 1.2vw, 0.875rem);
+      font-weight: 800;
+      line-height: 1;
+      cursor: pointer;
+      touch-action: manipulation;
+      pointer-events: auto;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .motion-toggle:hover:not(:disabled) { background: rgba(0, 74, 102, 0.94); }
+    .motion-toggle:disabled { visibility: hidden; opacity: 0; cursor: not-allowed; }
+
+    .touch-hint {
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      bottom: 0.6rem;
+      max-width: calc(100% - 10rem);
+      margin: 0;
+      padding: 0.4rem 0.7rem;
+      color: #ffffff;
+      background: rgba(8, 34, 46, 0.78);
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-align: center;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .touch-hint:empty { display: none; }
+
+    .move-actions {
+      position: absolute;
+      z-index: 5;
+      right: 0.65rem;
+      bottom: 0.6rem;
+      display: none;
+      grid-template-columns: repeat(2, 52px);
+      gap: 0.45rem;
+    }
+
+    .move-actions button {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 50%;
+      color: #ffffff;
+      background: rgba(8, 34, 46, 0.82);
+      font-size: 1.25rem;
+      font-weight: 900;
+      cursor: pointer;
+      user-select: none;
+      touch-action: none;
+      pointer-events: auto;
+    }
+
+    .game-information {
+      position: relative;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.7rem 1.2rem;
+      padding: 0.55rem clamp(0.75rem, 2vw, 1.1rem);
+      color: #ffffff;
+      background: rgba(8, 34, 46, 0.88);
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .game-state-text { margin: 0; }
+
+    .game-state-text {
+      flex: 0 0 auto;
+      color: #b7f1d4;
+      font-size: 0.78rem;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .game-fallback {
+      margin: 1rem;
+      padding: 1rem;
+      color: var(--text-color);
+      background: #fff7df;
+      border: 2px solid #806000;
+      border-radius: 14px;
+    }
+
+    @media (max-width: 67.5rem) {
+      .brand img { max-width: min(275px, 31vw); }
+    }
+
+    @media (max-width: 57.5rem) {
+      .header-inner { min-height: 70px; flex-wrap: wrap; justify-content: space-between; }
+      .brand img { height: 44px; max-width: min(275px, 70vw); }
+      .header-controls { justify-content: flex-end; }
+    }
+
+    @media (max-width: 40rem) {
+      :root { --page-pad: 0.65rem; }
+      .header-inner { flex-wrap: wrap; justify-content: flex-start; }
+      .header-controls { width: 100%; justify-content: flex-end; }
+      .nav-desktop { justify-content: flex-end; }
+      main { padding: 0; }
+      .game-shell {
+        border-inline: 0;
+        border-radius: 0;
+        background-position: center;
+      }
+      .game-background-copy {
+        width: calc(100% - 1.5rem);
+        padding-right: 4.25rem;
+      }
+      .game-runtime:not([hidden]) { grid-template-rows: minmax(19rem, 1fr) auto; }
+      .game-information { align-items: flex-start; }
+      .game-state-text { white-space: normal; text-align: right; }
+    }
+
+    @media (max-width: 34rem) {
+      .header-controls { flex-wrap: wrap; }
+      .nav-desktop { flex: 1 0 100%; flex-wrap: wrap; }
+    }
+
+    @media (max-width: 27.5rem) {
+      .game-background-title { font-size: clamp(2.5rem, 12vw, 3.5rem); }
+      .score-hud { font-size: clamp(0.82rem, 3.4vw, 1rem); }
+    }
+
+    @media (max-width: 25rem) {
+      .brand img { max-width: 68vw; }
+      .nav-desktop { gap: 0.35rem; }
+      .nav-desktop .btn { padding-inline: 0.7rem; font-size: 0.86rem; }
+      .header-social a { width: 44px; height: 44px; }
+      .touch-hint { max-width: calc(100% - 8rem); }
+    }
+
+    @media (pointer: coarse), (hover: none) {
+      .move-actions { display: grid; bottom: 3.85rem; }
+      .touch-hint { left: 0.65rem; max-width: calc(100% - 8rem); transform: none; text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+    @media (forced-colors: active) {
+      .site-header,
+      .game-shell,
+      .motion-toggle,
+      .move-actions button,
+      .game-information { border: 2px solid CanvasText; }
+      #game-canvas { forced-color-adjust: none; }
+      .game-shell::before, .game-shell::after { opacity: 0.18; }
+      .game-background-title,
+      .game-background-message,
+      .score-hud { color: CanvasText; }
+    }
+
+    @media (max-height: 42rem) and (orientation: landscape) {
+      .header-inner { min-height: 58px; padding-block: 0.3rem; }
+      .brand img { height: 36px; }
+      .game-shell { background-position: center; }
+      .game-background-copy {
+        width: min(calc(100% - 1.5rem), 78rem);
+        padding-right: 4.25rem;
+      }
+      .game-background-title { font-size: clamp(3.7rem, 16vh, 6.3rem); }
+      .game-background-message { font-size: clamp(1.44rem, 5.4vh, 1.8rem); }
+      .game-runtime:not([hidden]) { grid-template-rows: minmax(22rem, 1fr) auto; }
+    }
+    /* Compact iOS recovery controls; game input and desktop layout stay intact. */
+    html.ios-layout .privacy-nav,
+    html.ios-layout .header-social,
+    html.ios-layout .move-actions { display: none; }
+    html.ios-layout .header-inner { flex-wrap: nowrap; gap: 0.5rem; }
+    html.ios-layout .brand img { height: 44px; max-width: min(275px, 45vw); }
+    html.ios-layout:not(.site-search-active) .header-controls {
+      width: auto;
+      flex: 0 0 auto;
+      flex-wrap: nowrap;
+      gap: 0.5rem;
+    }
+    html.ios-layout .nav-desktop { flex: 0 0 auto; flex-wrap: nowrap; }
+    html.ios-layout .site-search { order: 1; }
+    html.ios-layout .game-background-copy { padding-right: 0; }
+    html.ios-layout .game-background-title { padding-right: 4.25rem; }
+    html.ios-layout .game-background-message {
+      font-size: clamp(0.75rem, 3.5vw, 1rem);
+      line-height: 1.3;
+    }
+    /* BB404-STYLES-END */
+  </style>
+</head>
+<body data-analytics-page="error_404">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="https://www.decarbenergypartners.com/" aria-label="Decarb Energy Partners home" data-analytics-event="error_recovery_click" data-analytics-destination="home" data-analytics-placement="header">
+        <img src="/Decarb%20Energy%20Partners%20Logo%20Horizontal-680w.webp" width="680" height="205" alt="Decarb Energy Partners logo" decoding="async" />
+      </a>
+
+      <div class="header-controls">
+        <form class="site-search" role="search" action="https://www.decarbenergypartners.com/search.html" method="get" data-site-search-form>
+          <input class="site-search-input" id="siteSearchInput" name="q" type="search" maxlength="120" autocomplete="off" enterkeyhint="search" aria-label="Search the entire Decarb Energy website" tabindex="-1" disabled data-site-search-input />
+          <button class="site-search-trigger" type="submit" aria-label="Open site search" aria-expanded="false" aria-controls="siteSearchInput" data-site-search-trigger>
+            <svg class="site-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          </button>
+        </form>
+
+        <nav class="nav-desktop" aria-label="Recovery and contact navigation">
+          <a class="btn btn-primary home-nav" href="https://www.decarbenergypartners.com/" data-analytics-event="error_recovery_click" data-analytics-destination="home" data-analytics-placement="header">Home</a>
+          <a class="btn btn-secondary privacy-nav" href="https://www.decarbenergypartners.com/privacy.html" data-analytics-event="error_recovery_click" data-analytics-destination="privacy" data-analytics-placement="header">Privacy Policy</a>
+          <div class="header-social" role="group" aria-label="Social links">
+            <a href="https://www.linkedin.com/company/decarbenergypartners/" target="_blank" rel="noopener" aria-label="LinkedIn" data-analytics-event="outbound_link_click" data-analytics-destination-domain="linkedin.com" data-analytics-link-category="social" data-analytics-placement="header">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.55v-5.56c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.95v5.65H9.3V9h3.41v1.56h.05c.47-.9 1.62-1.85 3.34-1.85 3.57 0 4.23 2.35 4.23 5.41v6.33zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" /></svg>
+            </a>
+            <a href="mailto:info@decarbenergypartners.com?subject=Learn%20More" aria-label="Email" data-analytics-event="cta_click" data-analytics-cta-id="learn_more" data-analytics-placement="header" data-analytics-destination-type="email">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <script id="brand-asset-preview">
+    // Keep root assets for real 404s, including when JavaScript is disabled.
+    // Local previews need the files beside this HTML, not at the drive/server root.
+    (function () {
+      var isFilePreview = location.protocol === "file:";
+      var isLocalServerPreview =
+        /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname) &&
+        /\/404\.html$/i.test(location.pathname);
+      if (!isFilePreview && !isLocalServerPreview) return;
+
+      [
+        [".site-header .brand img", "src", "Decarb%20Energy%20Partners%20Logo%20Horizontal-680w.webp"],
+        ['link[rel="icon"]', "href", "DecarbEnergyPartnersGreen.png"]
+      ].forEach(function (asset) {
+        var element = document.querySelector(asset[0]);
+        if (!element) return;
+        var previewUrl = new URL(asset[2], document.baseURI).href;
+        if (new URL(element.getAttribute(asset[1]), document.baseURI).href === previewUrl) return;
+        if (isFilePreview) {
+          element.setAttribute(asset[1], previewUrl);
+        } else {
+          // A missing local URL can also end in /404.html; keep the root fallback
+          // unless the sibling image loads. Image probing also works for favicons.
+          var probe = new Image();
+          probe.onload = function () { element.setAttribute(asset[1], previewUrl); };
+          probe.src = previewUrl;
+        }
+      });
+    }());
+  </script>
+
+  <main id="main-content" data-pagefind-body data-pagefind-weight="0.25">
+    <!-- BB404-GAME-BEGIN -->
+    <section class="game-shell" id="brick-breaker" aria-labelledby="page-title">
+      <div class="game-background-copy" id="game-background-copy">
+        <h1 class="game-background-title" id="page-title">Page Not Found</h1>
+        <p class="game-background-message">While you're here, help destroy PFAS before returning to Decarb's <a href="https://www.decarbenergypartners.com/" data-analytics-event="error_recovery_click" data-analytics-destination="home" data-analytics-placement="game-background">Homepage</a></p>
+      </div>
+
+      <dl class="score-hud" aria-label="Game score and round">
+        <dt>Score</dt><dd id="game-score">0</dd>
+        <dt class="round-label">Round</dt><dd class="round-value" id="game-round">1</dd>
+      </dl>
+
+      <div class="game-runtime" id="game-runtime" hidden>
+        <div class="game-stage" id="game-stage">
+          <canvas id="game-canvas" width="960" height="600" tabindex="0" role="img" aria-label="Playable endless Brick Breaker field with bricks arranged as 404" aria-describedby="game-instructions game-state game-status">
+            The optional Brick Breaker game requires HTML Canvas. The homepage and Website section links remain available in the header.
+          </canvas>
+          <button class="motion-toggle" id="game-motion-toggle" type="button" disabled aria-label="Pause game">Pause</button>
+          <p class="touch-hint" id="game-touch-hint">Press Space or Tap to Destroy PFAS</p>
+          <div class="move-actions" aria-label="Touch paddle controls">
+            <button id="game-left" type="button" data-move="-1" aria-label="Move paddle left">&#8592;</button>
+            <button id="game-right" type="button" data-move="1" aria-label="Move paddle right">&#8594;</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="game-information visually-hidden">
+            <p class="visually-hidden" id="game-instructions">Game controls: use Left or Right Arrow or A and D to move the paddle. Use Space to start, and P or Escape to pause or resume. Twin white bars mark reinforced bricks that require two hits.</p>
+            <p class="game-state-text"><span id="game-state">Ready</span></p>
+          </div>
+        </div>
+      </div>
+
+      <p class="visually-hidden" id="game-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      <p class="game-fallback" id="game-fallback" hidden>Sorry, the optional game is unavailable in this browser. Use the recovery links in the header to continue.</p>
+      <noscript><p class="game-fallback">The optional game needs JavaScript. The homepage and Website section links remain available in the header.</p></noscript>
+    </section>
+    <!-- BB404-GAME-END -->
+  </main>
+
+  <!-- DECARB-GA4-CONSENT-BEGIN -->
+  <section class="analytics-consent" id="analytics-consent" aria-labelledby="analytics-consent-title" hidden>
+    <div class="analytics-consent__inner">
+      <div class="analytics-consent__header">
+        <h2 id="analytics-consent-title" tabindex="-1">Website Analytics</h2>
+      </div>
+      <button class="analytics-consent__close" id="analytics-consent-close" type="button" aria-label="Close Website Analytics">X</button>
+      <p class="analytics-consent__message">This website uses Google Analytics only if you accept. See the <a href="/privacy.html#analytics">Privacy Policy</a> for details. <span class="analytics-consent__status" id="analytics-consent-status" role="status" aria-live="polite"></span></p>
+      <div class="analytics-consent__actions" role="group" aria-label="Analytics consent choices">
+        <button class="analytics-consent__choice" id="analytics-consent-accept" type="button">Accept</button>
+        <button class="analytics-consent__choice" id="analytics-consent-decline" type="button">Decline</button>
+      </div>
+    </div>
+  </section>
+  <button id="analytics-settings" type="button" hidden>Analytics Choices</button>
+  <!-- DECARB-GA4-CONSENT-END -->
+
+
+  <script type="module">
+    // BB404-SCRIPT-BEGIN
+const CFG = Object.freeze({
+  INITIAL_SPEED: 520,
+  ACCELERATION: 2,
+  MAX_SPEED: 1440,
+  BRICK_SCORE: 10,
+  TOUGH_BRICKS_PER_ROUND: 4,
+  TOUGH_BRICK_HITS: 2,
+  PADDLE_SPEED: 900,
+  LARGE_PADDLE_FACTOR: 1.5,
+  LARGE_PADDLE_SECONDS: 10,
+  LARGE_PADDLE_WARNING_SECONDS: 2,
+  LARGE_PADDLE_WARNING_FLASHES: 4,
+  POWER_UP_DROP_RATE: 0.09,
+  POWER_UP_FALL_SPEED: 145,
+  MAX_ACTIVE_BALLS: 3,
+  MAX_FALLING_POWER_UPS: 4,
+  ROUND_REVEAL_SECONDS: 0.5,
+  FIXED_STEP: 1 / 180,
+  MAX_FRAME_DELTA: 0.05,
+  MAX_SUBSTEPS: 12,
+  DPR_CAP: 2,
+  MAX_BACKING_WIDTH: 2560,
+  MAX_BACKING_HEIGHT: 1800
+});
+
+const MODES = Object.freeze({
+  READY: "ready",
+  PLAYING: "playing",
+  PAUSED: "paused",
+  GAME_OVER: "game-over"
+});
+
+const POWER_UP_TYPES = Object.freeze({
+  ADD_BALL: "additional-ball",
+  LARGE_PADDLE: "larger-paddle"
+});
+
+const TOUGH_BRICK_MARKER_COLOR = "rgba(255, 255, 255, 0.82)";
+
+// Round 1 retains the original blue; the palette repeats every nine rounds.
+const ROUND_BRICK_COLORS = Object.freeze([
+  "#00648A", "#1F7A5A", "#6B3F8C", "#9B2C2C", "#8A4B08",
+  "#006D77", "#5F6B22", "#8B3A62", "#344E8C"
+]);
+
+const BRICK_PATTERNS = Object.freeze([
+  Object.freeze(["..XX.", ".X.X.", "X..X.", "X..X.", "XXXXX", "...X.", "...X.", "...X.", "...X."]),
+  Object.freeze(["XXXXX", "X...X", "X...X", "X...X", "X...X", "X...X", "X...X", "X...X", "XXXXX"]),
+  Object.freeze(["..XX.", ".X.X.", "X..X.", "X..X.", "XXXXX", "...X.", "...X.", "...X.", "...X."])
+]);
+
+// Each X is one small horizontal brick. The denser nine-row mask makes the full 404 larger and clearer.
+const BRICK_MASK = Object.freeze(BRICK_PATTERNS.flatMap((rows, digit) =>
+  rows.flatMap((rowPattern, row) =>
+    Array.from(rowPattern).flatMap((cell, column) =>
+      cell === "X" ? [Object.freeze({
+        id: `d${digit}-r${row}-c${column}`,
+        digit,
+        row,
+        column
+      })] : []
+    )
+  )
+));
+
+// Curated PFAS abbreviations used only as game labels; each board receives unique labels.
+const PFAS_LABELS = Object.freeze([
+  "PFOS", "PFOA", "PFHxS", "PFNA", "PFBS", "PFHxA", "PFBA", "PFDA", "PFUnA", "PFDoA",
+  "PFTrDA", "PFTeDA", "PFPeA", "PFHpA", "PFPrA", "PFPeS", "PFHpS", "PFNS", "PFDS", "PFDoS",
+  "4:2 FTS", "6:2 FTS", "8:2 FTS", "10:2 FTS", "12:2 FTS", "3:3 FTCA", "5:3 FTCA", "7:3 FTCA", "9:3 FTCA", "11:3 FTCA",
+  "4:2 FTOH", "6:2 FTOH", "8:2 FTOH", "10:2 FTOH", "12:2 FTOH", "5:2 FTUCA", "6:2 FTUCA", "8:2 FTUCA", "10:2 FTUCA", "PFOSA",
+  "NMeFOSA", "NEtFOSA", "NMeFOSE", "NEtFOSE", "NMeFOSAA", "NEtFOSAA", "HFPO-DA", "ADONA", "PFMOAA", "cC6O4",
+  "PFMPA", "PFMBA", "NFDHA", "PFEESA", "9Cl-PF3ONS", "11Cl-PF3OUdS", "PFO2HxA", "PFO3OA", "PFecHS", "PFHxDA"
+]);
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
+function brickColorForRound(round) {
+  const numericRound = Number(round);
+  const normalizedRound = Number.isFinite(numericRound) ? Math.max(1, Math.floor(numericRound)) : 1;
+  return ROUND_BRICK_COLORS[(normalizedRound - 1) % ROUND_BRICK_COLORS.length];
+}
+
+function makeBounds(width = 960, height = 600) {
+  return {
+    width: Math.max(320, Number(width) || 960),
+    height: Math.max(260, Number(height) || 600)
+  };
+}
+
+function boundedDelta(seconds) {
+  return clamp(Number.isFinite(seconds) ? seconds : 0, 0, CFG.MAX_FRAME_DELTA);
+}
+
+function stepCountForDelta(seconds) {
+  return Math.min(CFG.MAX_SUBSTEPS, Math.floor(boundedDelta(seconds) / CFG.FIXED_STEP));
+}
+
+function keyDirection(key) {
+  const normalized = String(key).toLowerCase();
+  if (normalized === "arrowleft" || normalized === "a") return -1;
+  if (normalized === "arrowright" || normalized === "d") return 1;
+  return 0;
+}
+
+function pointerToLogical(clientX, clientY, rect, bounds) {
+  const width = Number(rect.width) || 1;
+  const height = Number(rect.height) || 1;
+  return {
+    x: clamp((clientX - rect.left) * bounds.width / width, 0, bounds.width),
+    y: clamp((clientY - rect.top) * bounds.height / height, 0, bounds.height)
+  };
+}
+
+function shuffleLabels(labels, random = Math.random) {
+  const shuffled = Array.from(labels);
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const value = clamp(Number(random()), 0, 0.999999999);
+    const swapIndex = Math.floor(value * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+  return shuffled;
+}
+
+function labelsForRound(round, random = Math.random, previousLabels = []) {
+  const rotated = PFAS_LABELS.map((_, index) => PFAS_LABELS[(index + (round - 1) * BRICK_MASK.length) % PFAS_LABELS.length]);
+  const labels = shuffleLabels(rotated, random).slice(0, BRICK_MASK.length);
+  if (previousLabels.length === labels.length && labels.every((label, index) => label === previousLabels[index])) {
+    labels.push(labels.shift());
+  }
+  return labels;
+}
+
+function paddleBaseWidth(bounds) {
+  return clamp(bounds.width * 0.17, 96, 190);
+}
+
+function paddleHeight(bounds) {
+  return clamp(bounds.height * 0.0125, 7.5, 11);
+}
+
+function ballRadius(bounds) {
+  return clamp(Math.min(bounds.width, bounds.height) * 0.03, 15, 22);
+}
+
+function makePaddle(bounds) {
+  const width = paddleBaseWidth(bounds);
+  const height = paddleHeight(bounds);
+  return {
+    x: (bounds.width - width) / 2,
+    y: bounds.height - clamp(bounds.height * 0.08, 45, 72),
+    w: width,
+    h: height,
+    baseWidth: width,
+    largeUntil: 0
+  };
+}
+
+function largePaddleWarningPhase(paddle, activePlaySeconds) {
+  const expiry = Number(paddle?.largeUntil) || 0;
+  const now = Math.max(0, Number(activePlaySeconds) || 0);
+  const remaining = expiry - now;
+  if (remaining <= 0 || remaining > CFG.LARGE_PADDLE_WARNING_SECONDS) return -1;
+
+  // Four functional flashes at two per second stay clear without adding another timer.
+  const halfPhaseCount = CFG.LARGE_PADDLE_WARNING_FLASHES * 2;
+  const halfPhaseSeconds = CFG.LARGE_PADDLE_WARNING_SECONDS / halfPhaseCount;
+  const elapsedWarningSeconds = CFG.LARGE_PADDLE_WARNING_SECONDS - remaining;
+  const halfPhaseIndex = Math.min(halfPhaseCount - 1, Math.floor(elapsedWarningSeconds / halfPhaseSeconds));
+  return halfPhaseIndex % 2 === 0 ? Math.floor(halfPhaseIndex / 2) + 1 : 0;
+}
+
+function targetSpeedForTime(activePlaySeconds) {
+  return clamp(CFG.INITIAL_SPEED + CFG.ACCELERATION * Math.max(0, activePlaySeconds), CFG.INITIAL_SPEED, CFG.MAX_SPEED);
+}
+
+function ballSpeed(ball) {
+  return Math.hypot(ball.vx, ball.vy);
+}
+
+function normalizeBallVelocity(ball, targetSpeed) {
+  const speed = ballSpeed(ball);
+  if (!speed) {
+    ball.vx = targetSpeed * 0.42;
+    ball.vy = -targetSpeed * Math.sqrt(1 - 0.42 * 0.42);
+    return ball;
+  }
+  const bounded = clamp(targetSpeed, CFG.INITIAL_SPEED, CFG.MAX_SPEED);
+  ball.vx = ball.vx / speed * bounded;
+  ball.vy = ball.vy / speed * bounded;
+  return ball;
+}
+
+function makeBall(state, angleDegrees = -24, originX, originY) {
+  const radius = ballRadius(state.bounds);
+  const angle = clamp(angleDegrees, -62, 62) * Math.PI / 180;
+  const speed = state.targetSpeed;
+  return {
+    id: state.nextBallId++,
+    x: Number.isFinite(originX) ? originX : state.paddle.x + state.paddle.w / 2,
+    y: Number.isFinite(originY) ? originY : state.paddle.y - radius - 3,
+    r: radius,
+    vx: speed * Math.sin(angle),
+    vy: -Math.abs(speed * Math.cos(angle)),
+    docked: state.mode === MODES.READY
+  };
+}
+
+function layoutBricks(bounds, labels, brickStateById = new Map()) {
+  const rows = BRICK_PATTERNS[0].length;
+  const columnsPerDigit = BRICK_PATTERNS[0][0].length;
+  const sideMargin = clamp(bounds.width * 0.0125, 4, 18);
+  const boardWidth = bounds.width - sideMargin * 2;
+  const columnGap = Math.round(clamp(boardWidth * 0.0035, 2, 5));
+  const digitGap = Math.round(clamp(boardWidth * 0.018, 6, 22));
+  const interiorGapCount = BRICK_PATTERNS.length * (columnsPerDigit - 1);
+  const widthCapacity = (boardWidth - digitGap * (BRICK_PATTERNS.length - 1) - columnGap * interiorGapCount) /
+    (BRICK_PATTERNS.length * columnsPerDigit);
+  const brickWidth = Math.max(12, Math.floor(Math.min(66, widthCapacity)));
+  const rowGap = Math.round(clamp(bounds.height * 0.007, 2, 6));
+  const copyClearance = bounds.height <= 420
+    ? clamp(bounds.height * 0.58, 210, 240)
+    : bounds.width <= 700
+      ? clamp(bounds.height * 0.38, 250, 340)
+      : clamp(bounds.height * 0.27, 205, 260);
+  const top = Math.max(clamp(bounds.height * 0.075, 24, 68), copyClearance);
+  const paddleY = bounds.height - clamp(bounds.height * 0.08, 45, 72);
+  const availableHeight = Math.max(70, paddleY - top - clamp(bounds.height * 0.18, 44, 116));
+  const heightCapacity = (availableHeight - rowGap * (rows - 1)) / rows;
+  const brickHeight = Math.max(6, Math.floor(Math.min(20, brickWidth * 0.34, heightCapacity)));
+  const digitWidth = columnsPerDigit * brickWidth + (columnsPerDigit - 1) * columnGap;
+  const formationWidth = BRICK_PATTERNS.length * digitWidth + (BRICK_PATTERNS.length - 1) * digitGap;
+  const formationHeight = rows * brickHeight + (rows - 1) * rowGap;
+  const left = (bounds.width - formationWidth) / 2;
+  const boardTop = top + Math.max(0, (availableHeight - formationHeight) * 0.12);
+
+  return BRICK_MASK.map((entry, index) => {
+    const savedState = brickStateById.get(entry.id);
+    const savedActive = typeof savedState === "boolean" ? savedState : savedState?.active;
+    const storedMaxHits = Number(savedState?.maxHits);
+    const maxHits = Number.isFinite(storedMaxHits) ? Math.max(1, Math.floor(storedMaxHits)) : 1;
+    const storedHitsRemaining = Number(savedState?.hitsRemaining);
+    const hitsRemaining = Number.isFinite(storedHitsRemaining)
+      ? clamp(Math.floor(storedHitsRemaining), 0, maxHits)
+      : maxHits;
+    return {
+      x: left + entry.digit * (digitWidth + digitGap) + entry.column * (brickWidth + columnGap),
+      y: boardTop + entry.row * (brickHeight + rowGap),
+      w: brickWidth,
+      h: brickHeight,
+      vertical: false,
+      id: entry.id,
+      digit: entry.digit,
+      label: labels[index],
+      active: typeof savedActive === "boolean" ? savedActive : true,
+      maxHits,
+      hitsRemaining
+    };
+  });
+}
+
+function toughBrickCountForRound(round, totalBricks = BRICK_MASK.length) {
+  const numericRound = Number(round);
+  const normalizedRound = Number.isFinite(numericRound) ? Math.max(1, Math.floor(numericRound)) : 1;
+  const numericTotal = Number(totalBricks);
+  const safeTotal = Number.isFinite(numericTotal) ? Math.max(0, Math.floor(numericTotal)) : 0;
+  return Math.min(safeTotal, (normalizedRound - 1) * CFG.TOUGH_BRICKS_PER_ROUND);
+}
+
+function toughBrickIdsForRound(bricks, round) {
+  const count = toughBrickCountForRound(round, bricks.length);
+  if (!count || !bricks.length) return new Set();
+  const numericRound = Number(round);
+  const normalizedRound = Number.isFinite(numericRound) ? Math.max(1, Math.floor(numericRound)) : 1;
+  const offset = ((normalizedRound - 2) * 7) % bricks.length;
+  return new Set(Array.from({ length: count }, (_, index) =>
+    bricks[(offset + Math.floor(index * bricks.length / count)) % bricks.length].id
+  ));
+}
+
+function isToughBrick(brick) {
+  return Boolean(brick?.active && brick.maxHits > 1 && brick.hitsRemaining > 1);
+}
+
+function makeBricks(bounds, round = 1, random = Math.random, previousLabels = []) {
+  const labels = labelsForRound(round, random, previousLabels);
+  const bricks = layoutBricks(bounds, labels);
+  const toughIds = toughBrickIdsForRound(bricks, round);
+  return bricks.map((brick) => {
+    const maxHits = toughIds.has(brick.id) ? CFG.TOUGH_BRICK_HITS : 1;
+    return { ...brick, maxHits, hitsRemaining: maxHits };
+  });
+}
+
+function createInitialState(bounds = makeBounds(), random = Math.random) {
+  const safeBounds = makeBounds(bounds.width, bounds.height);
+  const paddle = makePaddle(safeBounds);
+  const state = {
+    mode: MODES.READY,
+    score: 0,
+    round: 1,
+    activePlaySeconds: 0,
+    targetSpeed: CFG.INITIAL_SPEED,
+    remaining: BRICK_MASK.length,
+    roundPending: false,
+    roundRevealRemaining: 0,
+    bounds: safeBounds,
+    paddle,
+    balls: [],
+    powerUps: [],
+    nextBallId: 1,
+    nextPowerUpId: 1,
+    bricks: makeBricks(safeBounds, 1, random)
+  };
+  state.balls.push(makeBall(state));
+  return state;
+}
+
+function resetGame(state, random = Math.random) {
+  const replacement = createInitialState(state.bounds, random);
+  Object.keys(state).forEach((key) => delete state[key]);
+  Object.assign(state, replacement);
+  return state;
+}
+
+function transitionGame(state, action, random = Math.random) {
+  if (action === "start") {
+    if (state.mode === MODES.GAME_OVER) resetGame(state, random);
+    if (state.mode !== MODES.READY && state.mode !== MODES.PAUSED) return false;
+    state.mode = MODES.PLAYING;
+    for (const ball of state.balls) ball.docked = false;
+    return true;
+  }
+  if (action === "pause" && state.mode === MODES.PLAYING) {
+    state.mode = MODES.PAUSED;
+    return true;
+  }
+  if (action === "resume" && state.mode === MODES.PAUSED) {
+    state.mode = MODES.PLAYING;
+    return true;
+  }
+  if (action === "game-over" && state.mode === MODES.PLAYING) {
+    state.mode = MODES.GAME_OVER;
+    state.balls = [];
+    state.powerUps = [];
+    state.roundPending = false;
+    state.roundRevealRemaining = 0;
+    return true;
+  }
+  if (action === "new-game") {
+    resetGame(state, random);
+    return true;
+  }
+  return false;
+}
+
+function controlState(mode) {
+  return {
+    motionDisabled: mode === MODES.READY || mode === MODES.GAME_OVER,
+    motionLabel: mode === MODES.PAUSED ? "Resume" : "Pause"
+  };
+}
+
+function clearInput(input) {
+  input.left = false;
+  input.right = false;
+  input.button = 0;
+  input.pointerId = null;
+  input.movePointer = null;
+}
+
+function setPaddleWidth(state, width) {
+  const center = state.paddle.x + state.paddle.w / 2;
+  state.paddle.w = clamp(width, state.paddle.baseWidth, state.bounds.width * 0.48);
+  state.paddle.x = clamp(center - state.paddle.w / 2, 0, state.bounds.width - state.paddle.w);
+}
+
+function bricksArePlayable(state) {
+  return !state.roundPending && state.roundRevealRemaining <= 0;
+}
+
+function advanceRound(state, random = Math.random) {
+  if (!state.roundPending && state.remaining > 0) return false;
+  const previousLabels = state.bricks.map((brick) => brick.label);
+  state.round += 1;
+  state.bricks = makeBricks(state.bounds, state.round, random, previousLabels);
+  state.remaining = state.bricks.length;
+  state.roundPending = false;
+  state.roundRevealRemaining = CFG.ROUND_REVEAL_SECONDS;
+  return true;
+}
+
+function brickRevealProgress(state) {
+  if (state.roundRevealRemaining <= 0 || CFG.ROUND_REVEAL_SECONDS <= 0) return 1;
+  const elapsed = CFG.ROUND_REVEAL_SECONDS - clamp(
+    state.roundRevealRemaining,
+    0,
+    CFG.ROUND_REVEAL_SECONDS
+  );
+  return clamp(elapsed / CFG.ROUND_REVEAL_SECONDS, 0, 1);
+}
+
+function maybeDropPowerUp(state, brick, random = Math.random) {
+  if (state.powerUps.length >= CFG.MAX_FALLING_POWER_UPS) return null;
+  if (clamp(Number(random()), 0, 1) >= CFG.POWER_UP_DROP_RATE) return null;
+  const type = Number(random()) < 0.5 ? POWER_UP_TYPES.ADD_BALL : POWER_UP_TYPES.LARGE_PADDLE;
+  const size = clamp(state.bounds.width * 0.06, 48, 78);
+  const powerUp = {
+    id: state.nextPowerUpId++,
+    type,
+    x: brick.x + brick.w / 2,
+    y: brick.y + brick.h / 2,
+    w: size,
+    h: clamp(size * 0.38, 24, 31)
+  };
+  state.powerUps.push(powerUp);
+  return powerUp;
+}
+
+function destroyBrick(state, brick, random = Math.random) {
+  if (!bricksArePlayable(state) || !brick || !brick.active) return false;
+  const storedHitsRemaining = Number(brick.hitsRemaining);
+  brick.hitsRemaining = Number.isFinite(storedHitsRemaining)
+    ? Math.max(0, Math.floor(storedHitsRemaining) - 1)
+    : 0;
+  if (brick.hitsRemaining > 0) return true;
+
+  brick.active = false;
+  state.remaining = Math.max(0, state.remaining - 1);
+  state.score += CFG.BRICK_SCORE;
+  maybeDropPowerUp(state, brick, random);
+  if (state.remaining === 0 && !state.roundPending) state.roundPending = true;
+  return true;
+}
+
+function collectPowerUp(state, type, random = Math.random) {
+  if (type === POWER_UP_TYPES.ADD_BALL) {
+    for (const activeBall of state.balls) normalizeBallVelocity(activeBall, state.targetSpeed);
+    if (state.balls.length >= CFG.MAX_ACTIVE_BALLS) return "Maximum three balls already active.";
+    const source = state.balls[0];
+    const randomAngle = (clamp(Number(random()), 0, 0.999999) * 76) - 38;
+    const angle = Math.abs(randomAngle) < 16 ? (randomAngle < 0 ? -24 : 24) : randomAngle;
+    const ball = makeBall(
+      state,
+      angle,
+      source ? source.x : state.paddle.x + state.paddle.w / 2,
+      source ? source.y : state.paddle.y - ballRadius(state.bounds) - 3
+    );
+    ball.docked = false;
+    normalizeBallVelocity(ball, state.targetSpeed);
+    state.balls.push(ball);
+    return "Additional ball collected.";
+  }
+  if (type === POWER_UP_TYPES.LARGE_PADDLE) {
+    state.paddle.largeUntil = state.activePlaySeconds + CFG.LARGE_PADDLE_SECONDS;
+    setPaddleWidth(state, state.paddle.baseWidth * CFG.LARGE_PADDLE_FACTOR);
+    return "Larger paddle collected for ten seconds.";
+  }
+  return "";
+}
+
+function circleTouchesRect(ball, rect) {
+  const nearX = clamp(ball.x, rect.x, rect.x + rect.w);
+  const nearY = clamp(ball.y, rect.y, rect.y + rect.h);
+  const dx = ball.x - nearX;
+  const dy = ball.y - nearY;
+  return dx * dx + dy * dy <= ball.r * ball.r;
+}
+
+function resolveBrickCollision(ball, brick) {
+  const centerX = brick.x + brick.w / 2;
+  const centerY = brick.y + brick.h / 2;
+  const overlapX = brick.w / 2 + ball.r - Math.abs(ball.x - centerX);
+  const overlapY = brick.h / 2 + ball.r - Math.abs(ball.y - centerY);
+  if (overlapX < overlapY) {
+    if (ball.x < centerX) {
+      ball.x = brick.x - ball.r;
+      ball.vx = -Math.abs(ball.vx);
+    } else {
+      ball.x = brick.x + brick.w + ball.r;
+      ball.vx = Math.abs(ball.vx);
+    }
+  } else if (ball.y < centerY) {
+    ball.y = brick.y - ball.r;
+    ball.vy = -Math.abs(ball.vy);
+  } else {
+    ball.y = brick.y + brick.h + ball.r;
+    ball.vy = Math.abs(ball.vy);
+  }
+}
+
+function updateBall(state, ball, dt, random, events) {
+  if (ball.docked) {
+    ball.x = state.paddle.x + state.paddle.w / 2;
+    ball.y = state.paddle.y - ball.r - 3;
+    return true;
+  }
+
+  normalizeBallVelocity(ball, state.targetSpeed);
+  const previousY = ball.y;
+  ball.x += ball.vx * dt;
+  ball.y += ball.vy * dt;
+
+  if (ball.x - ball.r < 0 && ball.vx < 0) {
+    ball.x = ball.r;
+    ball.vx = Math.abs(ball.vx);
+  } else if (ball.x + ball.r > state.bounds.width && ball.vx > 0) {
+    ball.x = state.bounds.width - ball.r;
+    ball.vx = -Math.abs(ball.vx);
+  }
+  if (ball.y - ball.r < 0 && ball.vy < 0) {
+    ball.y = ball.r;
+    ball.vy = Math.abs(ball.vy);
+  }
+
+  const paddle = state.paddle;
+  const paddleContact = ball.vy > 0 &&
+    ball.x + ball.r >= paddle.x &&
+    ball.x - ball.r <= paddle.x + paddle.w &&
+    ball.y + ball.r >= paddle.y &&
+    previousY + ball.r <= paddle.y + Math.max(3, Math.abs(ball.vy * dt) + 1);
+  if (paddleContact) {
+    ball.y = paddle.y - ball.r;
+    const offset = clamp((ball.x - (paddle.x + paddle.w / 2)) / (paddle.w / 2), -1, 1);
+    const angle = offset * 64 * Math.PI / 180;
+    ball.vx = state.targetSpeed * Math.sin(angle);
+    ball.vy = -Math.abs(state.targetSpeed * Math.cos(angle));
+  }
+
+  if (bricksArePlayable(state)) {
+    for (const brick of state.bricks) {
+      if (!brick.active || !circleTouchesRect(ball, brick)) continue;
+      resolveBrickCollision(ball, brick);
+      if (destroyBrick(state, brick, random)) {
+        events.push("brick-hit");
+        if (state.remaining === 0) events.push("round-cleared");
+      }
+      break;
+    }
+  }
+
+  normalizeBallVelocity(ball, state.targetSpeed);
+  return ball.y - ball.r <= state.bounds.height;
+}
+
+function updatePowerUps(state, dt, random, events) {
+  const retained = [];
+  for (const powerUp of state.powerUps) {
+    powerUp.y += CFG.POWER_UP_FALL_SPEED * dt;
+    const rect = { x: powerUp.x - powerUp.w / 2, y: powerUp.y - powerUp.h / 2, w: powerUp.w, h: powerUp.h };
+    const paddle = state.paddle;
+    const caught = rect.x + rect.w >= paddle.x && rect.x <= paddle.x + paddle.w &&
+      rect.y + rect.h >= paddle.y && rect.y <= paddle.y + paddle.h;
+    if (caught) {
+      const message = collectPowerUp(state, powerUp.type, random);
+      if (message) events.push(message);
+    } else if (rect.y <= state.bounds.height) {
+      retained.push(powerUp);
+    }
+  }
+  state.powerUps = retained;
+}
+
+function stepGame(state, seconds, direction = 0, random = Math.random) {
+  const events = [];
+  if (state.mode !== MODES.PLAYING) return events;
+  const dt = clamp(Number.isFinite(seconds) ? seconds : 0, 0, CFG.FIXED_STEP);
+  if (!dt) return events;
+
+  if (state.roundRevealRemaining > 0) {
+    state.roundRevealRemaining = Math.max(0, state.roundRevealRemaining - dt);
+    if (state.roundRevealRemaining < 1e-9) state.roundRevealRemaining = 0;
+    if (state.roundRevealRemaining === 0) events.push("round-ready");
+  }
+
+  state.activePlaySeconds += dt;
+  state.targetSpeed = targetSpeedForTime(state.activePlaySeconds);
+
+  if (state.paddle.largeUntil && state.activePlaySeconds >= state.paddle.largeUntil) {
+    state.paddle.largeUntil = 0;
+    setPaddleWidth(state, state.paddle.baseWidth);
+    events.push("Paddle returned to normal size.");
+  }
+
+  state.paddle.x = clamp(
+    state.paddle.x + clamp(direction, -1, 1) * CFG.PADDLE_SPEED * dt,
+    0,
+    state.bounds.width - state.paddle.w
+  );
+
+  const retainedBalls = [];
+  for (const ball of state.balls) {
+    if (updateBall(state, ball, dt, random, events)) retainedBalls.push(ball);
+  }
+  state.balls = retainedBalls;
+  updatePowerUps(state, dt, random, events);
+
+  if (state.balls.length === 0) {
+    transitionGame(state, "game-over", random);
+    events.push("game-over");
+    return events;
+  }
+
+  if (state.roundPending && advanceRound(state, random)) {
+    events.push("round-started");
+    if (state.roundRevealRemaining === 0) events.push("round-ready");
+  }
+  return events;
+}
+
+function resizeState(state, width, height) {
+  const previous = state.bounds;
+  const next = makeBounds(width, height);
+  const scaleX = next.width / previous.width;
+  const scaleY = next.height / previous.height;
+  const paddleCenterRatio = (state.paddle.x + state.paddle.w / 2) / previous.width;
+  const wasLarge = state.paddle.largeUntil > state.activePlaySeconds;
+  state.bounds = next;
+  state.paddle.baseWidth = paddleBaseWidth(next);
+  state.paddle.h = paddleHeight(next);
+  state.paddle.y = next.height - clamp(next.height * 0.08, 45, 72);
+  state.paddle.w = state.paddle.baseWidth * (wasLarge ? CFG.LARGE_PADDLE_FACTOR : 1);
+  state.paddle.w = clamp(state.paddle.w, state.paddle.baseWidth, next.width * 0.48);
+  state.paddle.x = clamp(paddleCenterRatio * next.width - state.paddle.w / 2, 0, next.width - state.paddle.w);
+
+  for (const ball of state.balls) {
+    ball.x = clamp(ball.x * scaleX, 0, next.width);
+    ball.y = clamp(ball.y * scaleY, 0, next.height + ball.r);
+    ball.r = ballRadius(next);
+    if (ball.docked) {
+      ball.x = state.paddle.x + state.paddle.w / 2;
+      ball.y = state.paddle.y - ball.r - 3;
+    }
+    normalizeBallVelocity(ball, state.targetSpeed);
+  }
+
+  for (const powerUp of state.powerUps) {
+    powerUp.x *= scaleX;
+    powerUp.y *= scaleY;
+    powerUp.w = clamp(next.width * 0.06, 48, 78);
+    powerUp.h = clamp(powerUp.w * 0.38, 24, 31);
+  }
+
+  const brickStateById = new Map(state.bricks.map((brick) => [brick.id, {
+    active: brick.active,
+    maxHits: brick.maxHits,
+    hitsRemaining: brick.hitsRemaining
+  }]));
+  const labels = state.bricks.map((brick) => brick.label);
+  state.bricks = layoutBricks(next, labels, brickStateById);
+  state.remaining = state.bricks.reduce((count, brick) => count + (brick.active ? 1 : 0), 0);
+  return state;
+}
+
+function initGame() {
+  const direct404Path = location.pathname.toLowerCase().endsWith("/404.html");
+  const backgroundImageUrl = location.protocol === "file:" || direct404Path
+    ? new URL("Decarb Energy Partners Biosolids+ Trailer -- Hero Image Outline.png", document.baseURI).href
+    : new URL("/Decarb Energy Partners Biosolids+ Trailer -- Hero Image Outline.png", location.origin).href;
+  document.documentElement.style.setProperty("--game-background-image", `url("${backgroundImageUrl}")`);
+
+  const favicon = document.querySelector('link[rel="icon"]');
+  if (favicon && location.protocol !== "file:" && !direct404Path) {
+    favicon.setAttribute("href", "/DecarbEnergyPartnersGreen.png");
+  }
+
+  const get = (id) => document.getElementById(id);
+  const el = {
+    panel: get("brick-breaker"),
+    runtime: get("game-runtime"),
+    stage: get("game-stage"),
+    canvas: get("game-canvas"),
+    fallback: get("game-fallback"),
+    score: get("game-score"),
+    round: get("game-round"),
+    state: get("game-state"),
+    status: get("game-status"),
+    touchHint: get("game-touch-hint"),
+    motionToggle: get("game-motion-toggle"),
+    left: get("game-left"),
+    right: get("game-right")
+  };
+  if (Object.values(el).some((element) => !element)) return;
+
+  let ctx = null;
+  try {
+    ctx = el.canvas.getContext("2d", { alpha: true });
+  } catch (_error) {
+    ctx = null;
+  }
+  if (!ctx) {
+    el.canvas.hidden = true;
+    el.fallback.hidden = false;
+    el.state.textContent = "Unavailable";
+    el.status.textContent = "The optional game is unavailable. Recovery links remain available.";
+    return;
+  }
+
+  el.runtime.hidden = false;
+  let state = createInitialState();
+  let raf = 0;
+  let lastTime = 0;
+  let carry = 0;
+  let effectiveDpr = 1;
+  let resizeReady = false;
+  const input = { left: false, right: false, button: 0, pointerId: null, movePointer: null };
+  const controller = new AbortController();
+  const signal = controller.signal;
+  const on = (target, type, listener, options = {}) => target.addEventListener(type, listener, { ...options, signal });
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.panel.dataset.reducedMotion = String(reducedMotion);
+
+  const logoImage = new Image();
+  let logoReady = false;
+  const siblingLogoUrl = new URL("DecarbEnergyPartnersGreen.png", document.baseURI).href;
+  const logoUrls = location.protocol === "file:"
+    ? [siblingLogoUrl]
+    : [new URL("/DecarbEnergyPartnersGreen.png", location.origin).href, siblingLogoUrl]
+      .filter((url, index, urls) => urls.indexOf(url) === index);
+  let logoUrlIndex = 0;
+  el.panel.dataset.logoBall = "loading";
+  logoImage.decoding = "async";
+  logoImage.addEventListener("load", () => {
+    logoReady = true;
+    el.panel.dataset.logoBall = "ready";
+    draw();
+  }, { once: true, signal });
+  logoImage.addEventListener("error", () => {
+    logoReady = false;
+    logoUrlIndex += 1;
+    if (logoUrlIndex < logoUrls.length) {
+      el.panel.dataset.logoBall = "retrying";
+      logoImage.src = logoUrls[logoUrlIndex];
+      return;
+    }
+    el.panel.dataset.logoBall = "fallback";
+    draw();
+  }, { signal });
+  logoImage.src = logoUrls[logoUrlIndex];
+
+  function direction() {
+    return clamp((input.right ? 1 : 0) - (input.left ? 1 : 0) + input.button, -1, 1);
+  }
+
+  function modeLabel(mode) {
+    if (mode === MODES.PLAYING) return "Playing";
+    if (mode === MODES.PAUSED) return "Paused";
+    if (mode === MODES.GAME_OVER) return "Game over";
+    return "Ready";
+  }
+
+  function updateUi() {
+    const controls = controlState(state.mode);
+    el.score.textContent = String(state.score);
+    el.round.textContent = String(state.round);
+    el.state.textContent = modeLabel(state.mode);
+    el.motionToggle.disabled = controls.motionDisabled;
+    el.motionToggle.textContent = controls.motionLabel;
+    el.motionToggle.setAttribute("aria-label", `${controls.motionLabel} game`);
+    el.panel.dataset.mode = state.mode;
+    el.panel.dataset.activeBalls = String(state.balls.length);
+    el.panel.dataset.remainingBricks = String(state.remaining);
+    if (state.mode === MODES.READY) el.touchHint.textContent = "Press Space or Tap to Destroy PFAS";
+    else if (state.mode === MODES.PAUSED) el.touchHint.textContent = "Tap the game to resume";
+    else if (state.mode === MODES.GAME_OVER) el.touchHint.textContent = "Press Space or Tap to Destroy PFAS";
+    else el.touchHint.textContent = "";
+  }
+
+  function roundedRect(x, y, width, height, radius) {
+    const safeRadius = Math.min(radius, width / 2, height / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + safeRadius, y);
+    ctx.lineTo(x + width - safeRadius, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + safeRadius);
+    ctx.lineTo(x + width, y + height - safeRadius);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - safeRadius, y + height);
+    ctx.lineTo(x + safeRadius, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - safeRadius);
+    ctx.lineTo(x, y + safeRadius);
+    ctx.quadraticCurveTo(x, y, x + safeRadius, y);
+    ctx.closePath();
+  }
+
+  function drawBrickLabel(brick) {
+    ctx.save();
+    const availableWidth = Math.max(8, brick.w - 6);
+    const availableHeight = Math.max(5, brick.h - 3);
+    let fontSize = clamp(availableHeight * 0.66, 5, 13);
+    ctx.font = `800 ${fontSize}px ${getComputedStyle(document.body).fontFamily}`;
+    while (fontSize > 5 && ctx.measureText(brick.label).width > availableWidth) {
+      fontSize -= 0.5;
+      ctx.font = `800 ${fontSize}px ${getComputedStyle(document.body).fontFamily}`;
+    }
+    ctx.fillStyle = "#ffffff";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(brick.label, brick.x + brick.w / 2, brick.y + brick.h / 2, availableWidth);
+    ctx.restore();
+  }
+
+  function drawBall(ball) {
+    const hasLogo = logoReady && logoImage.naturalWidth > 0 && logoImage.naturalHeight > 0;
+    ctx.save();
+    ctx.shadowColor = "rgba(0, 0, 0, 0.55)";
+    ctx.shadowBlur = 8;
+    ctx.shadowOffsetY = 2;
+    ctx.fillStyle = hasLogo ? "#f4fff8" : "#41a776";
+    ctx.beginPath();
+    ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowColor = "transparent";
+
+    if (hasLogo) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.r - 1, 0, Math.PI * 2);
+      ctx.clip();
+      const inset = Math.max(1, ball.r * 0.08);
+      const diameter = Math.max(1, (ball.r - inset) * 2);
+      const scale = Math.min(diameter / logoImage.naturalWidth, diameter / logoImage.naturalHeight);
+      const width = logoImage.naturalWidth * scale;
+      const height = logoImage.naturalHeight * scale;
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
+      ctx.drawImage(logoImage, ball.x - width / 2, ball.y - height / 2, width, height);
+      ctx.restore();
+    }
+
+    ctx.restore();
+  }
+
+  function drawOverlay() {
+    if (state.mode === MODES.PLAYING || state.mode === MODES.READY) return;
+    const width = clamp(state.bounds.width * 0.52, 245, 520);
+    const height = clamp(state.bounds.height * 0.14, 72, 108);
+    const x = (state.bounds.width - width) / 2;
+    const y = clamp(state.bounds.height * 0.7, 56, state.bounds.height - height - 48);
+    ctx.fillStyle = "rgba(255, 255, 255, 0.93)";
+    roundedRect(x, y, width, height, 15);
+    ctx.fill();
+    ctx.strokeStyle = "#00648a";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    ctx.fillStyle = "#16212b";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const title = state.mode === MODES.GAME_OVER ? "Game Over" : "Paused";
+    ctx.font = `900 ${clamp(width * 0.065, 19, 30)}px ${getComputedStyle(document.body).fontFamily}`;
+    ctx.fillText(title, state.bounds.width / 2, y + height * 0.38);
+    ctx.fillStyle = "#41515d";
+    ctx.font = `700 ${clamp(width * 0.032, 11, 16)}px ${getComputedStyle(document.body).fontFamily}`;
+    const instruction = state.mode === MODES.GAME_OVER ? `Score ${state.score} - Space or tap to keep crushing PFAS` :
+      "Space, P, Escape, or tap to resume";
+    ctx.fillText(instruction, state.bounds.width / 2, y + height * 0.7, width - 22);
+  }
+
+  function draw() {
+    ctx.setTransform(effectiveDpr, 0, 0, effectiveDpr, 0, 0);
+    ctx.clearRect(0, 0, state.bounds.width, state.bounds.height);
+
+    /* Water-wave motif drawn above the background artwork. */
+    ctx.fillStyle = "rgba(190, 237, 232, 0.24)";
+    ctx.beginPath();
+    ctx.moveTo(0, state.bounds.height * 0.68);
+    ctx.bezierCurveTo(state.bounds.width * 0.23, state.bounds.height * 0.6, state.bounds.width * 0.42, state.bounds.height * 0.75, state.bounds.width * 0.62, state.bounds.height * 0.66);
+    ctx.bezierCurveTo(state.bounds.width * 0.8, state.bounds.height * 0.58, state.bounds.width * 0.9, state.bounds.height * 0.7, state.bounds.width, state.bounds.height * 0.63);
+    ctx.lineTo(state.bounds.width, state.bounds.height);
+    ctx.lineTo(0, state.bounds.height);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = brickColorForRound(state.round);
+    for (const brick of state.bricks) {
+      if (!brick.active) continue;
+      const reveal = brickRevealProgress(state);
+      if (reveal <= 0) continue;
+      ctx.save();
+      ctx.globalAlpha = reveal;
+      ctx.fillRect(brick.x, brick.y, brick.w, brick.h);
+      if (isToughBrick(brick)) {
+        const markerWidth = clamp(brick.w * 0.055, 2, 4);
+        const markerInset = clamp(brick.w * 0.09, 3, 7);
+        ctx.fillStyle = TOUGH_BRICK_MARKER_COLOR;
+        ctx.fillRect(brick.x + markerInset, brick.y, markerWidth, brick.h);
+        ctx.fillRect(brick.x + brick.w - markerInset - markerWidth, brick.y, markerWidth, brick.h);
+      }
+      drawBrickLabel(brick);
+      ctx.restore();
+    }
+
+    for (const powerUp of state.powerUps) {
+      const x = powerUp.x - powerUp.w / 2;
+      const y = powerUp.y - powerUp.h / 2;
+      ctx.fillStyle = powerUp.type === POWER_UP_TYPES.ADD_BALL ? "#f5c451" : "#9ce5c1";
+      roundedRect(x, y, powerUp.w, powerUp.h, 8);
+      ctx.fill();
+      ctx.fillStyle = "#0d2d3a";
+      ctx.font = `900 ${clamp(powerUp.h * 0.42, 10, 13)}px ${getComputedStyle(document.body).fontFamily}`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(powerUp.type === POWER_UP_TYPES.ADD_BALL ? "+ BALL" : "WIDE", powerUp.x, powerUp.y, powerUp.w - 7);
+    }
+
+    const paddleFlash = largePaddleWarningPhase(state.paddle, state.activePlaySeconds);
+    ctx.save();
+    ctx.fillStyle = paddleFlash > 0 ? "#f5c451" : "#e8fff4";
+    if (paddleFlash === 0) ctx.globalAlpha = 0.32;
+    ctx.fillRect(state.paddle.x, state.paddle.y, state.paddle.w, state.paddle.h);
+    ctx.restore();
+
+    for (const ball of state.balls) drawBall(ball);
+
+    ctx.fillStyle = "#2c383e";
+    ctx.font = `750 ${clamp(state.bounds.width * 0.012, 10, 14)}px ${getComputedStyle(document.body).fontFamily}`;
+    ctx.textAlign = "left";
+    ctx.textBaseline = "bottom";
+    ctx.fillText("Move: arrows or A/D  |  Start: Space  |  Pause: P or Escape", 12, state.bounds.height - 10, state.bounds.width - 170);
+    drawOverlay();
+  }
+
+  function announce(message) {
+    el.status.textContent = "";
+    window.setTimeout(() => { el.status.textContent = message; }, 0);
+  }
+
+  function stopLoop() {
+    if (raf) window.cancelAnimationFrame(raf);
+    raf = 0;
+    lastTime = 0;
+    carry = 0;
+  }
+
+  function scheduleFrame() {
+    if (raf || state.mode !== MODES.PLAYING) return;
+    raf = window.requestAnimationFrame(frame);
+  }
+
+  function startLoop() {
+    if (raf || state.mode !== MODES.PLAYING) return;
+    lastTime = 0;
+    carry = 0;
+    scheduleFrame();
+  }
+
+  function startOrResume() {
+    const previousMode = state.mode;
+    const action = previousMode === MODES.PAUSED ? "resume" : "start";
+    if (!transitionGame(state, action)) return false;
+    clearInput(input);
+    updateUi();
+    draw();
+    startLoop();
+    if (action === "start" && window.DecarbAnalytics) {
+      window.DecarbAnalytics.trackBrickBreakerStart(previousMode === MODES.GAME_OVER ? "restart" : "first");
+    }
+    if (previousMode === MODES.GAME_OVER) announce("New game started. Score reset to zero.");
+    else if (previousMode === MODES.PAUSED) announce("Game resumed.");
+    else announce("Game started.");
+    return true;
+  }
+
+  function pauseGame(reason) {
+    if (!transitionGame(state, "pause")) return false;
+    clearInput(input);
+    stopLoop();
+    updateUi();
+    draw();
+    announce(reason || "Game paused. Press Space, P, Escape, or tap the game to resume.");
+    return true;
+  }
+
+  function frame(timestamp) {
+    raf = 0;
+    if (state.mode !== MODES.PLAYING) return;
+    if (!lastTime) lastTime = timestamp;
+    carry = Math.min(carry + boundedDelta((timestamp - lastTime) / 1000), CFG.MAX_FRAME_DELTA);
+    lastTime = timestamp;
+    const messages = [];
+    let steps = 0;
+    while (carry >= CFG.FIXED_STEP && steps < CFG.MAX_SUBSTEPS && state.mode === MODES.PLAYING) {
+      const events = stepGame(state, CFG.FIXED_STEP, direction(), Math.random);
+      for (const event of events) {
+        if (event !== "brick-hit") messages.push(event);
+      }
+      carry -= CFG.FIXED_STEP;
+      steps += 1;
+    }
+    if (steps === CFG.MAX_SUBSTEPS) carry = Math.min(carry, CFG.FIXED_STEP);
+    updateUi();
+    draw();
+
+    if (messages.includes("game-over")) {
+      if (window.DecarbAnalytics) window.DecarbAnalytics.trackBrickBreakerGameOver(state.round, state.score);
+      stopLoop();
+      announce(`Game over. Final score ${state.score}. Press Space or tap the game to start a new game.`);
+      return;
+    }
+    if (messages.includes("round-started") && window.DecarbAnalytics) {
+      window.DecarbAnalytics.trackBrickBreakerRoundComplete(Math.max(1, state.round - 1));
+    }
+    if (messages.includes("round-cleared")) {
+      announce(`Round cleared. Round ${state.round} is fading in.`);
+    } else if (messages.includes("round-ready")) {
+      announce(`Round ${state.round} ready. Keep crushing PFAS.`);
+    } else if (!messages.includes("round-started")) {
+      const collection = messages.find((message) => message.endsWith("collected.") || message.startsWith("Maximum"));
+      if (collection) announce(collection);
+    }
+    scheduleFrame();
+  }
+
+  function resizeCanvas(reason = "resize") {
+    const rect = el.stage.getBoundingClientRect();
+    if (rect.width < 1 || rect.height < 1) return;
+    const sizeChanged = Math.abs(rect.width - state.bounds.width) > 2 || Math.abs(rect.height - state.bounds.height) > 2;
+    if (resizeReady && sizeChanged && state.mode === MODES.PLAYING) {
+      pauseGame(`Game paused after a ${reason}. It will not resume automatically.`);
+    }
+    const requestedDpr = clamp(window.devicePixelRatio || 1, 1, CFG.DPR_CAP);
+    effectiveDpr = Math.max(0.5, Math.min(requestedDpr, CFG.MAX_BACKING_WIDTH / rect.width, CFG.MAX_BACKING_HEIGHT / rect.height));
+    const width = Math.max(1, Math.round(rect.width * effectiveDpr));
+    const height = Math.max(1, Math.round(rect.height * effectiveDpr));
+    if (el.canvas.width !== width) el.canvas.width = width;
+    if (el.canvas.height !== height) el.canvas.height = height;
+    if (sizeChanged) resizeState(state, rect.width, rect.height);
+    resizeReady = true;
+    updateUi();
+    draw();
+  }
+
+  function isInteractiveTarget(target) {
+    return target instanceof Element && Boolean(target.closest("a, button, summary, input, textarea, select, [contenteditable='true']"));
+  }
+
+  function moveToPointer(event) {
+    const point = pointerToLogical(event.clientX, event.clientY, el.canvas.getBoundingClientRect(), state.bounds);
+    state.paddle.x = clamp(point.x - state.paddle.w / 2, 0, state.bounds.width - state.paddle.w);
+    draw();
+  }
+
+  on(el.panel, "pointerdown", (event) => {
+    // Secondary clicks and extra touches are not paddle-control gestures.
+    if (event.button !== 0 || !event.isPrimary || isInteractiveTarget(event.target)) return;
+    el.canvas.focus({ preventScroll: true });
+    if (state.mode !== MODES.PLAYING) {
+      if (startOrResume()) event.preventDefault();
+      return;
+    }
+    if (input.pointerId !== null) return;
+    input.pointerId = event.pointerId;
+    el.panel.setPointerCapture?.(event.pointerId);
+    moveToPointer(event);
+    event.preventDefault();
+  });
+
+  on(el.panel, "pointermove", (event) => {
+    if (state.mode !== MODES.PLAYING || event.pointerId !== input.pointerId) return;
+    // A delayed or missing release must not turn later hover events into steering.
+    if (!(event.buttons & 1)) {
+      releasePointer(event);
+      return;
+    }
+    moveToPointer(event);
+    event.preventDefault();
+  });
+
+  function releasePointer(event) {
+    if (event.pointerId === input.pointerId) input.pointerId = null;
+  }
+
+  for (const action of ["pointerup", "pointercancel", "lostpointercapture"]) on(el.panel, action, releasePointer);
+
+  for (const button of [el.left, el.right]) {
+    on(button, "pointerdown", (event) => {
+      if (event.button !== 0 || !event.isPrimary || input.movePointer !== null || state.mode !== MODES.PLAYING) return;
+      input.movePointer = event.pointerId;
+      input.button = Number(button.dataset.move);
+      button.setPointerCapture?.(event.pointerId);
+      event.preventDefault();
+    });
+    const releaseButton = (event) => {
+      if (event.pointerId !== input.movePointer) return;
+      input.button = 0;
+      input.movePointer = null;
+    };
+    for (const action of ["pointerup", "pointercancel", "lostpointercapture", "pointerleave"]) on(button, action, releaseButton);
+  }
+
+  on(el.motionToggle, "click", () => {
+    if (state.mode === MODES.PLAYING) pauseGame();
+    else if (state.mode === MODES.PAUSED && startOrResume()) {
+      el.canvas.focus({ preventScroll: true });
+    }
+  });
+
+  on(document, "keydown", (event) => {
+    if (event.altKey || event.ctrlKey || event.metaKey || isInteractiveTarget(event.target)) return;
+    const move = keyDirection(event.key);
+    if (move) {
+      if (state.mode !== MODES.PLAYING) return;
+      event.preventDefault();
+      if (move < 0) input.left = true;
+      if (move > 0) input.right = true;
+      return;
+    }
+
+    const isSpace = event.code === "Space" || event.key === " ";
+    if (isSpace) {
+      if (event.repeat) return;
+      if (state.mode === MODES.PLAYING) {
+        if (el.panel.contains(document.activeElement)) event.preventDefault();
+        return;
+      }
+      event.preventDefault();
+      startOrResume();
+      el.canvas.focus({ preventScroll: true });
+      return;
+    }
+
+    const normalized = String(event.key).toLowerCase();
+    if ((normalized === "p" || event.key === "Escape") && !event.repeat) {
+      if (state.mode === MODES.PLAYING) {
+        event.preventDefault();
+        pauseGame();
+      } else if (state.mode === MODES.PAUSED) {
+        event.preventDefault();
+        startOrResume();
+      }
+    }
+  });
+
+  on(document, "keyup", (event) => {
+    const move = keyDirection(event.key);
+    if (move < 0) input.left = false;
+    if (move > 0) input.right = false;
+  });
+
+  on(window, "blur", () => {
+    clearInput(input);
+    if (state.mode === MODES.PLAYING) pauseGame("Game paused because the window lost focus. It will not resume automatically.");
+  });
+
+  on(document, "visibilitychange", () => {
+    if (document.hidden && state.mode === MODES.PLAYING) pauseGame("Game paused because this tab is hidden. It will not resume automatically.");
+  });
+
+  on(window, "orientationchange", () => resizeCanvas("screen orientation change"));
+  on(window, "resize", () => resizeCanvas("window resize"));
+  const resizeObserver = "ResizeObserver" in window ? new ResizeObserver(() => resizeCanvas("game-area resize")) : null;
+  resizeObserver?.observe(el.stage);
+
+  on(window, "pagehide", (event) => {
+    if (state.mode === MODES.PLAYING) transitionGame(state, "pause");
+    stopLoop();
+    clearInput(input);
+    if (!event.persisted) {
+      resizeObserver?.disconnect();
+      controller.abort();
+    }
+  });
+
+  updateUi();
+  resizeCanvas("initial layout");
+  announce("Optional game ready. Press Space or tap the game to start. Recovery navigation is available above.");
+}
+
+if (typeof document !== "undefined") initGame();
+
+export {
+  BRICK_MASK,
+  CFG,
+  MODES,
+  PFAS_LABELS,
+  POWER_UP_TYPES,
+  ROUND_BRICK_COLORS,
+  TOUGH_BRICK_MARKER_COLOR,
+  advanceRound,
+  boundedDelta,
+  brickColorForRound,
+  bricksArePlayable,
+  circleTouchesRect,
+  clamp,
+  clearInput,
+  collectPowerUp,
+  controlState,
+  createInitialState,
+  destroyBrick,
+  isToughBrick,
+  keyDirection,
+  labelsForRound,
+  largePaddleWarningPhase,
+  layoutBricks,
+  makeBounds,
+  normalizeBallVelocity,
+  pointerToLogical,
+  brickRevealProgress,
+  resetGame,
+  resizeState,
+  shuffleLabels,
+  stepCountForDelta,
+  stepGame,
+  targetSpeedForTime,
+  toughBrickCountForRound,
+  toughBrickIdsForRound,
+  transitionGame
+};
+    // BB404-SCRIPT-END
+  </script>
+</body>
+</html>
